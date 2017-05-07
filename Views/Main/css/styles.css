@@ -17,6 +17,10 @@ li a:hover{
 	text-decoration: underline;
 }
 
+.invisible{
+	width: 100%;
+	height: 100vh;
+}
 
 .header{
 	padding: 20px;
@@ -29,6 +33,8 @@ li a:hover{
 	background: url('../img/background.jpg');
 	background-size: cover;
 	height: 100vh;
+	width: 100%;
+	position: fixed;
 }
 
 .LeftUl{
@@ -112,4 +118,13 @@ li a:hover{
   60% {
     transform: translateY(-15px);
   }
+}
+
+.content{
+	position: relative;
+	background: white;
+	width: 100%;
+	height: 1000px;
+	z-index: 1000;
+
 }
