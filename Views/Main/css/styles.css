@@ -139,6 +139,12 @@ li a:hover{
 	padding:50px;
 }
 
+.proyectos{
+	width: 100%;
+	height: 520px;
+	padding:50px;
+}
+
 .divisor{
 	width: 100%;
 	height: 100px;
@@ -202,6 +208,14 @@ li a:hover{
 .serviceSection{
 	position: relative;
 	background: #26A69A;
+	width: 100%;
+	height: 1100px;
+	z-index: 1;
+}
+
+.projectsSection{
+	position: relative;
+	background: #00897B;
 	width: 100%;
 	height: 1100px;
 	z-index: 1;
