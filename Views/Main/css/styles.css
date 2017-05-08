@@ -224,3 +224,44 @@ li a:hover{
 .pagination{
 	margin-top: 50px;
 }
+
+
+.ulItem1,
+.ulItem2,
+.ulItem3{
+	text-align: center;
+	list-style: none;
+	z-index: 2;
+	position: fixed;
+	width: 3%;
+	cursor: pointer;
+	height: 50px;
+	padding: 3px;
+}
+
+.ulItem1{
+	border-top-right-radius: 5px;
+	top: 20%;
+	background: rgba(255,255,255,0.2);
+}
+
+.ulItem2{
+	top: 26.3%;
+	background: rgba(255,255,255,0.2);
+}
+
+.ulItem3{
+	border-bottom-right-radius: 5px;
+	top: 32.6%;
+	background: rgba(255,255,255,0.2);
+}
+
+.ulItem1 img,
+.ulItem2 img,
+.ulItem3 img{
+	height: 40px;
+}
+
+.ulItem1 img{
+	height: 43px;
+}
