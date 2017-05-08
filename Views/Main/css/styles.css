@@ -129,13 +129,11 @@ li a:hover{
 
 .productos{
 	width: 100%;
-	background-color: #fff;
 	height: 520px;
 	padding:50px;
 }
 
 .servicios{
-	background-color: #fff;
 	width: 100%;
 	height: 520px;
 	padding:50px;
@@ -194,7 +192,7 @@ li a:hover{
 
 .productSection{
 	position: relative;
-	background: white;
+	background: #80CBC4;
 	width: 100%;
 	height: 1100px;
 	z-index: 1;
@@ -202,7 +200,7 @@ li a:hover{
 
 .serviceSection{
 	position: relative;
-	background: white;
+	background: #26A69A;
 	width: 100%;
 	height: 1100px;
 	z-index: 1;
