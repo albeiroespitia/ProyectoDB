@@ -169,7 +169,7 @@ li a:hover{
 	background: #E0E0E0;
 	border-radius: 10px;
 	transition: all 1s;
-	box-shadow: 3px 3px 3px #424242;
+	box-shadow: 1px 1px 3px #424242;
 }
 
 .caja:hover{
@@ -199,7 +199,7 @@ li a:hover{
 
 .productSection{
 	position: relative;
-	background: #80CBC4;
+	background: white;
 	width: 100%;
 	height: 1100px;
 	z-index: 1;
@@ -207,7 +207,7 @@ li a:hover{
 
 .serviceSection{
 	position: relative;
-	background: #26A69A;
+	background: white;
 	width: 100%;
 	height: 1100px;
 	z-index: 1;
@@ -215,7 +215,7 @@ li a:hover{
 
 .projectsSection{
 	position: relative;
-	background: #00897B;
+	background: white;
 	width: 100%;
 	height: 1100px;
 	z-index: 1;
