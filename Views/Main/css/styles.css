@@ -241,18 +241,17 @@ li a:hover{
 
 .ulItem1{
 	border-top-right-radius: 5px;
-	top: 20%;
 	background: rgba(255,255,255,0.2);
 }
 
 .ulItem2{
-	top: 27.5%;
+	margin-top: 50px;
 	background: rgba(255,255,255,0.2);
 }
 
 .ulItem3{
 	border-bottom-right-radius: 5px;
-	top: 35.1%;
+	margin-top: 100px;
 	background: rgba(255,255,255,0.2);
 }
 
@@ -264,4 +263,10 @@ li a:hover{
 
 .ulItem1 img{
 	height: 43px;
+}
+
+.floatingNav{
+	position: fixed;
+	z-index: 2;
+	margin-top: 150px;
 }
