@@ -236,7 +236,7 @@ li a:hover{
 	width: 3%;
 	cursor: pointer;
 	height: 50px;
-	padding: 3px;
+	
 }
 
 .ulItem1{
@@ -246,13 +246,13 @@ li a:hover{
 }
 
 .ulItem2{
-	top: 26.3%;
+	top: 27.5%;
 	background: rgba(255,255,255,0.2);
 }
 
 .ulItem3{
 	border-bottom-right-radius: 5px;
-	top: 32.6%;
+	top: 35.1%;
 	background: rgba(255,255,255,0.2);
 }
 
