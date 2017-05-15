@@ -23,7 +23,7 @@
     <div id="modal1" class="modal">
       <div class="modal-content">
         <div class="row">
-          <form id="login-form" action="../Controller/Action/act_login.php" method="POST" class="col s12">
+          <form id="login-form" action="../../Controller/Action/act_login.php" method="POST" class="col s12">
             <div class="row">
               <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
                 <input id="icon_prefix" type="text" name="username" class="validate" required>
@@ -140,6 +140,81 @@
         </div>
     </section>
     <div class="separador"></div>
+     <section class="projectsSection">
+        <div class="proyectos">
+            <span class="titulo">Proyectos</span>
+            <div class="row">
+                <div class="catalogo">
+                    <div class="col m4">
+                        <div class="caja">
+                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
+                            <div class="descripcion">
+                                <p class="tituloProducto">Casa</p>
+                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col m4">
+                        <div class="caja">
+                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
+                            <div class="descripcion">
+                                <p class="tituloProducto">Casa</p>
+                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col m4">
+                        <div class="caja">
+                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
+                            <div class="descripcion">
+                                <p class="tituloProducto">Casa</p>
+                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="catalogo">
+                    <div class="col m4">
+                        <div class="caja">
+                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
+                            <div class="descripcion">
+                                <p class="tituloProducto">Casa</p>
+                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col m4">
+                        <div class="caja">
+                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
+                            <div class="descripcion">
+                                <p class="tituloProducto">Casa</p>
+                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col m4">
+                        <div class="caja">
+                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
+                            <div class="descripcion">
+                                <p class="tituloProducto">Casa</p>
+                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="pagination center-align">
+                    <li class="active"><a href="#!">1</a></li>
+                    <li class="waves-effect"><a href="#!">2</a></li>
+                    <li class="waves-effect"><a href="#!">3</a></li>
+                    <li class="waves-effect"><a href="#!">4</a></li>
+                    <li class="waves-effect"><a href="#!">5</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>    
+    <div class="separador"></div>
     <section class="serviceSection">
         <div class="servicios">
             <span class="titulo">Servicios</span>
@@ -214,86 +289,12 @@
             </ul>
         </div>
     </section>
-    <div class="separador"></div>
-     <section class="projectsSection">
-        <div class="proyectos">
-            <span class="titulo">Proyectos</span>
-            <div class="row">
-                <div class="catalogo">
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="catalogo">
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <ul class="pagination center-align">
-                    <li class="active"><a href="#!">1</a></li>
-                    <li class="waves-effect"><a href="#!">2</a></li>
-                    <li class="waves-effect"><a href="#!">3</a></li>
-                    <li class="waves-effect"><a href="#!">4</a></li>
-                    <li class="waves-effect"><a href="#!">5</a></li>
-                </ul>
-            </div>
-        </div>
-    </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <script type="text/javascript" src="js/initialization.js"></script>
+    <script type="text/javascript" src="js/scroll.js"></script>
 </body>
 
 </html>

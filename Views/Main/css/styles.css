@@ -230,6 +230,7 @@ li a:hover{
 .ulItem1,
 .ulItem2,
 .ulItem3{
+	transition: all 0.4s ease;
 	text-align: center;
 	list-style: none;
 	z-index: 2;
@@ -238,6 +239,12 @@ li a:hover{
 	cursor: pointer;
 	height: 50px;
 	
+}
+
+.ulItem1:hover,
+.ulItem2:hover,
+.ulItem3:hover{
+	width: 80px;
 }
 
 .ulItem1{
