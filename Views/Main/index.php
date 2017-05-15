@@ -23,7 +23,7 @@
     <div id="modal1" class="modal">
       <div class="modal-content">
         <div class="row">
-          <form id="login-form" action="" method="" class="col s12">
+          <form id="login-form" action="../Controller/Action/act_login.php" method="POST" class="col s12">
             <div class="row">
               <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
                 <input id="icon_prefix" type="text" name="username" class="validate" required>
