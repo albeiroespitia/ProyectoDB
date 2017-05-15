@@ -8,7 +8,12 @@
 
 		$usuarioDAO = new UsuarioDAO();
 		$usuarios = $usuarioDAO->Login($username,$password1);
-		echo 'Usuario Correct';
+		
+		if($usuarios == null){
+			echo 'Usuario no encontrado';
+		}else{
+			echo 'Usuario Encontrado';
+		}
 
 	}
 

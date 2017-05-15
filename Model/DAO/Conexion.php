@@ -6,7 +6,7 @@
 
 		public function Conexion(){
 			try{
-				$this->db= new PDO('mysql:host=localhost; dbname=database_project','root','1234');
+				$this->db= new PDO('mysql:host=localhost; dbname=database_project','root','');
 				$this->db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 				$this->db->exec('SET CHARACTER SET utf8');
 				//echo 'EXITO!!';

@@ -190,10 +190,14 @@ li a:hover{
 }
 
 .separador{
-	width: 100%;
-	height: 100px;
+	position: relative;
+	background: rgba(125,125,125,1);
+	background: linear-gradient(to right, rgba(125,125,125,1) 0%, rgba(153,150,150,1) 71%, rgba(178,178,178,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7d7d', endColorstr='#b2b2b2', GradientType=1 );
+    width: 100%;
+    height: 100px;
+    z-index: 1
 }
-
 .productSection{
 	position: relative;
 /*order-top: 1px solid;*/

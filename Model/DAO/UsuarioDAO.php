@@ -11,7 +11,7 @@
 
 
 		public function Login($username,$password1){
-			$sql = "SELECT nombreUsuario, password FROM usuario WHERE nombreUsuario=?";
+			$sql = "SELECT nombreUsuario, password FROM usuario WHERE nombreUsuario=? AND password=?";
 			$consulta = $this->db->prepare($sql);
 			$resultado = $consulta->execute(array($username,$password1));
 			$usuarios = $consulta->fetchall(PDO::FETCH_ASSOC);
