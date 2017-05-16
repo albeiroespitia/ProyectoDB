@@ -8,11 +8,26 @@
 
 		$usuarioDAO = new UsuarioDAO();
 		$usuarios = $usuarioDAO->Login($username,$password1);
-		
-		if($usuarios == null){
-			echo 'Usuario no encontrado';
+
+		if($usuarios == 0){
+			echo 'Error';
+
 		}else{
-			echo 'Usuario Encontrado';
+
+			session_start();
+
+			foreach ($usuarios as $u) {
+				$fila=$u;		
+			};
+
+			if($fila['TipoUsuario']==1){
+				$_SESSION['tipoUsuario'] = 'ingeniero';
+				echo 'ingeniero';
+			}else if($fila['TipoUsuario']==2){
+				$_SESSION['tipoUsuario'] = 'administrador';
+				echo 'administrador';
+			}			
+
 		}
 
 	}

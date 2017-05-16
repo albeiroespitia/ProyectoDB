@@ -290,3 +290,22 @@ li a:hover{
 .modal .modal-footer .btn-flat{
     margin: 0 30%;
 }
+
+.side-nav .userView{
+	padding: 100px 32px 0;
+}
+
+.side-nav .userView .name{
+	font-size: 20px;
+	padding-bottom: 10px;
+}
+
+.dropdown-content li>a, .dropdown-content li>span{
+	padding: 14px 5px;
+	font-weight: 500;
+}
+
+.RigthUl .material-icons{
+	line-height: 1.5;
+	margin-left: 3px;
+}

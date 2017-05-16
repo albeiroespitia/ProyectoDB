@@ -37,7 +37,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <h6 class="error-user"> </h6>
+              <h6 class="error-user"></h6>
               <button id="login" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="login">Registrar</button>
             </div>
           </form>

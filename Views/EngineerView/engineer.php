@@ -19,6 +19,45 @@
         <li class="ulItem3"><img src="./img/projectIcon.svg"></li>  
    </ul>
 
+     <ul id="slide-out" class="side-nav">
+        <li><div class="userView">
+          <div class="background">
+            <img src="img/products.jpg" width="100%" height="100%">
+          </div>
+          <span class="white-text name">Gestion de productos</span>
+        </div></li>
+        <li><a href="#!"><i class="material-icons">add</i>Agregar Producto</a></li>
+        <li><a href="#!"><i class="material-icons">mode_edit</i>Editar Producto</a></li>
+        <li><a href="#!"><i class="material-icons">delete</i>Eliminar Producto</a></li>
+        <li><div class="divider"></div></li>
+      </ul>
+
+      <ul id="slide-out2" class="side-nav">
+        <li><div class="userView">
+          <div class="background">
+            <img src="img/service.jpg" width="100%" height="100%">
+          </div>
+          <span class="white-text name">Gestion de servicios</span>
+        </div></li>
+        <li><a href="#!"><i class="material-icons">add</i>Agregar Servicio</a></li>
+        <li><a href="#!"><i class="material-icons">mode_edit</i>Editar Servicio</a></li>
+        <li><a href="#!"><i class="material-icons">delete</i>Eliminar Servicio</a></li>
+        <li><div class="divider"></div></li>
+      </ul>
+
+      <ul id="slide-out3" class="side-nav">
+        <li><div class="userView">
+          <div class="background">
+            <img src="img/projects.jpg" width="100%" height="100%">
+          </div>
+          <span class="white-text name">Gestion de proyectos</span>
+        </div></li>
+        <li><a href="#!"><i class="material-icons">add</i>Agregar Proyecto</a></li>
+        <li><a href="#!"><i class="material-icons">mode_edit</i>Editar Proyecto</a></li>
+        <li><a href="#!"><i class="material-icons">delete</i>Eliminar Proyecto</a></li>
+        <li><div class="divider"></div></li>
+      </ul>
+
 
     <div id="modal1" class="modal">
       <div class="modal-content">
@@ -44,6 +83,13 @@
         </div>
       </div>
     </div>
+
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="#slide-out" data-activates="slide-out" class="button-collapse">Productos</a></li>
+      <li><a href="#slide-out2" data-activates="slide-out2" class="button-collapse">Servicios</a></li>
+      <li><a href="#slide-out3" data-activates="slide-out3" class="button-collapse">Proyectos</a></li>
+    </ul>
     
 
     <div class="firstlvl">
@@ -53,7 +99,7 @@
                 <li><a href="#">Contacto</a></li>
             </ul>
             <ul class="RigthUl">
-                <li><a href="#modal1">Iniciar Sesion</a></li>
+                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
         </div>
         <div class="centerName">

@@ -12,7 +12,11 @@ $(document).ready(function() {
 			data: {username:username, password: password},
 			type: 'POST',
 			success: function(res){
-				console.log(res);
+				if(res == 'Error'){
+					$('.error-user').html('Usuario o contraseña incorrectos');
+				}else if(res == 'ingeniero'){
+					window.location.href = '../EngineerView/engineer.php';
+				}
 			}
 		})
 

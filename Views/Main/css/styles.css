@@ -290,3 +290,7 @@ li a:hover{
 .modal .modal-footer .btn-flat{
     margin: 0 30%;
 }
+
+.error-user{
+	color: red;
+}
