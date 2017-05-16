@@ -295,7 +295,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <script type="text/javascript" src="js/initialization.js"></script>
     <script type="text/javascript" src="js/scroll.js"></script>
-    <script type="text/javascript" src="js/ajax.js"></script>
 </body>
 
 </html>
