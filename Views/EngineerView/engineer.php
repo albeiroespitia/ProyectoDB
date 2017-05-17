@@ -1,6 +1,12 @@
+<?php 
+  session_start();
+  if($_SESSION['tipoUsuario']  != 'ingeniero'){
+    header("Location:../../index.php");
+    die();
+  } 
+?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
@@ -99,7 +105,8 @@
                 <li><a href="#">Contacto</a></li>
             </ul>
             <ul class="RigthUl">
-                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Gestionar<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a href="../../Controller/Action/act_close.php" >Cerrar Sesion</a></li>
             </ul>
         </div>
         <div class="centerName">

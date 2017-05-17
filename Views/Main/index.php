@@ -1,3 +1,13 @@
+<?php 
+  session_start();
+  if(isset($_SESSION['tipoUsuario'])){
+      if($_SESSION['tipoUsuario'] == 'ingeniero'){
+        header("Location: ../EngineerView/engineer.php");
+      }
+  }
+  
+?>
+
 <!DOCTYPE html>
 <html>
 
