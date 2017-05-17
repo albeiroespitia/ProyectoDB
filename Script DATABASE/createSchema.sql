@@ -2,9 +2,9 @@ CREATE DATABASE  IF NOT EXISTS `database_project` /*!40100 DEFAULT CHARACTER SET
 USE `database_project`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: database_project
+-- Host: 127.0.0.1    Database: database_project
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.19-MariaDB
+-- Server version	5.5.5-10.1.21-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,37 +18,37 @@ USE `database_project`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Ciudad`
+-- Table structure for table `ciudad`
 --
 
-DROP TABLE IF EXISTS `Ciudad`;
+DROP TABLE IF EXISTS `ciudad`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Ciudad` (
+CREATE TABLE `ciudad` (
   `idCiudad` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   PRIMARY KEY (`idCiudad`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Ciudad`
+-- Dumping data for table `ciudad`
 --
 
-LOCK TABLES `Ciudad` WRITE;
-/*!40000 ALTER TABLE `Ciudad` DISABLE KEYS */;
-INSERT INTO `Ciudad` VALUES (1,'SANTA MARTA');
-/*!40000 ALTER TABLE `Ciudad` ENABLE KEYS */;
+LOCK TABLES `ciudad` WRITE;
+/*!40000 ALTER TABLE `ciudad` DISABLE KEYS */;
+INSERT INTO `ciudad` VALUES (1,'Santa Marta'),(2,'Barranquilla'),(3,'El Banco Magdalena');
+/*!40000 ALTER TABLE `ciudad` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Cliente`
+-- Table structure for table `cliente`
 --
 
-DROP TABLE IF EXISTS `Cliente`;
+DROP TABLE IF EXISTS `cliente`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Cliente` (
+CREATE TABLE `cliente` (
   `idCliente` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `telefono` mediumtext NOT NULL,
@@ -58,22 +58,23 @@ CREATE TABLE `Cliente` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Cliente`
+-- Dumping data for table `cliente`
 --
 
-LOCK TABLES `Cliente` WRITE;
-/*!40000 ALTER TABLE `Cliente` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Cliente` ENABLE KEYS */;
+LOCK TABLES `cliente` WRITE;
+/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` VALUES (1,'Brayan Mayer Pimienta','3135793841','bramayer@gmail.com'),(2,'Nacho Vidal Caceres','3153452647','navica@gmail.com');
+/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `DetalleFac`
+-- Table structure for table `detallefac`
 --
 
-DROP TABLE IF EXISTS `DetalleFac`;
+DROP TABLE IF EXISTS `detallefac`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `DetalleFac` (
+CREATE TABLE `detallefac` (
   `Factura` int(11) NOT NULL,
   `Producto` int(11) NOT NULL,
   `cantidad` double NOT NULL,
@@ -81,28 +82,28 @@ CREATE TABLE `DetalleFac` (
   PRIMARY KEY (`Factura`,`Producto`),
   KEY `fk_Factura_has_Producto_Producto1_idx` (`Producto`),
   KEY `fk_Factura_has_Producto_Factura1_idx` (`Factura`),
-  CONSTRAINT `fk_Factura_has_Producto_Factura1` FOREIGN KEY (`Factura`) REFERENCES `Factura` (`idFactura`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Factura_has_Producto_Producto1` FOREIGN KEY (`Producto`) REFERENCES `Producto` (`idProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Factura_has_Producto_Factura1` FOREIGN KEY (`Factura`) REFERENCES `factura` (`idFactura`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Factura_has_Producto_Producto1` FOREIGN KEY (`Producto`) REFERENCES `producto` (`idProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `DetalleFac`
+-- Dumping data for table `detallefac`
 --
 
-LOCK TABLES `DetalleFac` WRITE;
-/*!40000 ALTER TABLE `DetalleFac` DISABLE KEYS */;
-/*!40000 ALTER TABLE `DetalleFac` ENABLE KEYS */;
+LOCK TABLES `detallefac` WRITE;
+/*!40000 ALTER TABLE `detallefac` DISABLE KEYS */;
+/*!40000 ALTER TABLE `detallefac` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `DetalleFacCompra`
+-- Table structure for table `detallefaccompra`
 --
 
-DROP TABLE IF EXISTS `DetalleFacCompra`;
+DROP TABLE IF EXISTS `detallefaccompra`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `DetalleFacCompra` (
+CREATE TABLE `detallefaccompra` (
   `Producto_idProducto` int(11) NOT NULL,
   `FacturaCompra_idFacturaCompra` int(11) NOT NULL,
   `cantidad` double NOT NULL,
@@ -110,56 +111,56 @@ CREATE TABLE `DetalleFacCompra` (
   PRIMARY KEY (`Producto_idProducto`,`FacturaCompra_idFacturaCompra`),
   KEY `fk_Producto_has_FacturaCompra_FacturaCompra1_idx` (`FacturaCompra_idFacturaCompra`),
   KEY `fk_Producto_has_FacturaCompra_Producto1_idx` (`Producto_idProducto`),
-  CONSTRAINT `fk_Producto_has_FacturaCompra_FacturaCompra1` FOREIGN KEY (`FacturaCompra_idFacturaCompra`) REFERENCES `FacturaCompra` (`idFacturaCompra`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Producto_has_FacturaCompra_Producto1` FOREIGN KEY (`Producto_idProducto`) REFERENCES `Producto` (`idProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Producto_has_FacturaCompra_FacturaCompra1` FOREIGN KEY (`FacturaCompra_idFacturaCompra`) REFERENCES `facturacompra` (`idFacturaCompra`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Producto_has_FacturaCompra_Producto1` FOREIGN KEY (`Producto_idProducto`) REFERENCES `producto` (`idProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `DetalleFacCompra`
+-- Dumping data for table `detallefaccompra`
 --
 
-LOCK TABLES `DetalleFacCompra` WRITE;
-/*!40000 ALTER TABLE `DetalleFacCompra` DISABLE KEYS */;
-/*!40000 ALTER TABLE `DetalleFacCompra` ENABLE KEYS */;
+LOCK TABLES `detallefaccompra` WRITE;
+/*!40000 ALTER TABLE `detallefaccompra` DISABLE KEYS */;
+/*!40000 ALTER TABLE `detallefaccompra` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `DetalleVentaServicio`
+-- Table structure for table `detalleventaservicio`
 --
 
-DROP TABLE IF EXISTS `DetalleVentaServicio`;
+DROP TABLE IF EXISTS `detalleventaservicio`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `DetalleVentaServicio` (
+CREATE TABLE `detalleventaservicio` (
   `FacturaServicio_idFacturaServicio` int(11) NOT NULL,
   `Servicio_idServicio` int(11) NOT NULL,
   `Horas` time NOT NULL,
   PRIMARY KEY (`FacturaServicio_idFacturaServicio`,`Servicio_idServicio`),
   KEY `fk_VentaServicio_has_Servicio_Servicio1_idx` (`Servicio_idServicio`),
   KEY `fk_VentaServicio_has_Servicio_VentaServicio1_idx` (`FacturaServicio_idFacturaServicio`),
-  CONSTRAINT `fk_VentaServicio_has_Servicio_Servicio1` FOREIGN KEY (`Servicio_idServicio`) REFERENCES `Servicio` (`idServicio`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_VentaServicio_has_Servicio_VentaServicio1` FOREIGN KEY (`FacturaServicio_idFacturaServicio`) REFERENCES `FacturaServicio` (`idFacturaServicio`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_VentaServicio_has_Servicio_Servicio1` FOREIGN KEY (`Servicio_idServicio`) REFERENCES `servicio` (`idServicio`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_VentaServicio_has_Servicio_VentaServicio1` FOREIGN KEY (`FacturaServicio_idFacturaServicio`) REFERENCES `facturaservicio` (`idFacturaServicio`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `DetalleVentaServicio`
+-- Dumping data for table `detalleventaservicio`
 --
 
-LOCK TABLES `DetalleVentaServicio` WRITE;
-/*!40000 ALTER TABLE `DetalleVentaServicio` DISABLE KEYS */;
-/*!40000 ALTER TABLE `DetalleVentaServicio` ENABLE KEYS */;
+LOCK TABLES `detalleventaservicio` WRITE;
+/*!40000 ALTER TABLE `detalleventaservicio` DISABLE KEYS */;
+/*!40000 ALTER TABLE `detalleventaservicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Factura`
+-- Table structure for table `factura`
 --
 
-DROP TABLE IF EXISTS `Factura`;
+DROP TABLE IF EXISTS `factura`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Factura` (
+CREATE TABLE `factura` (
   `idFactura` int(11) NOT NULL,
   `Cliente` int(11) NOT NULL,
   `Usuario_cc` int(11) NOT NULL,
@@ -169,55 +170,58 @@ CREATE TABLE `Factura` (
   KEY `fk_Factura_Cliente1_idx` (`Cliente`),
   KEY `fk_Factura_Usuario1_idx` (`Usuario_cc`),
   KEY `fk_Factura_FormaPago1_idx` (`FormaPago`),
-  CONSTRAINT `fk_Factura_Cliente1` FOREIGN KEY (`Cliente`) REFERENCES `Cliente` (`idCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Factura_FormaPago1` FOREIGN KEY (`FormaPago`) REFERENCES `FormaPago` (`idFormaPago`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Factura_Usuario1` FOREIGN KEY (`Usuario_cc`) REFERENCES `Usuario` (`cc`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Factura_Cliente1` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`idCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Factura_FormaPago1` FOREIGN KEY (`FormaPago`) REFERENCES `formapago` (`idFormaPago`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Factura_Usuario1` FOREIGN KEY (`Usuario_cc`) REFERENCES `usuario` (`cc`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Factura`
+-- Dumping data for table `factura`
 --
 
-LOCK TABLES `Factura` WRITE;
-/*!40000 ALTER TABLE `Factura` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Factura` ENABLE KEYS */;
+LOCK TABLES `factura` WRITE;
+/*!40000 ALTER TABLE `factura` DISABLE KEYS */;
+/*!40000 ALTER TABLE `factura` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `FacturaCompra`
+-- Table structure for table `facturacompra`
 --
 
-DROP TABLE IF EXISTS `FacturaCompra`;
+DROP TABLE IF EXISTS `facturacompra`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `FacturaCompra` (
+CREATE TABLE `facturacompra` (
   `idFacturaCompra` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `Usuario_cc` int(11) NOT NULL,
+  `Proovedor_idProovedor` int(11) NOT NULL,
   PRIMARY KEY (`idFacturaCompra`),
   KEY `fk_FacturaCompra_Usuario1_idx` (`Usuario_cc`),
-  CONSTRAINT `fk_FacturaCompra_Usuario1` FOREIGN KEY (`Usuario_cc`) REFERENCES `Usuario` (`cc`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_FacturaCompra_Proovedor1_idx` (`Proovedor_idProovedor`),
+  CONSTRAINT `fk_FacturaCompra_Proovedor1` FOREIGN KEY (`Proovedor_idProovedor`) REFERENCES `proovedor` (`idProovedor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_FacturaCompra_Usuario1` FOREIGN KEY (`Usuario_cc`) REFERENCES `usuario` (`cc`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `FacturaCompra`
+-- Dumping data for table `facturacompra`
 --
 
-LOCK TABLES `FacturaCompra` WRITE;
-/*!40000 ALTER TABLE `FacturaCompra` DISABLE KEYS */;
-/*!40000 ALTER TABLE `FacturaCompra` ENABLE KEYS */;
+LOCK TABLES `facturacompra` WRITE;
+/*!40000 ALTER TABLE `facturacompra` DISABLE KEYS */;
+/*!40000 ALTER TABLE `facturacompra` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `FacturaServicio`
+-- Table structure for table `facturaservicio`
 --
 
-DROP TABLE IF EXISTS `FacturaServicio`;
+DROP TABLE IF EXISTS `facturaservicio`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `FacturaServicio` (
+CREATE TABLE `facturaservicio` (
   `idFacturaServicio` int(11) NOT NULL,
   `Cliente` int(11) NOT NULL,
   `Usuario_cc` int(11) NOT NULL,
@@ -227,29 +231,29 @@ CREATE TABLE `FacturaServicio` (
   KEY `fk_VentaServicio_Cliente1_idx` (`Cliente`),
   KEY `fk_FacturaServicio_Usuario1_idx` (`Usuario_cc`),
   KEY `fk_FacturaServicio_FormaPago1_idx` (`FormaPago`),
-  CONSTRAINT `fk_FacturaServicio_FormaPago1` FOREIGN KEY (`FormaPago`) REFERENCES `FormaPago` (`idFormaPago`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_FacturaServicio_Usuario1` FOREIGN KEY (`Usuario_cc`) REFERENCES `Usuario` (`cc`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_VentaServicio_Cliente1` FOREIGN KEY (`Cliente`) REFERENCES `Cliente` (`idCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_FacturaServicio_FormaPago1` FOREIGN KEY (`FormaPago`) REFERENCES `formapago` (`idFormaPago`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_FacturaServicio_Usuario1` FOREIGN KEY (`Usuario_cc`) REFERENCES `usuario` (`cc`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_VentaServicio_Cliente1` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`idCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `FacturaServicio`
+-- Dumping data for table `facturaservicio`
 --
 
-LOCK TABLES `FacturaServicio` WRITE;
-/*!40000 ALTER TABLE `FacturaServicio` DISABLE KEYS */;
-/*!40000 ALTER TABLE `FacturaServicio` ENABLE KEYS */;
+LOCK TABLES `facturaservicio` WRITE;
+/*!40000 ALTER TABLE `facturaservicio` DISABLE KEYS */;
+/*!40000 ALTER TABLE `facturaservicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `FormaPago`
+-- Table structure for table `formapago`
 --
 
-DROP TABLE IF EXISTS `FormaPago`;
+DROP TABLE IF EXISTS `formapago`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `FormaPago` (
+CREATE TABLE `formapago` (
   `idFormaPago` int(11) NOT NULL,
   `descripcion` varchar(45) NOT NULL,
   PRIMARY KEY (`idFormaPago`)
@@ -257,103 +261,103 @@ CREATE TABLE `FormaPago` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `FormaPago`
+-- Dumping data for table `formapago`
 --
 
-LOCK TABLES `FormaPago` WRITE;
-/*!40000 ALTER TABLE `FormaPago` DISABLE KEYS */;
-/*!40000 ALTER TABLE `FormaPago` ENABLE KEYS */;
+LOCK TABLES `formapago` WRITE;
+/*!40000 ALTER TABLE `formapago` DISABLE KEYS */;
+INSERT INTO `formapago` VALUES (1,'contado'),(2,'Tarjeta credito'),(3,'Tarjeta debito');
+/*!40000 ALTER TABLE `formapago` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `ImagenProducto`
+-- Table structure for table `imagenproducto`
 --
 
-DROP TABLE IF EXISTS `ImagenProducto`;
+DROP TABLE IF EXISTS `imagenproducto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ImagenProducto` (
+CREATE TABLE `imagenproducto` (
   `idImagenProducto` int(11) NOT NULL,
   `descripcion` varchar(20) NOT NULL,
   `imagen` varchar(100) NOT NULL,
   `idProducto` int(11) NOT NULL,
   PRIMARY KEY (`idImagenProducto`,`idProducto`),
   KEY `fk_ImagenProducto_Producto1_idx` (`idProducto`),
-  CONSTRAINT `fk_ImagenProducto_Producto1` FOREIGN KEY (`idProducto`) REFERENCES `Producto` (`idProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_ImagenProducto_Producto1` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ImagenProducto`
+-- Dumping data for table `imagenproducto`
 --
 
-LOCK TABLES `ImagenProducto` WRITE;
-/*!40000 ALTER TABLE `ImagenProducto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ImagenProducto` ENABLE KEYS */;
+LOCK TABLES `imagenproducto` WRITE;
+/*!40000 ALTER TABLE `imagenproducto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `imagenproducto` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `ImagenProyecto`
+-- Table structure for table `imagenproyecto`
 --
 
-DROP TABLE IF EXISTS `ImagenProyecto`;
+DROP TABLE IF EXISTS `imagenproyecto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ImagenProyecto` (
+CREATE TABLE `imagenproyecto` (
   `idImagenProyecto` int(11) NOT NULL,
   `descripcion` varchar(20) NOT NULL,
   `imagen` varchar(100) NOT NULL,
   `idProyecto` int(11) NOT NULL,
   PRIMARY KEY (`idImagenProyecto`,`idProyecto`),
   KEY `fk_ImagenProyecto_Proyecto1_idx` (`idProyecto`),
-  CONSTRAINT `fk_ImagenProyecto_Proyecto1` FOREIGN KEY (`idProyecto`) REFERENCES `Proyecto` (`idProyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_ImagenProyecto_Proyecto1` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ImagenProyecto`
+-- Dumping data for table `imagenproyecto`
 --
 
-LOCK TABLES `ImagenProyecto` WRITE;
-/*!40000 ALTER TABLE `ImagenProyecto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ImagenProyecto` ENABLE KEYS */;
+LOCK TABLES `imagenproyecto` WRITE;
+/*!40000 ALTER TABLE `imagenproyecto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `imagenproyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Producto`
+-- Table structure for table `producto`
 --
 
-DROP TABLE IF EXISTS `Producto`;
+DROP TABLE IF EXISTS `producto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Producto` (
+CREATE TABLE `producto` (
   `idProducto` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `descripcion` text NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `Compra_Usuario_cc` mediumtext NOT NULL,
-  `Compra_Proovedor` int(11) NOT NULL,
   PRIMARY KEY (`idProducto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Producto`
+-- Dumping data for table `producto`
 --
 
-LOCK TABLES `Producto` WRITE;
-/*!40000 ALTER TABLE `Producto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Producto` ENABLE KEYS */;
+LOCK TABLES `producto` WRITE;
+/*!40000 ALTER TABLE `producto` DISABLE KEYS */;
+INSERT INTO `producto` VALUES (1,'Protoboard MB102','La protoboard MB102 es una herramienta que se usa comúnmente en el diseño y creación de prácticas de circuitos electrónicos, para llevar a cabo toda clase de montajes de tipo electrónico.',5),(2,'Arduino UNO R3 Compatible','La board Arduino UNO R3 es un módulo diseñado para el desarrollo práctico y eficaz de circuitos electrónicos, con un gran número de entradas y salidas analógicas y digitales (salidas de señal PWM), no necesita drivers para sistemas operativos Linux o Mac, es compatible con los diferentes módulos arduino permitiendo de forma fácil adaptar comunicación inalámbrica XBee, comunicación Ethernet, entre otras.',6);
+/*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Proovedor`
+-- Table structure for table `proovedor`
 --
 
-DROP TABLE IF EXISTS `Proovedor`;
+DROP TABLE IF EXISTS `proovedor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Proovedor` (
+CREATE TABLE `proovedor` (
   `idProovedor` int(11) NOT NULL,
   `nombre` varchar(35) NOT NULL,
   `email` varchar(80) NOT NULL,
@@ -363,55 +367,57 @@ CREATE TABLE `Proovedor` (
   PRIMARY KEY (`idProovedor`),
   KEY `fk_Proovedor_Ciudad1_idx` (`Ciudad`),
   KEY `fk_Proovedor_TipoProducto1_idx` (`TipoProducto`),
-  CONSTRAINT `fk_Proovedor_Ciudad1` FOREIGN KEY (`Ciudad`) REFERENCES `Ciudad` (`idCiudad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Proovedor_TipoProducto1` FOREIGN KEY (`TipoProducto`) REFERENCES `TipoProducto` (`idTipoProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Proovedor_Ciudad1` FOREIGN KEY (`Ciudad`) REFERENCES `ciudad` (`idCiudad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Proovedor_TipoProducto1` FOREIGN KEY (`TipoProducto`) REFERENCES `tipoproducto` (`idTipoProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Proovedor`
+-- Dumping data for table `proovedor`
 --
 
-LOCK TABLES `Proovedor` WRITE;
-/*!40000 ALTER TABLE `Proovedor` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Proovedor` ENABLE KEYS */;
+LOCK TABLES `proovedor` WRITE;
+/*!40000 ALTER TABLE `proovedor` DISABLE KEYS */;
+INSERT INTO `proovedor` VALUES (1,'Ricardo Pelaez','ripe@gmail.com',3007414967,1,1),(2,'Ivan Bettin','ivansito@gmail.com',3014567565,2,2);
+/*!40000 ALTER TABLE `proovedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Proyecto`
+-- Table structure for table `proyecto`
 --
 
-DROP TABLE IF EXISTS `Proyecto`;
+DROP TABLE IF EXISTS `proyecto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Proyecto` (
+CREATE TABLE `proyecto` (
   `idProyecto` int(11) NOT NULL,
   `descripcion` text NOT NULL,
   `empresa` varchar(40) NOT NULL,
   `Usuario_cc` int(11) NOT NULL,
   PRIMARY KEY (`idProyecto`,`Usuario_cc`),
   KEY `fk_Proyecto_Usuario1_idx` (`Usuario_cc`),
-  CONSTRAINT `fk_Proyecto_Usuario1` FOREIGN KEY (`Usuario_cc`) REFERENCES `Usuario` (`cc`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Proyecto_Usuario1` FOREIGN KEY (`Usuario_cc`) REFERENCES `usuario` (`cc`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Proyecto`
+-- Dumping data for table `proyecto`
 --
 
-LOCK TABLES `Proyecto` WRITE;
-/*!40000 ALTER TABLE `Proyecto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Proyecto` ENABLE KEYS */;
+LOCK TABLES `proyecto` WRITE;
+/*!40000 ALTER TABLE `proyecto` DISABLE KEYS */;
+INSERT INTO `proyecto` VALUES (1,'Software para manejo de inventario','WriteSoft',1082456723),(2,'Software de servicio turistico','Spitia corporation',1216975405);
+/*!40000 ALTER TABLE `proyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Servicio`
+-- Table structure for table `servicio`
 --
 
-DROP TABLE IF EXISTS `Servicio`;
+DROP TABLE IF EXISTS `servicio`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Servicio` (
+CREATE TABLE `servicio` (
   `idServicio` int(11) NOT NULL,
   `precio` double NOT NULL,
   `nombre` varchar(45) NOT NULL,
@@ -419,27 +425,28 @@ CREATE TABLE `Servicio` (
   `TipoServicio` int(11) NOT NULL,
   PRIMARY KEY (`idServicio`),
   KEY `fk_Servicio_TipoServicio1_idx` (`TipoServicio`),
-  CONSTRAINT `fk_Servicio_TipoServicio1` FOREIGN KEY (`TipoServicio`) REFERENCES `TipoServicio` (`idTipoServicio`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Servicio_TipoServicio1` FOREIGN KEY (`TipoServicio`) REFERENCES `tiposervicio` (`idTipoServicio`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Servicio`
+-- Dumping data for table `servicio`
 --
 
-LOCK TABLES `Servicio` WRITE;
-/*!40000 ALTER TABLE `Servicio` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Servicio` ENABLE KEYS */;
+LOCK TABLES `servicio` WRITE;
+/*!40000 ALTER TABLE `servicio` DISABLE KEYS */;
+INSERT INTO `servicio` VALUES (1,40,'Mantenimiento de pc','Se le limpia no sé',1),(2,40,'Mantenimiento de Software','Se le arregla no sé',1);
+/*!40000 ALTER TABLE `servicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `TipoProducto`
+-- Table structure for table `tipoproducto`
 --
 
-DROP TABLE IF EXISTS `TipoProducto`;
+DROP TABLE IF EXISTS `tipoproducto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `TipoProducto` (
+CREATE TABLE `tipoproducto` (
   `idTipoProducto` int(11) NOT NULL,
   `descripcion` text NOT NULL,
   PRIMARY KEY (`idTipoProducto`)
@@ -447,22 +454,23 @@ CREATE TABLE `TipoProducto` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `TipoProducto`
+-- Dumping data for table `tipoproducto`
 --
 
-LOCK TABLES `TipoProducto` WRITE;
-/*!40000 ALTER TABLE `TipoProducto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `TipoProducto` ENABLE KEYS */;
+LOCK TABLES `tipoproducto` WRITE;
+/*!40000 ALTER TABLE `tipoproducto` DISABLE KEYS */;
+INSERT INTO `tipoproducto` VALUES (1,'Placa computadora'),(2,'Ordenadores');
+/*!40000 ALTER TABLE `tipoproducto` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `TipoServicio`
+-- Table structure for table `tiposervicio`
 --
 
-DROP TABLE IF EXISTS `TipoServicio`;
+DROP TABLE IF EXISTS `tiposervicio`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `TipoServicio` (
+CREATE TABLE `tiposervicio` (
   `idTipoServicio` int(11) NOT NULL,
   `descripcion` text NOT NULL,
   PRIMARY KEY (`idTipoServicio`)
@@ -470,22 +478,23 @@ CREATE TABLE `TipoServicio` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `TipoServicio`
+-- Dumping data for table `tiposervicio`
 --
 
-LOCK TABLES `TipoServicio` WRITE;
-/*!40000 ALTER TABLE `TipoServicio` DISABLE KEYS */;
-/*!40000 ALTER TABLE `TipoServicio` ENABLE KEYS */;
+LOCK TABLES `tiposervicio` WRITE;
+/*!40000 ALTER TABLE `tiposervicio` DISABLE KEYS */;
+INSERT INTO `tiposervicio` VALUES (1,'Mantenimiento'),(2,'Llamada de atencion al cliente'),(3,'Chat virtual - Atencion al cliente');
+/*!40000 ALTER TABLE `tiposervicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `TipoUsuario`
+-- Table structure for table `tipousuario`
 --
 
-DROP TABLE IF EXISTS `TipoUsuario`;
+DROP TABLE IF EXISTS `tipousuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `TipoUsuario` (
+CREATE TABLE `tipousuario` (
   `idTipoUsuario` int(11) NOT NULL,
   `descripcion` varchar(20) NOT NULL,
   PRIMARY KEY (`idTipoUsuario`)
@@ -493,49 +502,49 @@ CREATE TABLE `TipoUsuario` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `TipoUsuario`
+-- Dumping data for table `tipousuario`
 --
 
-LOCK TABLES `TipoUsuario` WRITE;
-/*!40000 ALTER TABLE `TipoUsuario` DISABLE KEYS */;
-INSERT INTO `TipoUsuario` VALUES (1,'Ingeniero'),(2,'Administrador');
-/*!40000 ALTER TABLE `TipoUsuario` ENABLE KEYS */;
+LOCK TABLES `tipousuario` WRITE;
+/*!40000 ALTER TABLE `tipousuario` DISABLE KEYS */;
+INSERT INTO `tipousuario` VALUES (1,'ingeniero'),(2,'administrador');
+/*!40000 ALTER TABLE `tipousuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Usuario`
+-- Table structure for table `usuario`
 --
 
-DROP TABLE IF EXISTS `Usuario`;
+DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Usuario` (
+CREATE TABLE `usuario` (
   `cc` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `apellido` varchar(30) NOT NULL,
   `sexo` varchar(10) NOT NULL,
   `email` varchar(40) NOT NULL,
   `edad` int(11) NOT NULL,
-  `nombreUsuario` varchar(45) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `nombreUsuario` varchar(100) NOT NULL,
+  `password` varchar(45) NOT NULL,
   `TipoUsuario` int(11) NOT NULL,
   `Ciudad` int(11) NOT NULL,
   PRIMARY KEY (`cc`),
   KEY `fk_Usuario_TipoUsuario1_idx` (`TipoUsuario`),
   KEY `fk_Usuario_Ciudad1_idx` (`Ciudad`),
-  CONSTRAINT `fk_Usuario_Ciudad1` FOREIGN KEY (`Ciudad`) REFERENCES `Ciudad` (`idCiudad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Usuario_TipoUsuario1` FOREIGN KEY (`TipoUsuario`) REFERENCES `TipoUsuario` (`idTipoUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Usuario_Ciudad1` FOREIGN KEY (`Ciudad`) REFERENCES `ciudad` (`idCiudad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Usuario_TipoUsuario1` FOREIGN KEY (`TipoUsuario`) REFERENCES `tipousuario` (`idTipoUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Usuario`
+-- Dumping data for table `usuario`
 --
 
-LOCK TABLES `Usuario` WRITE;
-/*!40000 ALTER TABLE `Usuario` DISABLE KEYS */;
-INSERT INTO `Usuario` VALUES (9911212,'Albeiro','Espitia','Hombre','albeiroespitiasierra@gmail.com',17,'123','123',1,1);
-/*!40000 ALTER TABLE `Usuario` ENABLE KEYS */;
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1082456723,'David','Vargas Ramos','Masculino','Davara2308@gmail.com',19,'hardhome','123',1,1),(1216975405,'Jesus Antonio','Ramos Villamizar','Masculino','fotoramosltda1234@gmail.com',18,'jesusramosv','123',1,3);
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -547,4 +556,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-16 17:48:10
+-- Dump completed on 2017-05-17 17:03:20
