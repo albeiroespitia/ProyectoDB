@@ -543,7 +543,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1082456723,'David','Vargas Ramos','Masculino','Davara2308@gmail.com',19,'hardhome','123',1,1),(1216975405,'Jesus Antonio','Ramos Villamizar','Masculino','fotoramosltda1234@gmail.com',18,'jesusramosv','123',1,3);
+INSERT INTO `usuario` VALUES (1082456723,'David','Vargas Ramos','Masculino','Davara2308@gmail.com',19,'hardhome','123',1,1),(1216975405,'Jesus Antonio','Ramos Villamizar','Masculino','fotoramosltda1234@gmail.com',18,'jesusramosv','123',1,3),(1004372219,'Dairo Enrique','Cantillo Acevedo','Masculino','cantillodairo62@gmail.com',19,'dairocantillo','777',1,3);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
