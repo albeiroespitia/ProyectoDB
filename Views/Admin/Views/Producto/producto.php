@@ -53,25 +53,25 @@
   <div class="col s3">
 	<ul id="slide-out" class="side-nav fixed">
 	  <li class="titulo">Tablas</li>
-      <li class="selected"><a>Ciudad</a></li>
-      <li><a href="Views/Cliente/cliente.php">Cliente</a></li>
-      <li><a href="Views/DetalleFac/detallefac.php">Detalle Factura</a></li>
-      <li><a href="Views/DetalleFacCompra/detallefaccompra.php">Detalle Factura Compra</a></li>
-      <li><a href="Views/DetalleVentaServicio/detalleventaservicio.php">Detalle Venta Servicio</a></li>
-      <li><a href="Views/Factura/factura.php">Factura</a></li>
-      <li><a href="Views/FacturaCompra/facturacompra.php">Factura Compra</a></li>
-      <li><a href="Views/FacturaServicio/facturaservicio.php">Factura Servicio</a></li>
-      <li><a href="Views/FormaPago/formapago.php">Forma Pago</a></li>
-      <li><a href="Views/ImagenProducto/imagenproducto.php">Imagen Producto</a></li>
-      <li><a href="Views/ImagenProyecto/imagenproyecto.php"">Imagen Proyecto</a></li>
-      <li><a href="Views/Producto/producto.php">Producto</a></li>
-      <li><a href="Views/Proovedor/proovedor.php">Proovedor</a></li>
-      <li><a href="Views/Proyecto/proyecto.php">Proyecto</a></li>
-      <li><a href="Views/Servicio/servicio.php">Servicio</a></li>
-      <li><a href="Views/TipoProducto/tipoproducto.php">Tipo Producto</a></li>
-      <li><a href="Views/TipoServicio/tiposervicio.php">Tipo Servicio</a></li>
-      <li><a href="Views/TipoUsuario/tipousuario.php">Tipo Usuario</a></li>
-      <li><a href="Views/Usuario/usuario.php">Usuario</a></li>
+      <li ><a href="../../admin.php">Ciudad</a></li>
+      <li><a href="../Cliente/cliente.php">Cliente</a></li>
+      <li><a href="../DetalleFac/detallefac.php">Detalle Factura</a></li>
+      <li><a href="../DetalleFacCompra/detallefaccompra.php">Detalle Factura Compra</a></li>
+      <li><a href="../DetalleVentaServicio/detalleventaservicio.php">Detalle Venta Servicio</a></li>
+      <li><a href="../Factura/factura.php">Factura</a></li>
+      <li><a href="../FacturaCompra/facturacompra.php">Factura Compra</a></li>
+      <li><a href="../FacturaServicio/facturaservicio.php">Factura Servicio</a></li>
+      <li><a href="../FormaPago/formapago.php">Forma Pago</a></li>
+      <li><a href="../ImagenProducto/imagenproducto.php">Imagen Producto</a></li>
+      <li><a href="../ImagenProyecto/imagenproyecto.php"">Imagen Proyecto</a></li>
+      <li class="selected"><a href="../Producto/producto.php">Producto</a></li>
+      <li><a href="../Proovedor/proovedor.php">Proovedor</a></li>
+      <li><a href="../Proyecto/proyecto.php">Proyecto</a></li>
+      <li><a href="../Servicio/servicio.php">Servicio</a></li>
+      <li><a href="../TipoProducto/tipoproducto.php">Tipo Producto</a></li>
+      <li><a href="../TipoServicio/tiposervicio.php">Tipo Servicio</a></li>
+      <li><a href="../TipoUsuario/tipousuario.php">Tipo Usuario</a></li>
+      <li><a href="../Usuario/usuario.php">Usuario</a></li>
     </ul>
     </div>
 
