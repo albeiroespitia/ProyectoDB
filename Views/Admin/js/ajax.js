@@ -30,6 +30,7 @@ $(document).ready(function() {
 					 reload();
 					 $('#modal1').modal('close');
 					 $('.error-create').html('');
+					$('input[name="nombreCiudad"]').val(' ');
 				}
 
 			}
