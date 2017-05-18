@@ -1,0 +1,11 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.titulo{
+	padding : 10px;
+	font-size: 25px;
+	border-bottom: 1px solid #000;
+}
