@@ -89,10 +89,16 @@
 		}
 
 		public function crearProvedor($nombreProvedor, $emailProvedor, $telefonoProvedor, $ciudadProvedor,$tipoProducto){
+			echo $nombreProvedor.' ';
+			echo $emailProvedor.' ';
+			echo $telefonoProvedor.' ';
+			echo $ciudadProvedor.' ';
+			echo $tipoProducto.' ';
 			try{
 				$sql = "INSERT INTO proovedor VALUES(NULL,?,?,?,?,?)";
 				$consulta = $this->db->prepare($sql);
-				$resultado = $consulta->execute(array($nombreProvedor, $emailProvedor, $telefonoProvedor, $ciudadProvedor, $tipoProducto));
+				$resultado = $consulta->execute(array($nombreProvedor, $emailProvedor, $telefonoProvedor,     
+					$ciudadProvedor, $tipoProducto));
 				return 1;
 			}catch (PDOException $e){
 				return 0;
