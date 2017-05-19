@@ -41,7 +41,7 @@
 						<option value="" disabled selected>Escoje una opcion</option>';
 				$contador = 1;
 				foreach ($array_clientes as $row){
-					$html .= '<option value="'.$contador.'">'.$row['nombre'].'</option>';
+					$html .= '<option value="'.$row['idCiudad'].'">'.$row['nombre'].'</option>';
 					$contador++;
 				}
 
@@ -67,7 +67,7 @@
 						<option value="" disabled selected>Escoje una opcion</option>';
 				$contador = 1;
 				foreach ($array_clientes as $row){
-					$html .= '<option value="'.$contador.'">'.$row['nombre'].'</option>';
+					$html .= '<option value="'.$row['idCiudad'].'">'.$row['nombre'].'</option>';
 					$contador++;
 				}
 
