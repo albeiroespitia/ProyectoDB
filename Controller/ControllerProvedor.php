@@ -143,7 +143,6 @@
 			$telefonoProvedor = $_POST['telefonoProvedor'];
 			$ciudadProvedor = $_POST['ciudadProvedor'];
 			$tipoProducto = $_POST['tipoProducto'];
-			echo $nombreProvedor;
 			$errores = $provedorDAO->crearProvedor($nombreProvedor, $emailProvedor, $ciudadProvedor, $telefonoProvedor,$tipoProducto);
 			if($errores == 0){
 				echo 'Error';
