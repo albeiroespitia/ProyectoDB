@@ -16,8 +16,24 @@
           <form id="add-form" action="" method="POST" class="col s12">
             <div class="row">
               <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" name="nombreCiudad" class="validate" required>
-                <label for="icon_prefix">Nombre de la ciudad</label>
+                <input id="icon_prefix" type="text" name="nombreCliente" class="validate" required>
+                <label for="icon_prefix">Nombre</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="telefonoCliente" class="validate" required>
+                <label for="icon_prefix">Telefono</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="emailCliente" class="validate" required>
+                <label for="icon_prefix">Email</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectCiudad">  
               </div>
             </div>
             <div class="modal-footer">
@@ -35,8 +51,24 @@
           <form id="edit-form" action="" method="" class="col s12">
             <div class="row">
               <div class="input-field col s12"><i class="material-icons prefix active">account_circle</i>
-                <input id="icon_prefix " type="text" name="nuevoNombreCiudad" class="validate" required>
+                <input id="icon_prefix " type="text" name="nuevoNombre" class="validate" required>
                 <label for="icon_prefix" class="active"></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix active">account_circle</i>
+                <input id="icon_prefix " type="text" name="nuevoTelefono" class="validate" required>
+                <label for="icon_prefix" class="active"></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix active">account_circle</i>
+                <input id="icon_prefix " type="text" name="nuevoEmail" class="validate" required>
+                <label for="icon_prefix" class="active"></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectCiudadEditar">  
               </div>
             </div>
             <div class="modal-footer">
@@ -76,13 +108,16 @@
     </div>
 
     <div class="col s9">
-      <h3>Ciudad</h3>
+      <h3>Cliente</h3>
      <a class="waves-effect waves-light btn agregarButton" href="#modal1">Agregar</a>
      <table class="tablaDatos">
         <thead>
           <tr>
-              <th>idCiudad</th>
+              <th>idCliente</th>
               <th>Nombre</th>
+              <th>Telefono</th>
+              <th>Email</th>
+              <th>Ciudad</th>
           </tr>
         </thead>
         <tbody class="cuerpoTabla">

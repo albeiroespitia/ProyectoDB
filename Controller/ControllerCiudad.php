@@ -8,16 +8,22 @@
 			$ciudadDAO = new CiudadDAO();
 			$array_ciudades = $ciudadDAO->listarCiudades();
 			$html = "";
-			foreach ($array_ciudades as $row) {
+			if($array_ciudades != 0){
+
+				foreach ($array_ciudades as $row) {
 				$html .= '<tr>
 				            <td id="idCiudad">'.$row['idCiudad'].' </td>
 				            <td id="nombre">'.$row['nombre'].'</td>
 				            <td><a class="editar" href="#modal2"><i class="material-icons">edit</i></a><a class="borrar"><i class="material-icons">delete</i></a></td>
 				          </tr>';
 				
-			}
+				}
 
-			echo $html;
+				echo $html;
+			}else{
+				echo 'No hay datos';
+			}
+			
 
 		}
 
