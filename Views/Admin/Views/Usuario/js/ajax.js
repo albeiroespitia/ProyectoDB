@@ -145,12 +145,4 @@ $(document).ready(function() {
 	});
 
 
-
-
-
-
-
-
-
-
 });

@@ -95,7 +95,7 @@
       <li><a href="../FacturaServicio/facturaservicio.php">Factura Servicio</a></li>
       <li><a href="../FormaPago/formapago.php">Forma Pago</a></li>
       <li><a href="../ImagenProducto/imagenproducto.php">Imagen Producto</a></li>
-      <li><a href="../ImagenProyecto/imagenproyecto.php"">Imagen Proyecto</a></li>
+      <li><a href="../ImagenProyecto/imagenproyecto.php">Imagen Proyecto</a></li>
       <li><a href="../Producto/producto.php">Producto</a></li>
       <li><a href="../Proovedor/proovedor.php">Proovedor</a></li>
       <li><a href="../Proyecto/proyecto.php">Proyecto</a></li>

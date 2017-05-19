@@ -16,8 +16,28 @@
           <form id="add-form" action="" method="POST" class="col s12">
             <div class="row">
               <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" name="nombreCiudad" class="validate" required>
-                <label for="icon_prefix">Nombre de la ciudad</label>
+                <input id="icon_prefix" type="text" name="nombreProvedor" class="validate" required>
+                <label for="icon_prefix">Nombre</label>
+              </div>
+            </div>
+             <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="emailProvedor" class="validate" required>
+                <label for="icon_prefix">Email</label>
+              </div>
+            </div>
+             <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="telefonoProvedor" class="validate" required>
+                <label for="icon_prefix">Telefono</label>
+              </div>
+            </div>
+             <div class="row">
+              <div class="input-field col s12 selectCiudad">  
+              </div>
+            </div>
+               <div class="row">
+              <div class="input-field col s12 selectTipoProducto">  
               </div>
             </div>
             <div class="modal-footer">
@@ -35,13 +55,33 @@
           <form id="edit-form" action="" method="" class="col s12">
             <div class="row">
               <div class="input-field col s12"><i class="material-icons prefix active">account_circle</i>
-                <input id="icon_prefix " type="text" name="nuevoNombreCiudad" class="validate" required>
+                <input id="icon_prefix " type="text" name="nuevoNombreProvedor" class="validate" required>
                 <label for="icon_prefix" class="active"></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="nuevoemailProvedor" class="validate" required>
+                <label for="icon_prefix"></label>
+              </div>
+            </div>
+             <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="nuevotelefonoProvedor" class="validate" required>
+                <label for="icon_prefix"></label>
+              </div>
+            </div>
+             <div class="row">
+              <div class="input-field col s12 selectCiudadEditar">  
+              </div>
+            </div>
+               <div class="row">
+              <div class="input-field col s12 selectTipoProductoEditar">  
               </div>
             </div>
             <div class="modal-footer">
               <h6 class="error-create"></h6>
-              <button id="editButton" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="editButon">Editar</button>
+              <button id="addButon" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="addButon">Registrar</button>
             </div>
           </form>
         </div>
@@ -63,7 +103,7 @@
       <li><a href="../FacturaServicio/facturaservicio.php">Factura Servicio</a></li>
       <li><a href="../FormaPago/formapago.php">Forma Pago</a></li>
       <li><a href="../ImagenProducto/imagenproducto.php">Imagen Producto</a></li>
-      <li><a href="../ImagenProyecto/imagenproyecto.php"">Imagen Proyecto</a></li>
+      <li><a href="../ImagenProyecto/imagenproyecto.php">Imagen Proyecto</a></li>
       <li><a href="../Producto/producto.php">Producto</a></li>
       <li class="selected"><a href="../Proovedor/proovedor.php">Proovedor</a></li>
       <li><a href="../Proyecto/proyecto.php">Proyecto</a></li>
@@ -73,13 +113,17 @@
     </div>
 
     <div class="col s9">
-      <h3>Ciudad</h3>
+      <h3>Provedor</h3>
      <a class="waves-effect waves-light btn agregarButton" href="#modal1">Agregar</a>
      <table class="tablaDatos">
         <thead>
           <tr>
-              <th>idCiudad</th>
+              <th>idProvedor</th>
               <th>Nombre</th>
+              <th>Email</th>
+              <th>Telefono</th>
+              <th>Ciudad</th>
+              <th>Tipo de productos</th>
           </tr>
         </thead>
         <tbody class="cuerpoTabla">

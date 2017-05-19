@@ -63,7 +63,7 @@
       <li><a href="Views/FacturaServicio/facturaservicio.php">Factura Servicio</a></li>
       <li><a href="Views/FormaPago/formapago.php">Forma Pago</a></li>
       <li><a href="Views/ImagenProducto/imagenproducto.php">Imagen Producto</a></li>
-      <li><a href="Views/ImagenProyecto/imagenproyecto.php"">Imagen Proyecto</a></li>
+      <li><a href="Views/ImagenProyecto/imagenproyecto.php">Imagen Proyecto</a></li>
       <li><a href="Views/Producto/producto.php">Producto</a></li>
       <li><a href="Views/Proovedor/proovedor.php">Proovedor</a></li>
       <li><a href="Views/Proyecto/proyecto.php">Proyecto</a></li>
