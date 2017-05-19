@@ -116,7 +116,6 @@
 			$nombreCiudad = $_POST['nuevaCiudadCliente'];
 			$errores = $clienteDAO->editarCliente($idCliente,$nombreCliente,$telefonoCliente,$emailCliente,$nombreCiudad);
 
-			echo $nombreCiudad;
 			if($errores == 0){
 				echo 'Error';
 			}

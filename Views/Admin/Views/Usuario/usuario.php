@@ -16,8 +16,54 @@
           <form id="add-form" action="" method="POST" class="col s12">
             <div class="row">
               <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" name="nombreCiudad" class="validate" required>
-                <label for="icon_prefix">Nombre de la ciudad</label>
+                <input id="icon_prefix" type="text" name="cedulaUsuario" class="validate" required>
+                <label for="icon_prefix">Cedula</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="nombreUsuario" class="validate" required>
+                <label for="icon_prefix">Nombre</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="apellidoUsuario" class="validate" required>
+                <label for="icon_prefix">Apellido</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="sexoUsuario" class="validate" required>
+                <label for="icon_prefix">Sexo</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="emailUsuario" class="validate" required>
+                <label for="icon_prefix">Email</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="edadUsuario" class="validate" required>
+                <label for="icon_prefix">Edad</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="usernameUsuario" class="validate" required>
+                <label for="icon_prefix">Username</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="passwordUsuario" class="validate" required>
+                <label for="icon_prefix">Contraseña</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectCiudad">  
               </div>
             </div>
             <div class="modal-footer">
@@ -34,9 +80,49 @@
         <div class="row">
           <form id="edit-form" action="" method="" class="col s12">
             <div class="row">
-              <div class="input-field col s12"><i class="material-icons prefix active">account_circle</i>
-                <input id="icon_prefix " type="text" name="nuevoNombreCiudad" class="validate" required>
-                <label for="icon_prefix" class="active"></label>
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="nuevoNombreUsuario" class="validate" required>
+                <label for="icon_prefix"> </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="nuevoApellidoUsuario" class="validate" required>
+                <label for="icon_prefix"> </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="nuevoSexoUsuario" class="validate" required>
+                <label for="icon_prefix"> </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="nuevoEmailUsuario" class="validate" required>
+                <label for="icon_prefix"> </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="nuevaEdadUsuario" class="validate" required>
+                <label for="icon_prefix"> </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="nuevoUsernameUsuario" class="validate" required>
+                <label for="icon_prefix"> </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="nuevoPasswordUsuario" class="validate" required>
+                <label for="icon_prefix"> </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectCiudadEditar">  
               </div>
             </div>
             <div class="modal-footer">
@@ -68,21 +154,26 @@
       <li><a href="../Proovedor/proovedor.php">Proovedor</a></li>
       <li><a href="../Proyecto/proyecto.php">Proyecto</a></li>
       <li><a href="../Servicio/servicio.php">Servicio</a></li>
-      <li><a href="../TipoProducto/tipoproducto.php">Tipo Producto</a></li>
-      <li><a href="../TipoServicio/tiposervicio.php">Tipo Servicio</a></li>
-      <li><a href="../TipoUsuario/tipousuario.php">Tipo Usuario</a></li>
       <li class="selected"><a href="../Usuario/usuario.php">Usuario</a></li>
     </ul>
     </div>
 
     <div class="col s9">
-      <h3>Ciudad</h3>
+      <h3>Usuarios</h3>
      <a class="waves-effect waves-light btn agregarButton" href="#modal1">Agregar</a>
      <table class="tablaDatos">
         <thead>
           <tr>
-              <th>idCiudad</th>
+              <th>cc</th>
               <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Sexo</th>
+              <th>Email</th>
+              <th>Edad</th>
+              <th>UserName</th>
+              <th>Password</th>
+              <th>TipoUsuario</th>
+              <th>Ciudad</th>
           </tr>
         </thead>
         <tbody class="cuerpoTabla">

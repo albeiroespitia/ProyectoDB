@@ -68,9 +68,6 @@
       <li><a href="Views/Proovedor/proovedor.php">Proovedor</a></li>
       <li><a href="Views/Proyecto/proyecto.php">Proyecto</a></li>
       <li><a href="Views/Servicio/servicio.php">Servicio</a></li>
-      <li><a href="Views/TipoProducto/tipoproducto.php">Tipo Producto</a></li>
-      <li><a href="Views/TipoServicio/tiposervicio.php">Tipo Servicio</a></li>
-      <li><a href="Views/TipoUsuario/tipousuario.php">Tipo Usuario</a></li>
       <li><a href="Views/Usuario/usuario.php">Usuario</a></li>
     </ul>
     </div>

@@ -100,9 +100,6 @@
       <li><a href="../Proovedor/proovedor.php">Proovedor</a></li>
       <li><a href="../Proyecto/proyecto.php">Proyecto</a></li>
       <li><a href="../Servicio/servicio.php">Servicio</a></li>
-      <li><a href="../TipoProducto/tipoproducto.php">Tipo Producto</a></li>
-      <li><a href="../TipoServicio/tiposervicio.php">Tipo Servicio</a></li>
-      <li><a href="../TipoUsuario/tipousuario.php">Tipo Usuario</a></li>
       <li><a href="../Usuario/usuario.php">Usuario</a></li>
     </ul>
     </div>
