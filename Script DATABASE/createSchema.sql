@@ -354,16 +354,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `database_project`.`Compra`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `database_project`.`Compra` ;
-
-CREATE TABLE IF NOT EXISTS `database_project`.`Compra` (
-)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `database_project`.`DetalleVentaServicio`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `database_project`.`DetalleVentaServicio` ;
