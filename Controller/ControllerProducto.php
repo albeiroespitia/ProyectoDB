@@ -16,7 +16,7 @@
 				            <td id="nombre">'.$row['nombreP'].'</td>
 				            <td id="descripcion">'.$row['descripcion'].' </td>
 				            <td id="cantidad">'.$row['cantidad'].' </td>
-				            <td id="cc">'.$row['cc'].'</td>
+				            <td id="idProovedor">'.$row['idProovedor'].'</td>
 				            <td id="nombre">'.$row['nombreU'].' </td>				    
 				            <td><a class="editar" href="#modal2"><i class="material-icons">edit</i></a><a class="borrar"><i class="material-icons">delete</i></a></td>
 				          </tr>';
@@ -33,21 +33,21 @@
 
 		if($_POST['tipo'] == 'listarCc'){
 			$proyectoDAO = new ProductoDAO();
-			$array_proyecto = $proyectoDAO->listarCcUsuario();
+			$array_proyecto = $proyectoDAO->listarProvedores();
 			$html = " ";
 			if($array_proyecto != 0){
 
 				$html = '<i class="material-icons prefix">account_circle</i>
 					<select  id="tipoC" required>
-						<option value="" disabled selected>Escoje una opcion</option>';
+						<option value="" disabled selected>Escoje un proovedor</option>';
 				$contador = 1;
 				foreach ($array_proyecto as $row){
-					$html .= '<option value="'.$row['cc'].'">'.$row['cc'].' - '.$row['nombre'].'</option>';
+					$html .= '<option value="'.$row['idProovedor'].'">'.$row['idProovedor'].' - '.$row['nombre'].'</option>';
 					$contador++;
 				}
 
 				$html .= '</select>
-						  <label>Cedula - Usuario</label>';
+						  <label>ID - Nombre</label>';
 
 				echo $html;
 			}else{
@@ -60,22 +60,22 @@
 		
 
 		if($_POST['tipo'] == 'listarCcEditar'){
-			$proyectoDAO = new ProyectoDAO();
-			$array_provedores = $proyectoDAO->listarCcUsuario();
+			$proyectoDAO = new ProductoDAO();
+			$array_provedores = $proyectoDAO->listarProvedores();
 			$html = " ";
 			if($array_provedores != 0){
 
 				$html = '<i class="material-icons prefix">account_circle</i>
 					<select  id="tipoTE" required>
-						<option value="" disabled selected>Escoje una opcion</option>';
+						<option value="" disabled selected>Escoje un proovedor</option>';
 				$contador = 1;
 				foreach ($array_provedores as $row){
-					$html .= '<option value="'.$row['cc'].'">'.$row['cc'].' - '.$row['nombre'].'</option>';
+					$html .= '<option value="'.$row['idProovedor'].'">'.$row['idProovedor'].' - '.$row['nombre'].'</option>';
 					$contador++;
 				}
 
 				$html .= '</select>
-						  <label>Cedula - Usuario</label>';
+						  <label>ID - Nombre</label>';
 
 				echo $html;
 			}else{
@@ -92,8 +92,8 @@
 			$nombreProducto = $_POST['nombreProducto'];
 			$descripcionProducto = $_POST['descripcionProducto'];
 			$cantidadProducto = $_POST['cantidadProducto'];
-			$usuarioCc = $_POST['usuarioCc'];
-			$errores = $proyectoDAO->crearProducto($nombreProducto, $descripcionProducto, $cantidadProducto, $usuarioCc);
+			$idProvedor = $_POST['idProvedor'];
+			$errores = $proyectoDAO->crearProducto($nombreProducto, $descripcionProducto, $cantidadProducto, $idProvedor);
 			if($errores == 0){
 				echo 'Error';
 			}
@@ -102,9 +102,9 @@
 		}
 
 		if($_POST['tipo'] == 'eliminar'){
-			$proyectoDAO = new ProyectoDAO();
-			$idProyecto = $_POST['idProyecto'];
-			$errores = $proyectoDAO->borrarProyecto($idProyecto);
+			$proyectoDAO = new ProductoDAO();
+			$idProducto = $_POST['idProducto'];
+			$errores = $proyectoDAO->borrarProducto($idProducto);
 			if($errores == 0){
 				echo 'Error';
 			}
@@ -113,12 +113,13 @@
 		}
 
 		if($_POST['tipo'] == 'editar'){
-			$provedorDAO = new ProyectoDAO();
-			$idProyecto = $_POST['idProyecto'];
-			$descripcion = $_POST['descripcionProyecto'];
-			$empresa = $_POST['empresaProyecto'];
-			$usuarioCc = $_POST['tipoTE'];
-			$errores = $provedorDAO->editarProyecto($idProyecto,$descripcion,$empresa, $usuarioCc);
+			$provedorDAO = new ProductoDAO();
+			$idProducto = $_POST['idProducto'];
+			$nombreProducto = $_POST['nombreProducto'];
+			$descripcionProducto = $_POST['descripcionProducto'];
+			$cantidadProducto = $_POST['cantidadProducto'];
+			$idProvedor = $_POST['idProvedor'];
+			$errores = $provedorDAO->editarProducto($idProducto,$nombreProducto,$descripcionProducto,$cantidadProducto, $idProvedor);
 			if($errores == 0){
 				echo 'Error';
 			}

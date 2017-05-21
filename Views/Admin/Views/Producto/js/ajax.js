@@ -38,11 +38,11 @@ $(document).ready(function() {
 		var nombreProducto = $('input[name="nombreProducto"]').val();
 		var descripcionProducto = $('input[name="descripcionProducto"]').val();
 		var cantidadProducto = $('input[name="cantidadProducto"]').val();
-		var usuarioCc = $('#tipoC').val();
+		var idProvedor = $('#tipoC').val();
 
 		$.ajax({
 			url: '/ProyectoDB/Controller/ControllerProducto.php',
-			data : {tipo : 'agregar',nombreProducto: nombreProducto,descripcionProducto: descripcionProducto,cantidadProducto: cantidadProducto,usuarioCc: usuarioCc},
+			data : {tipo : 'agregar',nombreProducto: nombreProducto,descripcionProducto: descripcionProducto,cantidadProducto: cantidadProducto,idProvedor: idProvedor},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
@@ -60,17 +60,20 @@ $(document).ready(function() {
 
 	$('#edit-form').submit(function(e){
 		e.preventDefault();
-		var nuevoNombreCiudad = $('input[name="nuevoNombreCiudad"]').val();
-		console.log(nuevoNombreCiudad);
+		var nombreProducto = $('input[name="nuevonombreProducto"]').val();
+		var descripcionProducto = $('input[name="nuevadescripcionProducto"]').val();
+		var cantidadProducto = $('input[name="nuevacantidadProducto"]').val();
+		var idProvedor = $('#tipoTE').val();
+
 		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerCiudad.php',
-			data : {tipo : 'editar', idCiudad: pk1 , nombreCiudad: nuevoNombreCiudad},
+			url: '/ProyectoDB/Controller/ControllerProducto.php',
+			data : {tipo : 'editar', idProducto: pk1 , nombreProducto: nombreProducto,descripcionProducto:descripcionProducto,cantidadProducto:cantidadProducto,idProvedor:idProvedor},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
-					$('.error-create').html('Hubo un error al ingresar la nueva ciudad');
+					$('.error-create').html('Hubo un error al ingresar el nuevo producto');
 				}else{
-					 Materialize.toast('Ciudad editada exitosamente!', 2000) 
+					 Materialize.toast('producto editada exitosamente!', 2000) 
 					 reload();
 					 $('#modal2').modal('close');
 					 $('.error-create').html('');
@@ -81,16 +84,16 @@ $(document).ready(function() {
 	})
 
 	$(document).on('click', '.borrar' ,function(){	
-		var idCiudad = $(this).closest('tr').find('#idCiudad').html();
+		var idProducto = $(this).closest('tr').find('#idProducto').html();
 		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerCiudad.php',
-			data : {tipo : 'eliminar',idCiudad: idCiudad},
+			url: '/ProyectoDB/Controller/ControllerProducto.php',
+			data : {tipo : 'eliminar',idProducto: idProducto},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
-					Materialize.toast('Error al eliminar la ciudad, Verifica que no este siendo usada!', 2000);
+					Materialize.toast('Error al eliminar el producto, Verifica que no este siendo usado!', 2000);
 				}else{
-					Materialize.toast('Ciudad eliminada exitosamente!', 2000);
+					Materialize.toast('Producto eliminado exitosamente!', 2000);
 					reload();
 				}
 			}
@@ -99,13 +102,17 @@ $(document).ready(function() {
 
 
 	$(document).on('click', '.editar' ,function(){
-		    pk1 = $(this).closest('tr').find('#idCiudad').html();
+		    pk1 = $(this).closest('tr').find('#idProducto').html();
 		    pk2 = $(this).closest('tr').find('#nombre').html();
+		    pk3 = $(this).closest('tr').find('#descripcion').html();
+		    pk4 = $(this).closest('tr').find('#cantidad').html();
 
-			$('input[name="nuevoNombreCiudad"]').val(pk2);
+			$('input[name="nuevonombreProducto"]').val(pk2);
+			$('input[name="nuevadescripcionProducto"]').val(pk3);
+			$('input[name="nuevacantidadProducto"]').val(pk4);
 
 			$.ajax({
-				url: '/ProyectoDB/Controller/ControllerProyecto.php',
+				url: '/ProyectoDB/Controller/ControllerProducto.php',
 				data : {tipo : 'listarCcEditar'},
 				type : 'POST',
 				success: function(res){
