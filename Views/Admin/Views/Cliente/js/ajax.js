@@ -23,7 +23,11 @@ $(document).ready(function() {
 			type : 'POST',
 			success: function(res){
 				console.log(res);
-		   		$('.selectCiudad').html(res);
+				if(res == 'No hay datos'){
+					$('.selectCiudad').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+				}else{
+					$('.selectCiudad').html(res);
+				}
 		   		$('select').material_select();
 			}
 		})
