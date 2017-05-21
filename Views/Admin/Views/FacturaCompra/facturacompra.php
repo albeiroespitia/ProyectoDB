@@ -16,8 +16,16 @@
           <form id="add-form" action="" method="POST" class="col s12">
             <div class="row">
               <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" name="nombreCiudad" class="validate" required>
-                <label for="icon_prefix">Nombre de la ciudad</label>
+                <input id="icon_prefix" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="fecha_factura" placeholder="" class="validate" required>
+                <label for="icon_prefix">Fecha</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectUsuario">  
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectProvedor">  
               </div>
             </div>
             <div class="modal-footer">
@@ -34,9 +42,17 @@
         <div class="row">
           <form id="edit-form" action="" method="" class="col s12">
             <div class="row">
-              <div class="input-field col s12"><i class="material-icons prefix active">account_circle</i>
-                <input id="icon_prefix " type="text" name="nuevoNombreCiudad" class="validate" required>
-                <label for="icon_prefix" class="active"></label>
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="fecha_facturaEditar" placeholder="" class="validate" required>
+                <label for="icon_prefix">Fecha</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectUsuarioEditar">  
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectProvedorEditar">  
               </div>
             </div>
             <div class="modal-footer">
@@ -73,13 +89,17 @@
     </div>
 
     <div class="col s9">
-      <h3>Ciudad</h3>
+      <h3>Factura Compra</h3>
      <a class="waves-effect waves-light btn agregarButton" href="#modal1">Agregar</a>
      <table class="tablaDatos">
         <thead>
           <tr>
-              <th>idCiudad</th>
-              <th>Nombre</th>
+              <th>idFacturaCompra</th>
+              <th>Fecha</th>
+              <th>Usuario CC</th>
+              <th>Usuario Nombre</th>
+              <th>Proovedor ID</th>
+              <th>Proovedor Nombre</th>
           </tr>
         </thead>
         <tbody class="cuerpoTabla">
