@@ -2,36 +2,19 @@
 
 	include 'Conexion.php';
 
-	class FacturaCompraDAO extends Conexion{
+	class DetalleFacCompraDAO extends Conexion{
 
-		public function FacturaCompraDAO(){
+		public function DetalleFacCompraDAO(){
 			$this->db=parent::Conexion();
 		}
 
 
 
-		public function listarFacturaCompra(){
-			$sql = "SELECT *,usuario.nombre AS nombreU, proovedor.nombre AS nombreP,formapago.descripcion AS descripcionF
+		public function listarDetalleFacCompra(){
+			$sql = "SELECT *,usuario.nombre AS nombreU, proovedor.nombre AS nombreP
 					FROM FacturaCompra
 					INNER JOIN usuario on FacturaCompra.usuario_cc = usuario.cc
-					INNER JOIN proovedor ON  FacturaCompra.Proovedor = proovedor.idProovedor
-					INNER JOIN formapago ON  FacturaCompra.FormaPago = formapago.idFormaPago;";
-			$consulta = $this->db->prepare($sql);
-			$resultado = $consulta->execute();
-			$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);
-
-			if($provedores == true){
-				return $provedores;
-			}else{
-				return 0;
-			}
-
-			$consulta->closeCursor();
-
-		}
-
-		public function listarFormaPago(){
-			$sql = "SELECT * from formapago";
+					INNER JOIN proovedor ON  FacturaCompra.Proovedor = proovedor.idProovedor;";
 			$consulta = $this->db->prepare($sql);
 			$resultado = $consulta->execute();
 			$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);
@@ -80,11 +63,11 @@
 
 	
 
-		public function editarFacturaCompra($fecha,$idFacturaCompra, $idProovedor, $idUsuario,$idFormaPago){
+		public function editarFacturaCompra($fecha,$idFacturaCompra, $idProovedor, $idUsuario){
 			try{
-				$sql = "UPDATE FacturaCompra SET fecha = ?,  Usuario_cc = ?, Proovedor = ? , FormaPago = ? WHERE idFacturaCompra = ?";
+				$sql = "UPDATE FacturaCompra SET fecha = ?,  Usuario_cc = ?, Proovedor = ? WHERE idFacturaCompra = ?";
 				$consulta = $this->db->prepare($sql);
-				$resultado = $consulta->execute(array($fecha, $idUsuario, $idProovedor, $idFormaPago, $idFacturaCompra));
+				$resultado = $consulta->execute(array($fecha, $idUsuario, $idProovedor, $idFacturaCompra));
 				return 1;
 			}catch (PDOException $e){
 				return 0;
@@ -108,11 +91,11 @@
 
 		}
 
-		public function crearFacturaCompra($fecha, $idUsuario, $idProovedor,$idFormaPago){
+		public function crearFacturaCompra($fecha, $idUsuario, $idProovedor){
 			try{
-				$sql = "INSERT INTO FacturaCompra VALUES(NULL,?,?,?,?)";
+				$sql = "INSERT INTO FacturaCompra VALUES(NULL,?,?,?)";
 				$consulta = $this->db->prepare($sql);
-				$resultado = $consulta->execute(array($fecha, $idUsuario, $idProovedor,$idFormaPago));
+				$resultado = $consulta->execute(array($fecha, $idUsuario, $idProovedor));
 				return 1;
 			}catch (PDOException $e){
 				return 0;

@@ -28,6 +28,10 @@
               <div class="input-field col s12 selectProvedor">  
               </div>
             </div>
+            <div class="row">
+              <div class="input-field col s12 selectFormaPago">  
+              </div>
+            </div>
             <div class="modal-footer">
               <h6 class="error-create"></h6>
               <button id="addButon" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="addButon">Registrar</button>
@@ -53,6 +57,10 @@
             </div>
             <div class="row">
               <div class="input-field col s12 selectProvedorEditar">  
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectFormaPagoEditar">  
               </div>
             </div>
             <div class="modal-footer">
@@ -100,6 +108,7 @@
               <th>Usuario Nombre</th>
               <th>Proovedor ID</th>
               <th>Proovedor Nombre</th>
+              <th>Forma de pago</th>
           </tr>
         </thead>
         <tbody class="cuerpoTabla">

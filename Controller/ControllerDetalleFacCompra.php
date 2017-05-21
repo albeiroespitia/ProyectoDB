@@ -1,12 +1,12 @@
 <?php 
 	
-	require_once '../Model/DAO/FacturaCompraDAO.php';
+	require_once '../Model/DAO/DetalleFacCompraDAO.php';
 
 	if(isset($_POST['tipo'])){
 
 		if($_POST['tipo'] == 'listar'){
-			$proyectoDAO = new FacturaCompraDAO();
-			$array_proyecto = $proyectoDAO->listarFacturaCompra();
+			$proyectoDAO = new DetalleFacCompraDAO();
+			$array_proyecto = $proyectoDAO->listarDetalleFacCompra();
 			$html = "";
 			if($array_proyecto != 0){
 
@@ -17,8 +17,7 @@
 				            <td id="cc">'.$row['cc'].'</td>
 				            <td id="nombreU">'.$row['nombreU'].' </td>
 				            <td id="idProvedor">'.$row['idProovedor'].' </td>
-				            <td id="nombreP">'.$row['nombreP'].' </td>	
-				            <td id="descripcionF">'.$row['descripcionF'].' </td>			    
+				            <td id="nombreP">'.$row['nombreP'].' </td>				    
 				            <td><a class="editar" href="#modal2"><i class="material-icons">edit</i></a><a class="borrar"><i class="material-icons">delete</i></a></td>
 				          </tr>';
 				
@@ -75,58 +74,6 @@
 
 				$html .= '</select>
 						  <label>ID - Nombre</label>';
-
-				echo $html;
-			}else{
-				echo 'No hay datos';
-			}
-			
-
-		}
-
-		if($_POST['tipo'] == 'listarFormaPago'){
-			$proyectoDAO = new FacturaCompraDAO();
-			$array_provedores = $proyectoDAO->listarFormaPago();
-			$html = " ";
-			if($array_provedores != 0){
-
-				$html = '<i class="material-icons prefix">account_circle</i>
-					<select  id="tipoF" required>
-						<option value="" disabled selected>Escoje una forma de pago</option>';
-				$contador = 1;
-				foreach ($array_provedores as $row){
-					$html .= '<option value="'.$row['idFormaPago'].'">'.$row['descripcion'].'</option>';
-					$contador++;
-				}
-
-				$html .= '</select>
-						  <label>Forma de Pago</label>';
-
-				echo $html;
-			}else{
-				echo 'No hay datos';
-			}
-			
-
-		}
-
-		if($_POST['tipo'] == 'listarFormaPagoEditar'){
-			$proyectoDAO = new FacturaCompraDAO();
-			$array_provedores = $proyectoDAO->listarFormaPago();
-			$html = " ";
-			if($array_provedores != 0){
-
-				$html = '<i class="material-icons prefix">account_circle</i>
-					<select  id="tipoFE" required>
-						<option value="" disabled selected>Escoje una forma de pago</option>';
-				$contador = 1;
-				foreach ($array_provedores as $row){
-					$html .= '<option value="'.$row['idFormaPago'].'">'.$row['descripcion'].'</option>';
-					$contador++;
-				}
-
-				$html .= '</select>
-						  <label>Forma de pago </label>';
 
 				echo $html;
 			}else{
@@ -197,8 +144,7 @@
 			$fechaFacturaCompra = $_POST['fechaFacturaCompra'];
 			$idUsuario = $_POST['idUsuario'];
 			$idProvedor = $_POST['idProvedor'];
-			$idFormaPago = $_POST['idFormaPago'];
-			$errores = $proyectoDAO->crearFacturaCompra($fechaFacturaCompra, $idUsuario, $idProvedor,$idFormaPago);
+			$errores = $proyectoDAO->crearFacturaCompra($fechaFacturaCompra, $idUsuario, $idProvedor);
 			if($errores == 0){
 				echo 'Error';
 			}
@@ -223,8 +169,7 @@
 			$nuevaFecha = $_POST['nuevaFecha'];
 			$idUsuario = $_POST['idUsuario'];
 			$idProvedor = $_POST['idProvedor'];
-			$idFormaPago = $_POST['idFormaPago'];
-			$errores = $provedorDAO->editarFacturaCompra($nuevaFecha,$idFacturaCompra,$idProvedor,$idUsuario,$idFormaPago);
+			$errores = $provedorDAO->editarFacturaCompra($nuevaFecha,$idFacturaCompra,$idProvedor, $idUsuario);
 			if($errores == 0){
 				echo 'Error';
 			}

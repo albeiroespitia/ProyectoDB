@@ -46,6 +46,21 @@ $(document).ready(function() {
 			}
 		})
 
+		$.ajax({
+			url: '/ProyectoDB/Controller/ControllerFacturaCompra.php',
+			data : {tipo : 'listarFormaPago'},
+			type : 'POST',
+			success: function(res){
+				if(res == 'No hay datos'){
+					$('.selectFormaPago').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+				}else{
+					$('.selectFormaPago').html(res);
+				}
+		   		
+		   		$('select').material_select();
+			}
+		})
+
 	})
 	
 	$('#add-form').submit(function(e){
@@ -53,10 +68,11 @@ $(document).ready(function() {
 		var fechaFacturaCompra = $('input[name="fecha_factura"]').val();
 		var idUsuario = $('#tipoC').val();
 		var idProvedor = $('#tipoP').val();
+		var idFormaPago = $('#tipoF').val();
 
 		$.ajax({
 			url: '/ProyectoDB/Controller/ControllerFacturaCompra.php',
-			data : {tipo : 'agregar',fechaFacturaCompra:fechaFacturaCompra,idUsuario:idUsuario,idProvedor: idProvedor},
+			data : {tipo : 'agregar',fechaFacturaCompra:fechaFacturaCompra,idUsuario:idUsuario,idProvedor: idProvedor,idFormaPago:idFormaPago},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
@@ -77,12 +93,14 @@ $(document).ready(function() {
 		var nuevaFecha = $('input[name="fecha_facturaEditar"]').val();
 		var idUsuario = $('#tipoTE').val();
 		var idProvedor = $('#tipoPE').val();
+		var idFormaPago = $('#tipoFE').val();
 
 		$.ajax({
 			url: '/ProyectoDB/Controller/ControllerFacturaCompra.php',
-			data : {tipo : 'editar', idFacturaCompra: pk1 , nuevaFecha: nuevaFecha,idUsuario:idUsuario,idProvedor:idProvedor},
+			data : {tipo : 'editar',idFacturaCompra: pk1 , nuevaFecha: nuevaFecha,idUsuario:idUsuario,idProvedor:idProvedor, idFormaPago:idFormaPago},
 			type : 'POST',
 			success: function(res){
+				console.log(res);
 				if(res == 'Error'){
 					$('.error-create').html('Hubo un error al ingresar la nuevo factura');
 				}else{
@@ -138,6 +156,16 @@ $(document).ready(function() {
 				type : 'POST',
 				success: function(res){
 			   		$('.selectProvedorEditar').html(res);
+			   		$('select').material_select();
+				}
+			})
+
+			$.ajax({
+				url: '/ProyectoDB/Controller/ControllerFacturaCompra.php',
+				data : {tipo : 'listarFormaPagoEditar'},
+				type : 'POST',
+				success: function(res){
+			   		$('.selectFormaPagoEditar').html(res);
 			   		$('select').material_select();
 				}
 			})
