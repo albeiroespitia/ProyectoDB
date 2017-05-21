@@ -16,8 +16,24 @@
           <form id="add-form" action="" method="POST" class="col s12">
             <div class="row">
               <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" name="nombreCiudad" class="validate" required>
-                <label for="icon_prefix">Nombre de la ciudad</label>
+                <input id="icon_prefix" type="text" name="nombreProducto" class="validate" required>
+                <label for="icon_prefix">Nombre</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="descripcionProducto" class="validate" required>
+                <label for="icon_prefix">Descripcion</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="cantidadProducto" class="validate" required>
+                <label for="icon_prefix">Cantidad</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectCiudad">  
               </div>
             </div>
             <div class="modal-footer">
@@ -73,13 +89,17 @@
     </div>
 
     <div class="col s9">
-      <h3>Ciudad</h3>
+      <h3>Producto</h3>
      <a class="waves-effect waves-light btn agregarButton" href="#modal1">Agregar</a>
      <table class="tablaDatos">
         <thead>
           <tr>
-              <th>idCiudad</th>
+              <th>idProducto</th>
               <th>Nombre</th>
+              <th>Descripcion</th>
+              <th>Cantidad</th>
+              <th>Usuario CC</th>
+              <th>Usuario Nombre</th>
           </tr>
         </thead>
         <tbody class="cuerpoTabla">

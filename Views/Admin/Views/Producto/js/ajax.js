@@ -1,6 +1,6 @@
 function reload(){
 	$.ajax({
-		url: '/ProyectoDB/Controller/ControllerCiudad.php',
+		url: '/ProyectoDB/Controller/ControllerProducto.php',
 		data : {tipo : 'listar'},
 		type : 'POST',
 		success: function(res){
@@ -14,19 +14,41 @@ reload();
 $.holdReady(false);
 
 $(document).ready(function() {
+
+	$('.agregarButton').click(function(){
+		$.ajax({
+			url: '/ProyectoDB/Controller/ControllerProducto.php',
+			data : {tipo : 'listarCc'},
+			type : 'POST',
+			success: function(res){
+				if(res == 'No hay datos'){
+					$('.selectCiudad').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+				}else{
+					$('.selectCiudad').html(res);
+				}
+		   		
+		   		$('select').material_select();
+			}
+		})
+
+	})
 	
 	$('#add-form').submit(function(e){
 		e.preventDefault();
-		var nombreCiudad = $('input[name="nombreCiudad"]').val();
+		var nombreProducto = $('input[name="nombreProducto"]').val();
+		var descripcionProducto = $('input[name="descripcionProducto"]').val();
+		var cantidadProducto = $('input[name="cantidadProducto"]').val();
+		var usuarioCc = $('#tipoC').val();
+
 		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerCiudad.php',
-			data : {tipo : 'agregar',nombreCiudad: nombreCiudad},
+			url: '/ProyectoDB/Controller/ControllerProducto.php',
+			data : {tipo : 'agregar',nombreProducto: nombreProducto,descripcionProducto: descripcionProducto,cantidadProducto: cantidadProducto,usuarioCc: usuarioCc},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
-					$('.error-create').html('Hubo un error al ingresar la nueva ciudad');
+					$('.error-create').html('Hubo un error al ingresar el nuevo producto');
 				}else{
-					 Materialize.toast('Ciudad creada exitosamente!', 2000) 
+					 Materialize.toast('Producto creado exitosamente!', 2000) 
 					 reload();
 					 $('#modal1').modal('close');
 					 $('.error-create').html('');
@@ -81,6 +103,16 @@ $(document).ready(function() {
 		    pk2 = $(this).closest('tr').find('#nombre').html();
 
 			$('input[name="nuevoNombreCiudad"]').val(pk2);
+
+			$.ajax({
+				url: '/ProyectoDB/Controller/ControllerProyecto.php',
+				data : {tipo : 'listarCcEditar'},
+				type : 'POST',
+				success: function(res){
+			   		$('.selectCiudadEditar').html(res);
+			   		$('select').material_select();
+				}
+			})
 	});
 
 
