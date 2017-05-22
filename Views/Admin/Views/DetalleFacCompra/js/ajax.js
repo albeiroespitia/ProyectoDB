@@ -9,60 +9,66 @@ function reload(){
 	})
 }
 
+
 $.holdReady(true);
 reload();
 $.holdReady(false);
 
 $(document).ready(function() {
-
 	$('.agregarButton').click(function(){
 		$.ajax({
 			url: '/ProyectoDB/Controller/ControllerDetalleFacCompra.php',
-			data : {tipo : 'listarCc'},
+			data : {tipo : 'listarProducto'},
 			type : 'POST',
 			success: function(res){
+				console.log(res);
 				if(res == 'No hay datos'){
-					$('.selectUsuario').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+					$('.selectProducto').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
 				}else{
-					$('.selectUsuario').html(res);
+					$('.selectProducto').html(res);
 				}
 		   		
 		   		$('select').material_select();
 			}
 		})
-
 		$.ajax({
 			url: '/ProyectoDB/Controller/ControllerDetalleFacCompra.php',
-			data : {tipo : 'listarProvedores'},
+			data : {tipo : 'listarFacturaCompra'},
 			type : 'POST',
 			success: function(res){
+				console.log("hola");
 				if(res == 'No hay datos'){
-					$('.selectProvedor').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+					$('.selectFacturaCompra').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
 				}else{
-					$('.selectProvedor').html(res);
+					$('.selectFacturaCompra').html(res);
 				}
 		   		
 		   		$('select').material_select();
 			}
 		})
-
 	})
-	
+
+
 	$('#add-form').submit(function(e){
 		e.preventDefault();
-		var fechaFacturaCompra = $('input[name="fecha_factura"]').val();
-		var idUsuario = $('#tipoC').val();
-		var idProvedor = $('#tipoP').val();
-
+		var producto = $('#tipoP').val();
+		var facturaCompra = $('#tipoFC').val();
+		var cantidad = $('input[name="cantidad"]').val();
+		var valor = $('input[name="valor"]').val();
+		console.log(producto);
+		console.log(facturaCompra);
+		console.log(cantidad);
+		console.log(valor);
+		
 		$.ajax({
 			url: '/ProyectoDB/Controller/ControllerDetalleFacCompra.php',
-			data : {tipo : 'agregar',fechaFacturaCompra:fechaFacturaCompra,idUsuario:idUsuario,idProvedor: idProvedor},
+			data : {tipo : 'agregar',producto: producto,facturaCompra: facturaCompra,cantidad: cantidad,valor:valor},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
-					$('.error-create').html('Hubo un error al ingresar la nueva factura');
+					$('.error-create').html('Hubo un error al ingresar el detalle factura');
 				}else{
-					 Materialize.toast('Factura creado exitosamente!', 2000) 
+					 Materialize.toast('Detalle factura creado exitosamente!', 2000) 
 					 reload();
 					 $('#modal1').modal('close');
 					 $('.error-create').html('');
@@ -74,19 +80,18 @@ $(document).ready(function() {
 
 	$('#edit-form').submit(function(e){
 		e.preventDefault();
-		var nuevaFecha = $('input[name="fecha_facturaEditar"]').val();
-		var idUsuario = $('#tipoTE').val();
-		var idProvedor = $('#tipoPE').val();
-
+		var descpcionProyecto = $('input[name="nuevaDescripcion"]').val();
+		var empresaProyecto = $('input[name="nuevoNombreEmpresa"]').val();
+		var usuarioCc = $('#tipoTE').val();
 		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerDetalleFacCompra.php',
-			data : {tipo : 'editar', idFacturaCompra: pk1 , nuevaFecha: nuevaFecha,idUsuario:idUsuario,idProvedor:idProvedor},
+			url: '/ProyectoDB/Controller/ControllerProyecto.php',
+			data : {tipo : 'editar', idProyecto: pk1 , descripcionProyecto: descpcionProyecto,empresaProyecto: empresaProyecto,tipoTE: usuarioCc},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
-					$('.error-create').html('Hubo un error al ingresar la nuevo factura');
+					$('.error-create').html('Hubo un error al editar el proyecto');
 				}else{
-					 Materialize.toast('Factura editada exitosamente!', 2000) 
+					 Materialize.toast('Proyecto editado exitosamente!', 2000) 
 					 reload();
 					 $('#modal2').modal('close');
 					 $('.error-create').html('');
@@ -97,16 +102,17 @@ $(document).ready(function() {
 	})
 
 	$(document).on('click', '.borrar' ,function(){	
-		var idFacturaCompra = $(this).closest('tr').find('#idFacturaCompra').html();
+		var producto = $(this).closest('tr').find('#producto').html();
 		$.ajax({
 			url: '/ProyectoDB/Controller/ControllerDetalleFacCompra.php',
-			data : {tipo : 'eliminar',idFacturaCompra: idFacturaCompra},
+			data : {tipo : 'eliminar',detallefactura: detallefactura},
 			type : 'POST',
 			success: function(res){
+				console.log(res);
 				if(res == 'Error'){
-					Materialize.toast('Error al eliminar la factura, Verifica que no este siendo usado!', 2000);
+					Materialize.toast('Error al eliminar detalle factura, Verifica que no este siendo usada!', 2000);
 				}else{
-					Materialize.toast('Factura eliminado exitosamente!', 2000);
+					Materialize.toast('Detalle factura eliminada exitosamente!', 2000);
 					reload();
 				}
 			}
@@ -115,33 +121,26 @@ $(document).ready(function() {
 
 
 	$(document).on('click', '.editar' ,function(){
-		    pk1 = $(this).closest('tr').find('#idFacturaCompra').html();
-		    pk2 = $(this).closest('tr').find('#fecha').html();
+		    pk1 = $(this).closest('tr').find('#idProyecto').html();
+		    pk2 = $(this).closest('tr').find('#descripcion').html();
+		    pk3 = $(this).closest('tr').find('#empresa').html();
+		    pk4 = $(this).closest('tr').find('#cc').html();
 
-
-			$('input[name="fecha_facturaEditar"]').val(pk2);
-
-
+			$('input[name="nuevaDescripcion"]').val(pk2);
+			$('input[name="nuevoNombreEmpresa"]').val(pk3);
 			$.ajax({
-				url: '/ProyectoDB/Controller/ControllerDetalleFacCompra.php',
+				url: '/ProyectoDB/Controller/ControllerProyecto.php',
 				data : {tipo : 'listarCcEditar'},
 				type : 'POST',
 				success: function(res){
-			   		$('.selectUsuarioEditar').html(res);
+			   		$('.selectCiudadEditar').html(res);
 			   		$('select').material_select();
 				}
 			})
+			
 
-			$.ajax({
-				url: '/ProyectoDB/Controller/ControllerDetalleFacCompra.php',
-				data : {tipo : 'listarProvedoresEditar'},
-				type : 'POST',
-				success: function(res){
-			   		$('.selectProvedorEditar').html(res);
-			   		$('select').material_select();
-				}
-			})
 	});
+
 
 
 

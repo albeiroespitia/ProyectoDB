@@ -11,10 +11,10 @@
 
 
 		public function listarDetalleFacCompra(){
-			$sql = "SELECT *,usuario.nombre AS nombreU, proovedor.nombre AS nombreP
-					FROM FacturaCompra
-					INNER JOIN usuario on FacturaCompra.usuario_cc = usuario.cc
-					INNER JOIN proovedor ON  FacturaCompra.Proovedor = proovedor.idProovedor;";
+			$sql = "SELECT *,detallefaccompra.cantidad as cantidadD
+					FROM detallefaccompra
+					INNER JOIN producto ON detallefaccompra.producto = producto.idproducto
+                    INNER JOIN facturacompra ON detallefaccompra.FacturaCompra = facturacompra.idFacturaCompra";
 			$consulta = $this->db->prepare($sql);
 			$resultado = $consulta->execute();
 			$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);
@@ -29,8 +29,23 @@
 
 		}
 
-		public function listarCcUsuario(){
-			$sql = "SELECT cc,nombre FROM usuario";
+		public function listarProducto(){
+			$sql = "SELECT * FROM producto";
+			$consulta = $this->db->prepare($sql);
+			$resultado = $consulta->execute();
+			$clientes = $consulta->fetchall(PDO::FETCH_ASSOC);
+
+			if($clientes == true){
+				return $clientes;
+			}else{
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+				public function listarFacturaCompra(){
+			$sql = "SELECT idFacturaCompra FROM FacturaCompra";
 			$consulta = $this->db->prepare($sql);
 			$resultado = $consulta->execute();
 			$clientes = $consulta->fetchall(PDO::FETCH_ASSOC);
@@ -45,29 +60,13 @@
 
 		}
 
-		public function listarProvedores(){
-			$sql = "SELECT * FROM proovedor";
-			$consulta = $this->db->prepare($sql);
-			$resultado = $consulta->execute();
-			$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);
-
-			if($provedores == true){
-				return $provedores;
-			}else{
-				return 0;
-			}
-
-			$consulta->closeCursor();
-
-		}
-
 	
 
-		public function editarFacturaCompra($fecha,$idFacturaCompra, $idProovedor, $idUsuario){
+		public function editarProyecto($idProyecto,$descripcion, $empresa, $usuario){
 			try{
-				$sql = "UPDATE FacturaCompra SET fecha = ?,  Usuario_cc = ?, Proovedor = ? WHERE idFacturaCompra = ?";
+				$sql = "UPDATE proyecto SET descripcion = ?, empresa = ?, usuario_cc = ? WHERE idProyecto = ?";
 				$consulta = $this->db->prepare($sql);
-				$resultado = $consulta->execute(array($fecha, $idUsuario, $idProovedor, $idFacturaCompra));
+				$resultado = $consulta->execute(array($descripcion, $empresa, $usuario, $idProyecto));
 				return 1;
 			}catch (PDOException $e){
 				return 0;
@@ -77,11 +76,11 @@
 
 		}
 
-		public function borrarFacturaCompra($idFacturaCompra){
+		public function borrarDetalleFacCompra($detallefactura){
 			try{
-				$sql = "DELETE FROM FacturaCompra WHERE idFacturaCompra = ?";
+				$sql = "DELETE FROM detallefaccompra WHERE detalleFactura = ?";
 				$consulta = $this->db->prepare($sql);
-				$resultado = $consulta->execute(array($idFacturaCompra));
+				$resultado = $consulta->execute(array($detallefactura));
 				return 1;
 			}catch (PDOException $e){
 				return 0;
@@ -91,11 +90,11 @@
 
 		}
 
-		public function crearFacturaCompra($fecha, $idUsuario, $idProovedor){
+		public function crearDetalleFacCompra($producto, $facturacompra, $cantidad,$valor){
 			try{
-				$sql = "INSERT INTO FacturaCompra VALUES(NULL,?,?,?)";
+				$sql = "INSERT INTO detallefaccompra VALUES(?,?,?,?)";
 				$consulta = $this->db->prepare($sql);
-				$resultado = $consulta->execute(array($fecha, $idUsuario, $idProovedor));
+				$resultado = $consulta->execute(array($producto, $facturacompra, $cantidad,$valor));
 				return 1;
 			}catch (PDOException $e){
 				return 0;
