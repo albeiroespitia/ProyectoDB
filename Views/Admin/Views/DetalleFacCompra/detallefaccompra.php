@@ -56,13 +56,13 @@
             <div class="row">
               <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
                 <input id="icon_prefix" type="text" name="cantidadEditar" class="validate" required>
-                <label for="icon_prefix">Cantidad</label>
+                <label for="icon_prefix"></label>
               </div>
             </div>
                         <div class="row">
               <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
                 <input id="icon_prefix" type="text" name="valorEditar" class="validate" required>
-                <label for="icon_prefix">Valor</label>
+                <label for="icon_prefix"></label>
               </div>
             </div>
             <div class="modal-footer">

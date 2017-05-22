@@ -40,11 +40,37 @@
 			}else{
 				return 0;
 			}
+		}
+
+			public function listarProductoEditar(){
+			$sql = "SELECT * FROM producto";
+			$consulta = $this->db->prepare($sql);
+			$resultado = $consulta->execute();
+			$clientes = $consulta->fetchall(PDO::FETCH_ASSOC);
+
+			if($clientes == true){
+				return $clientes;
+			}else{
+				return 0;
+			}
 
 			$consulta->closeCursor();
 
 		}
-				public function listarFacturaCompra(){
+		public function listarFacturaCompra(){
+			$sql = "SELECT idFacturaCompra FROM FacturaCompra";
+			$consulta = $this->db->prepare($sql);
+			$resultado = $consulta->execute();
+			$clientes = $consulta->fetchall(PDO::FETCH_ASSOC);
+
+			if($clientes == true){
+				return $clientes;
+			}else{
+				return 0;
+			}
+		}
+
+		public function listarFacturaCompraEditar(){
 			$sql = "SELECT idFacturaCompra FROM FacturaCompra";
 			$consulta = $this->db->prepare($sql);
 			$resultado = $consulta->execute();
@@ -62,11 +88,11 @@
 
 	
 
-		public function editarProyecto($idProyecto,$descripcion, $empresa, $usuario){
+		public function editarDetallefacCompra($idProducto, $facturaCompra, $producto, $cantidad, $valor){
 			try{
-				$sql = "UPDATE proyecto SET descripcion = ?, empresa = ?, usuario_cc = ? WHERE idProyecto = ?";
+				$sql = "UPDATE detallefaccompra SET Producto = ? , cantidad = ?, valor = ?  WHERE Producto = ? and FacturaCompra = ?";
 				$consulta = $this->db->prepare($sql);
-				$resultado = $consulta->execute(array($descripcion, $empresa, $usuario, $idProyecto));
+				$resultado = $consulta->execute(array($producto, $cantidad, $valor, $idProducto, $facturaCompra));
 				return 1;
 			}catch (PDOException $e){
 				return 0;

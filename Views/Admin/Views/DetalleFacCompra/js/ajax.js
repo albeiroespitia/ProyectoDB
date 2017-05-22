@@ -79,18 +79,20 @@ $(document).ready(function() {
 
 	$('#edit-form').submit(function(e){
 		e.preventDefault();
-		var descpcionProyecto = $('input[name="nuevaDescripcion"]').val();
-		var empresaProyecto = $('input[name="nuevoNombreEmpresa"]').val();
-		var usuarioCc = $('#tipoTE').val();
+		var producto = $('#tipoPE').val();
+		var cantidad = $('input[name="cantidadEditar"]').val();
+		var valor = $('input[name="valorEditar"]').val();
+
+		
 		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerProyecto.php',
-			data : {tipo : 'editar', idProyecto: pk1 , descripcionProyecto: descpcionProyecto,empresaProyecto: empresaProyecto,tipoTE: usuarioCc},
+			url: '/ProyectoDB/Controller/ControllerDetalleFacCompra.php',
+			data : {tipo : 'editar', idProducto:pk3, facturaCompra:pk4 ,producto: producto, cantidad:cantidad, valor: valor},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
-					$('.error-create').html('Hubo un error al editar el proyecto');
+					$('.error-create').html('Hubo un error al editar el detalle factura compra');
 				}else{
-					 Materialize.toast('Proyecto editado exitosamente!', 2000) 
+					 Materialize.toast('Detalle factura compra editado exitosamente!', 2000) 
 					 reload();
 					 $('#modal2').modal('close');
 					 $('.error-create').html('');
@@ -122,22 +124,43 @@ $(document).ready(function() {
 
 
 	$(document).on('click', '.editar' ,function(){
-		    pk1 = $(this).closest('tr').find('#idProyecto').html();
-		    pk2 = $(this).closest('tr').find('#descripcion').html();
-		    pk3 = $(this).closest('tr').find('#empresa').html();
-		    pk4 = $(this).closest('tr').find('#cc').html();
+		    pk1 = $(this).closest('tr').find('#cantidad').html();
+		    pk2 = $(this).closest('tr').find('#valor').html();
+		    pk3 = $(this).closest('tr').find('#idProducto').html();
+		    pk4 = $(this).closest('tr').find('#facturaCompra').html();
 
-			$('input[name="nuevaDescripcion"]').val(pk2);
-			$('input[name="nuevoNombreEmpresa"]').val(pk3);
-			$.ajax({
-				url: '/ProyectoDB/Controller/ControllerProyecto.php',
-				data : {tipo : 'listarCcEditar'},
-				type : 'POST',
-				success: function(res){
-			   		$('.selectCiudadEditar').html(res);
-			   		$('select').material_select();
+
+			$('input[name="cantidadEditar"]').val(pk1);
+			$('input[name="valorEditar"]').val(pk2);
+	$.ajax({
+			url: '/ProyectoDB/Controller/ControllerDetalleFacCompra.php',
+			data : {tipo : 'listarProductoEditar'},
+			type : 'POST',
+			success: function(res){
+				if(res == 'No hay datos'){
+					$('.selectProductoEditar').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+				}else{
+					$('.selectProductoEditar').html(res);
 				}
-			})
+		   		
+		   		$('select').material_select();
+			}
+		})
+		$.ajax({
+			url: '/ProyectoDB/Controller/ControllerDetalleFacCompra.php',
+			data : {tipo : 'listarFacturaCompraEditar'},
+			type : 'POST',
+			success: function(res){
+				console.log("hola");
+				if(res == 'No hay datos'){
+					$('.selectFacturaCompraEditar').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+				}else{
+					$('.selectFacturaCompraEditar').html(res);
+				}
+		   		
+		   		$('select').material_select();
+			}
+		})
 			
 
 	});
