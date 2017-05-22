@@ -104,6 +104,7 @@
      <table class="tablaDatos">
         <thead>
           <tr>
+              <th id="idProducto">idProducto</th>
               <th>Producto</th>
               <th>FacturaCompra</th>
               <th>Cantidad</th>

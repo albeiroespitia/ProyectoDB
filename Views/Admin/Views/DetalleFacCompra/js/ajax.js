@@ -21,7 +21,6 @@ $(document).ready(function() {
 			data : {tipo : 'listarProducto'},
 			type : 'POST',
 			success: function(res){
-				console.log(res);
 				if(res == 'No hay datos'){
 					$('.selectProducto').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
 				}else{
@@ -102,13 +101,15 @@ $(document).ready(function() {
 	})
 
 	$(document).on('click', '.borrar' ,function(){	
-		var producto = $(this).closest('tr').find('#producto').html();
+		var idProducto = $(this).closest('tr').find('#idProducto').html();
+		var facturaCompra = $(this).closest('tr').find('#facturaCompra').html();
+		console.log(idProducto);
 		$.ajax({
 			url: '/ProyectoDB/Controller/ControllerDetalleFacCompra.php',
-			data : {tipo : 'eliminar',detallefactura: detallefactura},
+			data : {tipo : 'eliminar',idProducto: idProducto, facturaCompra:facturaCompra},
 			type : 'POST',
 			success: function(res){
-				console.log(res);
+				
 				if(res == 'Error'){
 					Materialize.toast('Error al eliminar detalle factura, Verifica que no este siendo usada!', 2000);
 				}else{

@@ -11,7 +11,7 @@
 
 
 		public function listarDetalleFacCompra(){
-			$sql = "SELECT *,detallefaccompra.cantidad as cantidadD
+			$sql = "SELECT *,detallefaccompra.cantidad as cantidadD, producto.idProducto as idProducto
 					FROM detallefaccompra
 					INNER JOIN producto ON detallefaccompra.producto = producto.idproducto
                     INNER JOIN facturacompra ON detallefaccompra.FacturaCompra = facturacompra.idFacturaCompra";
@@ -76,11 +76,11 @@
 
 		}
 
-		public function borrarDetalleFacCompra($detallefactura){
+		public function borrarDetalleFacCompra($idProducto,$detallefactura){
 			try{
-				$sql = "DELETE FROM detallefaccompra WHERE detalleFactura = ?";
+				$sql = "DELETE FROM detallefaccompra WHERE producto = ? and FacturaCompra = ?";
 				$consulta = $this->db->prepare($sql);
-				$resultado = $consulta->execute(array($detallefactura));
+				$resultado = $consulta->execute(array($idProducto,$detallefactura));
 				return 1;
 			}catch (PDOException $e){
 				return 0;

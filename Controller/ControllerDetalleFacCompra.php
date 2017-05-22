@@ -12,6 +12,7 @@
 
 				foreach ($array_provedores as $row) {
 				$html .= '<tr>
+							<td id="idProducto">'.$row['idProducto'].'</td>
 				            <td id="producto">'.$row['nombre'].' </td>
 				            <td id="facturaCompra">'.$row['idFacturaCompra'].'</td>
 				            <td id="cantidad">'.$row['cantidadD'].' </td>
@@ -123,9 +124,11 @@
 		}
 
 		if($_POST['tipo'] == 'eliminar'){
-			$provedorDAO = new DetallefacCompraDAO();
+			$DetallefacCompraDAO = new DetallefacCompraDAO();
+			$idProducto = $_POST['idProducto'];
 			$facturaCompra = $_POST['facturaCompra'];
-			$errores = $provedorDAO->borrarDetalleFacCompra($facturaCompra);
+			console.log($idProducto);
+			$errores = $DetallefacCompraDAO->borrarDetalleFacCompra($idProducto,$facturaCompra);
 			if($errores == 0){
 				echo 'Error';
 			}
