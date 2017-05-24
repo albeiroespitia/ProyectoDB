@@ -1,6 +1,6 @@
 function reload(){
 	$.ajax({
-		url: '/ProyectoDB/Controller/ControllerCiudad.php',
+		url: '/ProyectoDB/Controller/ControllerDetalleFac.php',
 		data : {tipo : 'listar'},
 		type : 'POST',
 		success: function(res){
@@ -9,24 +9,65 @@ function reload(){
 	})
 }
 
+
 $.holdReady(true);
 reload();
 $.holdReady(false);
 
 $(document).ready(function() {
-	
+	$('.agregarButton').click(function(){
+		$.ajax({
+			url: '/ProyectoDB/Controller/ControllerDetalleFac.php',
+			data : {tipo : 'listarProducto'},
+			type : 'POST',
+			success: function(res){
+				if(res == 'No hay datos'){
+					$('.selectProducto').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+				}else{
+					$('.selectProducto').html(res);
+				}
+		   		
+		   		$('select').material_select();
+			}
+		})
+		$.ajax({
+			url: '/ProyectoDB/Controller/ControllerDetalleFac.php',
+			data : {tipo : 'listarFactura'},
+			type : 'POST',
+			success: function(res){
+				console.log("hola");
+				if(res == 'No hay datos'){
+					$('.selectFacturaCompra').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+				}else{
+					$('.selectFacturaCompra').html(res);
+				}
+		   		
+		   		$('select').material_select();
+			}
+		})
+	})
+
+
 	$('#add-form').submit(function(e){
 		e.preventDefault();
-		var nombreCiudad = $('input[name="nombreCiudad"]').val();
+		var producto = $('#tipoP').val();
+		var facturaCompra = $('#tipoFC').val();
+		var cantidad = $('input[name="cantidad"]').val();
+		var valor = $('input[name="valor"]').val();
+		console.log(producto);
+		console.log(facturaCompra);
+		console.log(cantidad);
+		console.log(valor);
+		
 		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerCiudad.php',
-			data : {tipo : 'agregar',nombreCiudad: nombreCiudad},
+			url: '/ProyectoDB/Controller/ControllerDetalleFac.php',
+			data : {tipo : 'agregar',producto: producto,facturaCompra: facturaCompra,cantidad: cantidad,valor:valor},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
-					$('.error-create').html('Hubo un error al ingresar la nueva ciudad');
+					$('.error-create').html('Hubo un error al ingresar el detalle factura');
 				}else{
-					 Materialize.toast('Ciudad creada exitosamente!', 2000) 
+					 Materialize.toast('Detalle factura creado exitosamente!', 2000) 
 					 reload();
 					 $('#modal1').modal('close');
 					 $('.error-create').html('');
@@ -38,17 +79,20 @@ $(document).ready(function() {
 
 	$('#edit-form').submit(function(e){
 		e.preventDefault();
-		var nuevoNombreCiudad = $('input[name="nuevoNombreCiudad"]').val();
-		console.log(nuevoNombreCiudad);
+		var producto = $('#tipoPE').val();
+		var cantidad = $('input[name="cantidadEditar"]').val();
+		var valor = $('input[name="valorEditar"]').val();
+
+		
 		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerCiudad.php',
-			data : {tipo : 'editar', idCiudad: pk1 , nombreCiudad: nuevoNombreCiudad},
+			url: '/ProyectoDB/Controller/ControllerDetalleFac.php',
+			data : {tipo : 'editar', idProducto:pk3, facturaCompra:pk4 ,producto: producto, cantidad:cantidad, valor: valor},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
-					$('.error-create').html('Hubo un error al ingresar la nueva ciudad');
+					$('.error-create').html('Hubo un error al editar el detalle factura compra');
 				}else{
-					 Materialize.toast('Ciudad editada exitosamente!', 2000) 
+					 Materialize.toast('Detalle factura compra editado exitosamente!', 2000) 
 					 reload();
 					 $('#modal2').modal('close');
 					 $('.error-create').html('');
@@ -59,16 +103,19 @@ $(document).ready(function() {
 	})
 
 	$(document).on('click', '.borrar' ,function(){	
-		var idCiudad = $(this).closest('tr').find('#idCiudad').html();
+		var idProducto = $(this).closest('tr').find('#idProducto').html();
+		var facturaCompra = $(this).closest('tr').find('#factura').html();
+		console.log(idProducto);
 		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerCiudad.php',
-			data : {tipo : 'eliminar',idCiudad: idCiudad},
+			url: '/ProyectoDB/Controller/ControllerDetalleFac.php',
+			data : {tipo : 'eliminar',idProducto: idProducto, facturaCompra:factura},
 			type : 'POST',
 			success: function(res){
+				
 				if(res == 'Error'){
-					Materialize.toast('Error al eliminar la ciudad, Verifica que no este siendo usada!', 2000);
+					Materialize.toast('Error al eliminar detalle factura, Verifica que no este siendo usada!', 2000);
 				}else{
-					Materialize.toast('Ciudad eliminada exitosamente!', 2000);
+					Materialize.toast('Detalle factura eliminada exitosamente!', 2000);
 					reload();
 				}
 			}
@@ -77,11 +124,47 @@ $(document).ready(function() {
 
 
 	$(document).on('click', '.editar' ,function(){
-		    pk1 = $(this).closest('tr').find('#idCiudad').html();
-		    pk2 = $(this).closest('tr').find('#nombre').html();
+		    pk1 = $(this).closest('tr').find('#cantidad').html();
+		    pk2 = $(this).closest('tr').find('#valor').html();
+		    pk3 = $(this).closest('tr').find('#idProducto').html();
+		    pk4 = $(this).closest('tr').find('#facturaCompra').html();
 
-			$('input[name="nuevoNombreCiudad"]').val(pk2);
+
+			$('input[name="cantidadEditar"]').val(pk1);
+			$('input[name="valorEditar"]').val(pk2);
+	$.ajax({
+			url: '/ProyectoDB/Controller/ControllerDetalleFac.php',
+			data : {tipo : 'listarProductoEditar'},
+			type : 'POST',
+			success: function(res){
+				if(res == 'No hay datos'){
+					$('.selectProductoEditar').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+				}else{
+					$('.selectProductoEditar').html(res);
+				}
+		   		
+		   		$('select').material_select();
+			}
+		})
+		$.ajax({
+			url: '/ProyectoDB/Controller/ControllerDetalleFac.php',
+			data : {tipo : 'listarFacturaEditar'},
+			type : 'POST',
+			success: function(res){
+				console.log("hola");
+				if(res == 'No hay datos'){
+					$('.selectFacturaEditar').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+				}else{
+					$('.selectFacturaEditar').html(res);
+				}
+		   		
+		   		$('select').material_select();
+			}
+		})
+			
+
 	});
+
 
 
 
