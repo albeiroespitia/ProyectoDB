@@ -18,30 +18,29 @@ $(document).ready(function() {
 	$('.agregarButton').click(function(){
 		$.ajax({
 			url: '/ProyectoDB/Controller/ControllerFactura.php',
-			data : {tipo : 'listarCc'},
+			data : {tipo : 'listarCliente'},
 			type : 'POST',
 			success: function(res){
-				if(res == 'No hay datos'){
-					$('.selectUsuario').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+		   		if(res == 'No hay datos'){
+					$('.selectCliente').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
 				}else{
-					$('.selectUsuario').html(res);
+					$('.selectCliente').html(res);
 				}
-		   		
 		   		$('select').material_select();
 			}
 		})
 
 		$.ajax({
 			url: '/ProyectoDB/Controller/ControllerFactura.php',
-			data : {tipo : 'listarClientes'},
+			data : {tipo : 'listarUsuario'},
 			type : 'POST',
 			success: function(res){
+				console.log(res);
 				if(res == 'No hay datos'){
-					$('.selectCliente').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+					$('.selectUsuario').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
 				}else{
-					$('.selectCliente').html(res);
+					$('.selectUsuario').html(res);
 				}
-		   		
 		   		$('select').material_select();
 			}
 		})
@@ -51,12 +50,12 @@ $(document).ready(function() {
 			data : {tipo : 'listarFormaPago'},
 			type : 'POST',
 			success: function(res){
+				console.log(res);
 				if(res == 'No hay datos'){
 					$('.selectFormaPago').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
 				}else{
 					$('.selectFormaPago').html(res);
 				}
-		   		
 		   		$('select').material_select();
 			}
 		})
@@ -65,20 +64,19 @@ $(document).ready(function() {
 	
 	$('#add-form').submit(function(e){
 		e.preventDefault();
-		var fechaFactura = $('input[name="fecha_factura"]').val();
-		var idUsuario = $('#tipoC').val();
-		var idCliente = $('#tipoP').val();
-		var idFormaPago = $('#tipoF').val();
-
+		var cliente = $('#tipoC').val();
+		var usuarioCC = $('#tipoU').val();
+		var formaPago = $('#tipoF').val();
+		var fecha = $('input[name="Fecha"]').val();
 		$.ajax({
 			url: '/ProyectoDB/Controller/ControllerFactura.php',
-			data : {tipo : 'agregar',fechaFactura:fechaFactura,idUsuario:idUsuario,idCliente: idCliente,idFormaPago:idFormaPago},
+			data : {tipo : 'agregar',cliente: cliente,usuarioCC:usuarioCC,formaPago:formaPago,fecha:fecha},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
-					$('.error-create').html('Hubo un error al ingresar la nueva factura');
+					$('.error-create').html('Hubo un error al ingresar la nueva Factura de servicio');
 				}else{
-					 Materialize.toast('Factura creado exitosamente!', 2000) 
+					 Materialize.toast('factura ingresada exitosamente!', 2000) 
 					 reload();
 					 $('#modal1').modal('close');
 					 $('.error-create').html('');
@@ -90,21 +88,21 @@ $(document).ready(function() {
 
 	$('#edit-form').submit(function(e){
 		e.preventDefault();
-		var nuevaFecha = $('input[name="fecha_facturaEditar"]').val();
-		var idUsuario = $('#tipoTE').val();
-		var idCliente = $('#tipoPE').val();
-		var idFormaPago = $('#tipoFE').val();
+		var cliente = $('#tipoCE').val();
+		var usuarioCC = $('#tipoUE').val();
+		var formaPago = $('#tipoFE').val();
+		var fecha = $('input[name="NuevoFecha"]').val();
 
+		console.log(cliente, usuarioCC, formaPago, fecha);
 		$.ajax({
 			url: '/ProyectoDB/Controller/ControllerFactura.php',
-			data : {tipo : 'editar',idFactura: pk1 , nuevaFecha: nuevaFecha,idUsuario:idUsuario,idCliente:idCliente, idFormaPago:idFormaPago},
+			data : {tipo : 'editar', idFacturaServicio:pk1, cliente: cliente,usuarioCC:usuarioCC,formaPago:formaPago,fecha:fecha},
 			type : 'POST',
 			success: function(res){
-				console.log(res);
 				if(res == 'Error'){
-					$('.error-create').html('Hubo un error al ingresar la nuevo factura');
+					$('.error-create').html('Hubo un error al ingresar la nueva Factura de servicio');
 				}else{
-					 Materialize.toast('Factura editada exitosamente!', 2000) 
+					 Materialize.toast('Factura editado exitosamente!', 2000) 
 					 reload();
 					 $('#modal2').modal('close');
 					 $('.error-create').html('');
@@ -115,14 +113,14 @@ $(document).ready(function() {
 	})
 
 	$(document).on('click', '.borrar' ,function(){	
-		var idFactura = $(this).closest('tr').find('#idFactura').html();
+		var idFacturaServicio = $(this).closest('tr').find('#idFacturaServicio').html();
 		$.ajax({
 			url: '/ProyectoDB/Controller/ControllerFactura.php',
-			data : {tipo : 'eliminar',idFactura: idFactura},
+			data : {tipo : 'eliminar',idFacturaServicio: idFacturaServicio},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
-					Materialize.toast('Error al eliminar la factura, Verifica que no este siendo usado!', 2000);
+					Materialize.toast('Error al eliminar la factura, Verifica que no este siendo usada!', 2000);
 				}else{
 					Materialize.toast('Factura eliminado exitosamente!', 2000);
 					reload();
@@ -133,29 +131,31 @@ $(document).ready(function() {
 
 
 	$(document).on('click', '.editar' ,function(){
-		    pk1 = $(this).closest('tr').find('#idFactura').html();
-		    pk2 = $(this).closest('tr').find('#fecha').html();
+		    pk1 = $(this).closest('tr').find('#idFacturaServicio').html();
+		    pk2 = $(this).closest('tr').find('#Cliente').html();
+		    pk3 = $(this).closest('tr').find('#Usuario_cc').html();
+		    pk4 = $(this).closest('tr').find('#FormaPago').html();
+		    pk5 = $(this).closest('tr').find('#Fecha').html();
 
-
-			$('input[name="fecha_facturaEditar"]').val(pk2);
-
-
+			$('input[name="ClienteEditar"]').val(pk2);
+			$('input[name="UsuarioEditar"]').val(pk3);
+			$('input[name="FormaPagoEditar"]').val(pk4);
 			$.ajax({
 				url: '/ProyectoDB/Controller/ControllerFactura.php',
-				data : {tipo : 'listarCcEditar'},
+				data : {tipo : 'listarClienteEditar'},
 				type : 'POST',
 				success: function(res){
-			   		$('.selectUsuarioEditar').html(res);
+			   		$('.selectClienteEditar').html(res);
 			   		$('select').material_select();
 				}
 			})
 
 			$.ajax({
 				url: '/ProyectoDB/Controller/ControllerFactura.php',
-				data : {tipo : 'listarClientesEditar'},
+				data : {tipo : 'listarUsuarioEditar'},
 				type : 'POST',
 				success: function(res){
-			   		$('.selectClientesEditar').html(res);
+			   		$('.selectUsuarioEditar').html(res);
 			   		$('select').material_select();
 				}
 			})
@@ -170,14 +170,5 @@ $(document).ready(function() {
 				}
 			})
 	});
-
-
-
-
-
-
-
-
-
 
 });

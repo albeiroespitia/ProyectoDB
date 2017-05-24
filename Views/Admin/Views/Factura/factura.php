@@ -15,12 +15,6 @@
         <div class="row">
           <form id="add-form" action="" method="POST" class="col s12">
             <div class="row">
-              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="fecha_factura" placeholder="" class="validate" required>
-                <label for="icon_prefix">Fecha</label>
-              </div>
-            </div>
-            <div class="row">
               <div class="input-field col s12 selectUsuario">  
               </div>
             </div>
@@ -30,6 +24,12 @@
             </div>
             <div class="row">
               <div class="input-field col s12 selectFormaPago">  
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="Fecha" placeholder="" class="validate" required>
+                <label for="icon_prefix">Fecha</label>
               </div>
             </div>
             <div class="modal-footer">
@@ -47,7 +47,7 @@
           <form id="edit-form" action="" method="" class="col s12">
             <div class="row">
               <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="fecha_facturaEditar" placeholder="" class="validate" required>
+                <input id="icon_prefix" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="NuevoFecha" placeholder="" class="validate" required>
                 <label for="icon_prefix">Fecha</label>
               </div>
             </div>
@@ -82,12 +82,12 @@
       <li><a href="../DetalleFac/detallefac.php">Detalle Factura</a></li>
       <li><a href="../DetalleFacCompra/detallefaccompra.php">Detalle Factura Compra</a></li>
       <li><a href="../DetalleVentaServicio/detalleventaservicio.php">Detalle Venta Servicio</a></li>
-      <li><a href="../Factura/factura.php">Factura</a></li>
-      <li class="selected"><a href="../FacturaCompra/facturacompra.php">Factura Compra</a></li>
+      <li class="selected"><a href="../Factura/factura.php">Factura</a></li>
+      <li ><a href="../FacturaCompra/facturacompra.php">Factura Compra</a></li>
       <li><a href="../FacturaServicio/facturaservicio.php">Factura Servicio</a></li>
       <li><a href="../FormaPago/formapago.php">Forma Pago</a></li>
       <li><a href="../ImagenProducto/imagenproducto.php">Imagen Producto</a></li>
-      <li><a href="../ImagenProyecto/imagenproyecto.php"">Imagen Proyecto</a></li>
+      <li><a href="../ImagenProyecto/imagenproyecto.php">Imagen Proyecto</a></li>
       <li><a href="../Producto/producto.php">Producto</a></li>
       <li><a href="../Proovedor/proovedor.php">Proovedor</a></li>
       <li><a href="../Proyecto/proyecto.php">Proyecto</a></li>
@@ -103,13 +103,10 @@
         <thead>
           <tr>
               <th>idFactura</th>
+              <th>Cliente</th>
+              <th>CCUsuario</th>
+              <th>FormaPago</th>
               <th>Fecha</th>
-              <th>Usuario CC</th>
-              <th>Usuario Nombre</th>
-              <th>Cliente ID</th>
-              <th>Cliente Nombre</th>
-              <th>Descripci&oacute;n Factura</th>
-              <th>Forma de pago</th>
           </tr>
         </thead>
         <tbody class="cuerpoTabla">

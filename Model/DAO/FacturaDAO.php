@@ -9,12 +9,44 @@
 		}
 
 
-		public function listarFactura(){
-			$sql = "SELECT *,usuario.nombre AS nombreU, cliente.nombre AS nombreP,formapago.descripcion AS descripcionF
-					FROM Factura
-					INNER JOIN usuario on Factura.usuario_cc =- usuario.cc
-					INNER JOIN cliente ON  Factura.cliente = cliente.idCliente
-					INNER JOIN formapago ON  Factura.FormaPago = formapago.idFormaPago;";
+
+	
+		public function listarFacturas(){
+			$sql = "SELECT *,Cliente.nombre AS Cliente,formapago.descripcion AS FormaPago FROM factura
+  					INNER JOIN Cliente ON factura.Cliente = cliente.idCliente 
+  					INNER JOIN FormaPago ON factura.FormaPago = FormaPago.idFormaPago";
+			$consulta = $this->db->prepare($sql);
+			$resultado = $consulta->execute();
+			$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);
+
+			if($provedores == true){
+				return $provedores;
+			}else{
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
+		public function listarCliente(){
+			$sql = "SELECT * FROM Cliente";
+			$consulta = $this->db->prepare($sql);
+			$resultado = $consulta->execute();
+			$clientes = $consulta->fetchall(PDO::FETCH_ASSOC);
+
+			if($clientes == true){
+				return $clientes;
+			}else{
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
+		public function listarUsuario(){
+			$sql = "SELECT * FROM Usuario";
 			$consulta = $this->db->prepare($sql);
 			$resultado = $consulta->execute();
 			$clientes = $consulta->fetchall(PDO::FETCH_ASSOC);
@@ -30,7 +62,7 @@
 		}
 
 		public function listarFormaPago(){
-			$sql = "SELECT * from formapago";
+			$sql = "SELECT * FROM formapago";
 			$consulta = $this->db->prepare($sql);
 			$resultado = $consulta->execute();
 			$clientes = $consulta->fetchall(PDO::FETCH_ASSOC);
@@ -45,15 +77,14 @@
 
 		}
 
-		public function listarCcUsuario(){
-			$sql = "SELECT cc,nombre FROM usuario";
-			$consulta = $this->db->prepare($sql);
-			$resultado = $consulta->execute();
-			$clientes = $consulta->fetchall(PDO::FETCH_ASSOC);
-
-			if($clientes == true){
-				return $clientes;
-			}else{
+		public function editarFactura($idFacturaServicio, $cliente, $usuarioCC, 
+				$formaPago,$fecha){
+			try{
+				$sql = "UPDATE factura SET Cliente = ?, Usuario_cc = ?, FormaPago = ?, fecha = ? WHERE idFactura = ?";
+				$consulta = $this->db->prepare($sql);
+				$resultado = $consulta->execute(array($cliente,$usuarioCC,$formaPago, $fecha, $idFacturaServicio));
+				return 1;
+			}catch (PDOException $e){
 				return 0;
 			}
 
@@ -61,15 +92,13 @@
 
 		}
 
-		public function listarClientes(){
-			$sql = "SELECT * FROM cliente";
-			$consulta = $this->db->prepare($sql);
-			$resultado = $consulta->execute();
-			$clientes = $consulta->fetchall(PDO::FETCH_ASSOC);
-
-			if($clientes == true){
-				return $clientes;
-			}else{
+		public function borrarFactura($idFacturaServicio){
+			try{
+				$sql = "DELETE FROM factura WHERE idFactura = ?";
+				$consulta = $this->db->prepare($sql);
+				$resultado = $consulta->execute(array($idFacturaServicio));
+				return 1;
+			}catch (PDOException $e){
 				return 0;
 			}
 
@@ -77,5 +106,20 @@
 
 		}
 
+		public function crearFactura($cliente, $usuarioCC, $formaPago, $fecha){
+			try{
+				$sql = "INSERT INTO factura VALUES(NULL,?,?,?,?)";
+				$consulta = $this->db->prepare($sql);
+				$resultado = $consulta->execute(array($cliente, $usuarioCC, $formaPago, $fecha));
+				return 1;
+			}catch (PDOException $e){
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
+	}
 
  ?>
