@@ -105,10 +105,11 @@
 			
 
 		}
-					if($_POST['tipo'] == 'listarFacturaEditar'){
+		
+		if($_POST['tipo'] == 'listarFacturaEditar'){
 				
 			$ProvedorDAO = new DetallefacDAO();
-			$array_provedores = $ProvedorDAO->listarFactura();
+			$array_provedores = $ProvedorDAO->listarFacturaCompra();
 			$html = " ";
 			if($array_provedores != 0){
 
@@ -138,10 +139,10 @@
 		if($_POST['tipo'] == 'agregar'){
 			$provedorDAO = new DetalleFacDAO();
 			$producto = $_POST['producto'];
-			$detalleFactura = $_POST['factura'];
+			$detalleFactura = $_POST['facturaCompra'];
 			$cantidad = $_POST['cantidad'];
 			$valor = $_POST['valor'];
-			$errores = $provedorDAO->crearDetalleFac($producto, $factura, $cantidad,$valor);
+			$errores = $provedorDAO->crearDetalleFacCompra($producto, $detalleFactura, $cantidad,$valor);
 			if($errores == 0){
 				echo 'Error';
 			}
@@ -152,9 +153,8 @@
 		if($_POST['tipo'] == 'eliminar'){
 			$DetallefacCompraDAO = new DetallefacDAO();
 			$idProducto = $_POST['idProducto'];
-			$facturaCompra = $_POST['factura'];
-			console.log($idProducto);
-			$errores = $DetallefacDAO->borrarDetalleFac($idProducto,$factura);
+			$facturaCompra = $_POST['facturaCompra'];
+			$errores = $DetallefacCompraDAO->borrarDetalleFacCompra($idProducto,$facturaCompra);
 			if($errores == 0){
 				echo 'Error';
 			}
@@ -165,11 +165,11 @@
 		if($_POST['tipo'] == 'editar'){
 			$provedorDAO = new DetallefacDAO();
 			$idProducto = $_POST['idProducto'];
-			$facturaCompra = $_POST['factura'];
+			$facturaCompra = $_POST['facturaCompra'];
 			$producto = $_POST['producto'];
 			$cantidad = $_POST['cantidad'];
 			$valor = $_POST['valor'];
-			$errores = $provedorDAO->editarDetalleFacCompra($idProducto, $factura, $producto, $cantidad, $valor);
+			$errores = $provedorDAO->editarDetalleFacCompra($idProducto, $facturaCompra, $producto, $cantidad, $valor);
 			if($errores == 0){
 				echo 'Error';
 			}

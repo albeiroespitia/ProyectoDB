@@ -104,11 +104,10 @@ $(document).ready(function() {
 
 	$(document).on('click', '.borrar' ,function(){	
 		var idProducto = $(this).closest('tr').find('#idProducto').html();
-		var facturaCompra = $(this).closest('tr').find('#factura').html();
-		console.log(idProducto);
+		var facturaCompra = $(this).closest('tr').find('#facturaCompra').html();
 		$.ajax({
 			url: '/ProyectoDB/Controller/ControllerDetalleFac.php',
-			data : {tipo : 'eliminar',idProducto: idProducto, facturaCompra:factura},
+			data : {tipo : 'eliminar',idProducto: idProducto, facturaCompra:facturaCompra},
 			type : 'POST',
 			success: function(res){
 				
@@ -151,11 +150,10 @@ $(document).ready(function() {
 			data : {tipo : 'listarFacturaEditar'},
 			type : 'POST',
 			success: function(res){
-				console.log("hola");
 				if(res == 'No hay datos'){
-					$('.selectFacturaEditar').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+					$('.selectFacturaCompraEditar').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
 				}else{
-					$('.selectFacturaEditar').html(res);
+					$('.selectFacturaCompraEditar').html(res);
 				}
 		   		
 		   		$('select').material_select();

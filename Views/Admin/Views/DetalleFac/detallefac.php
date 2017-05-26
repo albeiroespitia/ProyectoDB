@@ -81,8 +81,8 @@
     <li class="titulo">Tablas</li>
       <li ><a href="../../admin.php">Ciudad</a></li>
       <li><a href="../Cliente/cliente.php">Cliente</a></li>  
-      <li><a href="../DetalleFac/detallefac.php">Detalle Factura</a></li>
-      <li class="selected"><a href="../DetalleFacCompra/detallefaccompra.php">Detalle Factura Compra</a></li>
+      <li class="selected"><a href="../DetalleFac/detallefac.php">Detalle Factura</a></li>
+      <li ><a href="../DetalleFacCompra/detallefaccompra.php">Detalle Factura Compra</a></li>
       <li><a href="../DetalleVentaServicio/detalleventaservicio.php">Detalle Venta Servicio</a></li>
       <li><a href="../Factura/factura.php">Factura</a></li>
       <li><a href="../FacturaCompra/facturacompra.php">Factura Compra</a></li>
