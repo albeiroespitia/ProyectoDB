@@ -1,6 +1,6 @@
 function reload(){
 	$.ajax({
-		url: '/ProyectoDB/Controller/ControllerCiudad.php',
+		url: '/ProyectoDB/Controller/ControllerDetalleFacVenta.php',
 		data : {tipo : 'listar'},
 		type : 'POST',
 		success: function(res){
@@ -9,24 +9,61 @@ function reload(){
 	})
 }
 
+
 $.holdReady(true);
 reload();
 $.holdReady(false);
 
 $(document).ready(function() {
-	
+	$('.agregarButton').click(function(){
+		$.ajax({
+			url: '/ProyectoDB/Controller/ControllerDetalleFacVenta.php',
+			data : {tipo : 'listarFacturaServicio'},
+			type : 'POST',
+			success: function(res){
+				if(res == 'No hay datos'){
+					$('.selectFacturaServicio').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+				}else{
+					$('.selectFacturaServicio').html(res);
+				}
+		   		
+		   		$('select').material_select();
+			}
+		})
+		$.ajax({
+			url: '/ProyectoDB/Controller/ControllerDetalleFacVenta.php',
+			data : {tipo : 'listarServicios'},
+			type : 'POST',
+			success: function(res){
+				console.log("hola");
+				if(res == 'No hay datos'){
+					$('.selectServicio').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+				}else{
+					$('.selectServicio').html(res);
+				}
+		   		
+		   		$('select').material_select();
+			}
+		})
+	})
+
+
 	$('#add-form').submit(function(e){
 		e.preventDefault();
-		var nombreCiudad = $('input[name="nombreCiudad"]').val();
+		var facturaServicio = $('#tipoF').val();
+		var servicio = $('#tipoS').val();
+		var horas = $('input[name="Horas"]').val();
+		
+		
 		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerCiudad.php',
-			data : {tipo : 'agregar',nombreCiudad: nombreCiudad},
+			url: '/ProyectoDB/Controller/ControllerDetalleFacVenta.php',
+			data : {tipo : 'agregar',facturaServicio: facturaServicio,servicio:servicio, horas: horas},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
-					$('.error-create').html('Hubo un error al ingresar la nueva ciudad');
+					$('.error-create').html('Hubo un error al ingresar el detalle factura');
 				}else{
-					 Materialize.toast('Ciudad creada exitosamente!', 2000) 
+					 Materialize.toast('Detalle factura creado exitosamente!', 2000) 
 					 reload();
 					 $('#modal1').modal('close');
 					 $('.error-create').html('');
@@ -38,17 +75,20 @@ $(document).ready(function() {
 
 	$('#edit-form').submit(function(e){
 		e.preventDefault();
-		var nuevoNombreCiudad = $('input[name="nuevoNombreCiudad"]').val();
-		console.log(nuevoNombreCiudad);
+		var facturaServicio = $('#tipoFE').val();
+		var servicio = $('#tipoSE').val();
+		var horas = $('input[name="cantidad"]').val();
+
+		
 		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerCiudad.php',
-			data : {tipo : 'editar', idCiudad: pk1 , nombreCiudad: nuevoNombreCiudad},
+			url: '/ProyectoDB/Controller/ControllerDetalleFacVenta.php',
+			data : {tipo : 'editar', facturaServicio: facturaServicio,servicio:servicio, horas: horas},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
-					$('.error-create').html('Hubo un error al ingresar la nueva ciudad');
+					$('.error-create').html('Hubo un error al editar el detalle factura compra');
 				}else{
-					 Materialize.toast('Ciudad editada exitosamente!', 2000) 
+					 Materialize.toast('Detalle factura compra editado exitosamente!', 2000) 
 					 reload();
 					 $('#modal2').modal('close');
 					 $('.error-create').html('');
@@ -59,16 +99,19 @@ $(document).ready(function() {
 	})
 
 	$(document).on('click', '.borrar' ,function(){	
-		var idCiudad = $(this).closest('tr').find('#idCiudad').html();
+		var facturaServicio = $(this).closest('tr').find('#Factura servicio').html();
+		var servicio = $(this).closest('tr').find('#Servicio').html();
+		
 		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerCiudad.php',
-			data : {tipo : 'eliminar',idCiudad: idCiudad},
+			url: '/ProyectoDB/Controller/ControllerDetalleFacVenta.php',
+			data : {tipo : 'eliminar',facturaServicio: facturaServicio, servicio:servicio},
 			type : 'POST',
 			success: function(res){
+				
 				if(res == 'Error'){
-					Materialize.toast('Error al eliminar la ciudad, Verifica que no este siendo usada!', 2000);
+					Materialize.toast('Error al eliminar detalle factura, Verifica que no este siendo usada!', 2000);
 				}else{
-					Materialize.toast('Ciudad eliminada exitosamente!', 2000);
+					Materialize.toast('Detalle factura eliminada exitosamente!', 2000);
 					reload();
 				}
 			}
@@ -77,18 +120,43 @@ $(document).ready(function() {
 
 
 	$(document).on('click', '.editar' ,function(){
-		    pk1 = $(this).closest('tr').find('#idCiudad').html();
-		    pk2 = $(this).closest('tr').find('#nombre').html();
+		    pk1 = $(this).closest('tr').find('#Factura servicio').html();
+		    pk2 = $(this).closest('tr').find('#Servicio').html();
+		    pk3 = $(this).closest('tr').find('#Horas').html();
 
-			$('input[name="nuevoNombreCiudad"]').val(pk2);
+			$('input[name="Horas"]').val(pk3);
+	$.ajax({
+			url: '/ProyectoDB/Controller/ControllerDetalleFacVenta.php',
+			data : {tipo : 'listarFacturaServicio'},
+			type : 'POST',
+			success: function(res){
+				if(res == 'No hay datos'){
+					$('.selectFacturaServicioEditar').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+				}else{
+					$('.selectFacturaServicioEditar').html(res);
+				}
+		   		
+		   		$('select').material_select();
+			}
+		})
+		$.ajax({
+			url: '/ProyectoDB/Controller/ControllerDetalleFacVenta.php',
+			data : {tipo : 'listarServicios'},
+			type : 'POST',
+			success: function(res){
+				console.log("hola");
+				if(res == 'No hay datos'){
+					$('.selectServicioEditar').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+				}else{
+					$('.selectServicioEditar').html(res);
+				}
+		   		
+		   		$('select').material_select();
+			}
+		})
+			
+
 	});
-
-
-
-
-
-
-
 
 
 

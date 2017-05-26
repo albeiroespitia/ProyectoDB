@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<title>Admin</title>
+	<title>Admin</title> 
 </head>
 <body>
 
@@ -15,9 +15,17 @@
         <div class="row">
           <form id="add-form" action="" method="POST" class="col s12">
             <div class="row">
+              <div class="input-field col s12 selectFacturaServicio">  
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectServicio">  
+              </div>
+            </div>
+             <div class="row">
               <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" name="nombreCiudad" class="validate" required>
-                <label for="icon_prefix">Nombre de la ciudad</label>
+                <input id="icon_prefix" type="text" onfocus="(this.type='time')" onblur="(this.type='text')" name="Horas" placeholder="" class="validate" required>
+                <label for="icon_prefix">Horas</label>
               </div>
             </div>
             <div class="modal-footer">
@@ -33,10 +41,18 @@
       <div class="modal-content">
         <div class="row">
           <form id="edit-form" action="" method="" class="col s12">
+           <div class="row">
+              <div class="input-field col s12 selectFacturaServicioEditar">  
+              </div>
+            </div>
             <div class="row">
-              <div class="input-field col s12"><i class="material-icons prefix active">account_circle</i>
-                <input id="icon_prefix " type="text" name="nuevoNombreCiudad" class="validate" required>
-                <label for="icon_prefix" class="active"></label>
+              <div class="input-field col s12 selectFacturaServicioEditar">  
+              </div>
+            </div>
+             <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" onfocus="(this.type='time')" onblur="(this.type='text')" name="HorasEditar" placeholder="" class="validate" required>
+                <label for="icon_prefix">Horas</label>
               </div>
             </div>
             <div class="modal-footer">
@@ -47,6 +63,7 @@
         </div>
       </div>
     </div>
+
 
 <div class="row">
 
@@ -73,13 +90,14 @@
     </div>
 
     <div class="col s9">
-      <h3>Ciudad</h3>
+      <h3>Detalle venta servicio</h3>
      <a class="waves-effect waves-light btn agregarButton" href="#modal1">Agregar</a>
      <table class="tablaDatos">
         <thead>
           <tr>
-              <th>idCiudad</th>
-              <th>Nombre</th>
+              <th>Factura servicio</th>
+              <th>Servicio</th>
+              <th>Horas</th>
           </tr>
         </thead>
         <tbody class="cuerpoTabla">
@@ -87,13 +105,7 @@
         </tbody>
       </table> 
     </div>
-
-     
-
 </div>
-
-
-
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
