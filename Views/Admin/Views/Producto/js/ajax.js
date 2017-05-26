@@ -16,20 +16,6 @@ $.holdReady(false);
 $(document).ready(function() {
 
 	$('.agregarButton').click(function(){
-		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerProducto.php',
-			data : {tipo : 'listarCc'},
-			type : 'POST',
-			success: function(res){
-				if(res == 'No hay datos'){
-					$('.selectCiudad').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
-				}else{
-					$('.selectCiudad').html(res);
-				}
-		   		
-		   		$('select').material_select();
-			}
-		})
 
 	})
 	
@@ -111,15 +97,6 @@ $(document).ready(function() {
 			$('input[name="nuevadescripcionProducto"]').val(pk3);
 			$('input[name="nuevacantidadProducto"]').val(pk4);
 
-			$.ajax({
-				url: '/ProyectoDB/Controller/ControllerProducto.php',
-				data : {tipo : 'listarCcEditar'},
-				type : 'POST',
-				success: function(res){
-			   		$('.selectCiudadEditar').html(res);
-			   		$('select').material_select();
-				}
-			})
 	});
 
 

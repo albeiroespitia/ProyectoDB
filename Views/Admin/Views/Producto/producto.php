@@ -114,8 +114,6 @@
               <th>Nombre</th>
               <th>Descripcion</th>
               <th>Cantidad</th>
-              <th>Proovedor ID</th>
-              <th>Proovedor Nombre</th>
           </tr>
         </thead>
         <tbody class="cuerpoTabla">

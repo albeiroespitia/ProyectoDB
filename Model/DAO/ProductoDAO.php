@@ -11,25 +11,8 @@
 
 
 		public function listarProductos(){
-			$sql = "SELECT *,proovedor.nombre AS nombreU, producto.nombre AS nombreP
-					FROM producto
-					INNER JOIN proovedor ON producto.proovedor = proovedor.idProovedor";
-			$consulta = $this->db->prepare($sql);
-			$resultado = $consulta->execute();
-			$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);
-
-			if($provedores == true){
-				return $provedores;
-			}else{
-				return 0;
-			}
-
-			$consulta->closeCursor();
-
-		}
-
-		public function listarProvedores(){
-			$sql = "SELECT * FROM proovedor";
+			$sql = "SELECT *, producto.nombre AS nombreP
+					FROM producto";
 			$consulta = $this->db->prepare($sql);
 			$resultado = $consulta->execute();
 			$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);
@@ -45,11 +28,11 @@
 		}
 	
 
-		public function editarProducto($idProducto,$nombre, $descripcion, $cantidad,$proovedor){
+		public function editarProducto($idProducto,$nombre, $descripcion, $cantidad){
 			try{
-				$sql = "UPDATE producto SET nombre = ?, descripcion = ?, cantidad = ? , proovedor = ? WHERE idProducto = ?";
+				$sql = "UPDATE producto SET nombre = ?, descripcion = ?, cantidad = ? WHERE idProducto = ?";
 				$consulta = $this->db->prepare($sql);
-				$resultado = $consulta->execute(array($nombre, $descripcion, $cantidad, $proovedor, $idProducto));
+				$resultado = $consulta->execute(array($nombre, $descripcion, $cantidad, $idProducto));
 				return 1;
 			}catch (PDOException $e){
 				return 0;
@@ -73,11 +56,11 @@
 
 		}
 
-		public function crearProducto($nombre, $descripcion, $cantidad, $provedor){
+		public function crearProducto($nombre, $descripcion, $cantidad){
 			try{
-				$sql = "INSERT INTO producto VALUES(NULL,?,?,?,?)";
+				$sql = "INSERT INTO producto VALUES(NULL,?,?,?)";
 				$consulta = $this->db->prepare($sql);
-				$resultado = $consulta->execute(array($nombre, $descripcion, $cantidad, $provedor));
+				$resultado = $consulta->execute(array($nombre, $descripcion, $cantidad));
 				return 1;
 			}catch (PDOException $e){
 				return 0;

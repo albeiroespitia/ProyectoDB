@@ -15,67 +15,11 @@
 				            <td id="idProducto">'.$row['idProducto'].' </td>
 				            <td id="nombre">'.$row['nombreP'].'</td>
 				            <td id="descripcion">'.$row['descripcion'].' </td>
-				            <td id="cantidad">'.$row['cantidad'].' </td>
-				            <td id="idProovedor">'.$row['idProovedor'].'</td>
-				            <td id="nombre">'.$row['nombreU'].' </td>				    
+				            <td id="cantidad">'.$row['cantidad'].' </td>			    
 				            <td><a class="editar" href="#modal2"><i class="material-icons">edit</i></a><a class="borrar"><i class="material-icons">delete</i></a></td>
 				          </tr>';
 				
 				}
-
-				echo $html;
-			}else{
-				echo 'No hay datos';
-			}
-			
-
-		}
-
-		if($_POST['tipo'] == 'listarCc'){
-			$proyectoDAO = new ProductoDAO();
-			$array_proyecto = $proyectoDAO->listarProvedores();
-			$html = " ";
-			if($array_proyecto != 0){
-
-				$html = '<i class="material-icons prefix">account_circle</i>
-					<select  id="tipoC" required>
-						<option value="" disabled selected>Escoje un proovedor</option>';
-				$contador = 1;
-				foreach ($array_proyecto as $row){
-					$html .= '<option value="'.$row['idProovedor'].'">'.$row['idProovedor'].' - '.$row['nombre'].'</option>';
-					$contador++;
-				}
-
-				$html .= '</select>
-						  <label>ID - Nombre</label>';
-
-				echo $html;
-			}else{
-				echo 'No hay datos';
-			}
-			
-
-		}
-
-		
-
-		if($_POST['tipo'] == 'listarCcEditar'){
-			$proyectoDAO = new ProductoDAO();
-			$array_provedores = $proyectoDAO->listarProvedores();
-			$html = " ";
-			if($array_provedores != 0){
-
-				$html = '<i class="material-icons prefix">account_circle</i>
-					<select  id="tipoTE" required>
-						<option value="" disabled selected>Escoje un proovedor</option>';
-				$contador = 1;
-				foreach ($array_provedores as $row){
-					$html .= '<option value="'.$row['idProovedor'].'">'.$row['idProovedor'].' - '.$row['nombre'].'</option>';
-					$contador++;
-				}
-
-				$html .= '</select>
-						  <label>ID - Nombre</label>';
 
 				echo $html;
 			}else{
@@ -93,7 +37,7 @@
 			$descripcionProducto = $_POST['descripcionProducto'];
 			$cantidadProducto = $_POST['cantidadProducto'];
 			$idProvedor = $_POST['idProvedor'];
-			$errores = $proyectoDAO->crearProducto($nombreProducto, $descripcionProducto, $cantidadProducto, $idProvedor);
+			$errores = $proyectoDAO->crearProducto($nombreProducto, $descripcionProducto, $cantidadProducto);
 			if($errores == 0){
 				echo 'Error';
 			}
@@ -119,7 +63,7 @@
 			$descripcionProducto = $_POST['descripcionProducto'];
 			$cantidadProducto = $_POST['cantidadProducto'];
 			$idProvedor = $_POST['idProvedor'];
-			$errores = $provedorDAO->editarProducto($idProducto,$nombreProducto,$descripcionProducto,$cantidadProducto, $idProvedor);
+			$errores = $provedorDAO->editarProducto($idProducto,$nombreProducto,$descripcionProducto,$cantidadProducto);
 			if($errores == 0){
 				echo 'Error';
 			}
