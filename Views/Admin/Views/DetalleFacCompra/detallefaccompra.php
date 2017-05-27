@@ -93,7 +93,6 @@
       <li><a href="../Producto/producto.php">Producto</a></li>
       <li><a href="../Proovedor/proovedor.php">Proovedor</a></li>
       <li><a href="../Proyecto/proyecto.php">Proyecto</a></li>
-      <li><a href="../Servicio/servicio.php">Servicio</a></li>
       <li><a href="../Usuario/usuario.php">Usuario</a></li>
     </ul>
     </div>

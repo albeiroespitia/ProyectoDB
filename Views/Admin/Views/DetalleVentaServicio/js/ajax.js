@@ -77,12 +77,12 @@ $(document).ready(function() {
 		e.preventDefault();
 		var facturaServicio = $('#tipoFE').val();
 		var servicio = $('#tipoSE').val();
-		var horas = $('input[name="cantidad"]').val();
+		var horas = $('input[name="HorasEditar"]').val();
 
 		
 		$.ajax({
 			url: '/ProyectoDB/Controller/ControllerDetalleFacVenta.php',
-			data : {tipo : 'editar', facturaServicio: facturaServicio,servicio:servicio, horas: horas},
+			data : {tipo : 'editar',idServicio:pk2, facturaServicio:pk1 ,servicio:servicio, horas: horas},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
@@ -99,7 +99,7 @@ $(document).ready(function() {
 	})
 
 	$(document).on('click', '.borrar' ,function(){	
-		var facturaServicio = $(this).closest('tr').find('#Factura servicio').html();
+		var facturaServicio = $(this).closest('tr').find('#Facturaservicio').html();
 		var servicio = $(this).closest('tr').find('#Servicio').html();
 		
 		$.ajax({
@@ -120,14 +120,14 @@ $(document).ready(function() {
 
 
 	$(document).on('click', '.editar' ,function(){
-		    pk1 = $(this).closest('tr').find('#Factura servicio').html();
+		    pk1 = $(this).closest('tr').find('#Facturaservicio').html();
 		    pk2 = $(this).closest('tr').find('#Servicio').html();
 		    pk3 = $(this).closest('tr').find('#Horas').html();
 
 			$('input[name="Horas"]').val(pk3);
 	$.ajax({
 			url: '/ProyectoDB/Controller/ControllerDetalleFacVenta.php',
-			data : {tipo : 'listarFacturaServicio'},
+			data : {tipo : 'listarFacturaServicioEditar'},
 			type : 'POST',
 			success: function(res){
 				if(res == 'No hay datos'){
@@ -141,7 +141,7 @@ $(document).ready(function() {
 		})
 		$.ajax({
 			url: '/ProyectoDB/Controller/ControllerDetalleFacVenta.php',
-			data : {tipo : 'listarServicios'},
+			data : {tipo : 'listarServiciosEditar'},
 			type : 'POST',
 			success: function(res){
 				console.log("hola");

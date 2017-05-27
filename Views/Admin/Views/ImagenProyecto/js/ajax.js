@@ -1,6 +1,6 @@
 function reload(){
 	$.ajax({
-		url: '/ProyectoDB/Controller/ControllerCiudad.php',
+		url: '/ProyectoDB/Controller/ControllerImagenProyecto.php',
 		data : {tipo : 'listar'},
 		type : 'POST',
 		success: function(res){
@@ -15,60 +15,34 @@ $.holdReady(false);
 
 $(document).ready(function() {
 	
-	$('#add-form').submit(function(e){
-		e.preventDefault();
-		var nombreCiudad = $('input[name="nombreCiudad"]').val();
+	$('.agregarButton').click(function(){
 		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerCiudad.php',
-			data : {tipo : 'agregar',nombreCiudad: nombreCiudad},
+			url: '/ProyectoDB/Controller/ControllerImagenProyecto.php',
+			data : {tipo : 'listarProductos'},
 			type : 'POST',
 			success: function(res){
-				if(res == 'Error'){
-					$('.error-create').html('Hubo un error al ingresar la nueva ciudad');
+		   		if(res == 'No hay datos'){
+					$('.selectProducto').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
 				}else{
-					 Materialize.toast('Ciudad creada exitosamente!', 2000) 
-					 reload();
-					 $('#modal1').modal('close');
-					 $('.error-create').html('');
+					$('.selectProducto').html(res);
 				}
-
+		   		$('select').material_select();
 			}
 		})
-	})
 
-	$('#edit-form').submit(function(e){
-		e.preventDefault();
-		var nuevoNombreCiudad = $('input[name="nuevoNombreCiudad"]').val();
-		console.log(nuevoNombreCiudad);
-		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerCiudad.php',
-			data : {tipo : 'editar', idCiudad: pk1 , nombreCiudad: nuevoNombreCiudad},
-			type : 'POST',
-			success: function(res){
-				if(res == 'Error'){
-					$('.error-create').html('Hubo un error al ingresar la nueva ciudad');
-				}else{
-					 Materialize.toast('Ciudad editada exitosamente!', 2000) 
-					 reload();
-					 $('#modal2').modal('close');
-					 $('.error-create').html('');
-				}
-
-			}
-		})
 	})
 
 	$(document).on('click', '.borrar' ,function(){	
-		var idCiudad = $(this).closest('tr').find('#idCiudad').html();
+		var idImagenProducto = $(this).closest('tr').find('#idImagenProducto').html();
 		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerCiudad.php',
-			data : {tipo : 'eliminar',idCiudad: idCiudad},
+			url: '/ProyectoDB/Controller/ControllerImagenProyecto.php',
+			data : {tipo : 'eliminar',idImagenProducto: idImagenProducto},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
-					Materialize.toast('Error al eliminar la ciudad, Verifica que no este siendo usada!', 2000);
+					Materialize.toast('Error al eliminar la imagen, Verifica que no este siendo usada!', 2000);
 				}else{
-					Materialize.toast('Ciudad eliminada exitosamente!', 2000);
+					Materialize.toast('Imagen eliminada exitosamente!', 2000);
 					reload();
 				}
 			}
@@ -77,10 +51,26 @@ $(document).ready(function() {
 
 
 	$(document).on('click', '.editar' ,function(){
-		    pk1 = $(this).closest('tr').find('#idCiudad').html();
-		    pk2 = $(this).closest('tr').find('#nombre').html();
+		    pk1 = $(this).closest('tr').find('#idImagenProducto').html();
+		    pk2 = $(this).closest('tr').find('#descripcion').html();
+		    $('input[name="idProducto"]').val(pk1)
 
-			$('input[name="nuevoNombreCiudad"]').val(pk2);
+			$('input[name="descripcionEditar"]').val(pk2);
+	$.ajax({
+			url: '/ProyectoDB/Controller/ControllerImagenProyecto.php',
+			data : {tipo : 'listarProductosEditar'},
+			type : 'POST',
+			success: function(res){
+				if(res == 'No hay datos'){
+					$('.selectProductoEditar').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
+				}else{
+					$('.selectProductoEditar').html(res);
+				}
+		   		
+		   		$('select').material_select();
+			}
+		})	
+
 	});
 
 

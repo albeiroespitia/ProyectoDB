@@ -42,7 +42,7 @@
         <div class="row">
           <form id="edit-form" action="" method="" class="col s12">
            <div class="row">
-              <div class="input-field col s12 selectFacturaServicioEditar">  
+              <div class="input-field col s12 selectServicioEditar">  
               </div>
             </div>
             <div class="row">
@@ -84,7 +84,6 @@
       <li><a href="../Producto/producto.php">Producto</a></li>
       <li><a href="../Proovedor/proovedor.php">Proovedor</a></li>
       <li><a href="../Proyecto/proyecto.php">Proyecto</a></li>
-      <li><a href="../Servicio/servicio.php">Servicio</a></li>
       <li><a href="../Usuario/usuario.php">Usuario</a></li>
     </ul>
     </div>

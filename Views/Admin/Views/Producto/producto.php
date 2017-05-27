@@ -32,10 +32,6 @@
                 <label for="icon_prefix">Cantidad</label>
               </div>
             </div>
-            <div class="row">
-              <div class="input-field col s12 selectCiudad">  
-              </div>
-            </div>
             <div class="modal-footer">
               <h6 class="error-create"></h6>
               <button id="addButon" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="addButon">Registrar</button>
@@ -99,7 +95,6 @@
       <li class="selected"><a href="../Producto/producto.php">Producto</a></li>
       <li><a href="../Proovedor/proovedor.php">Proovedor</a></li>
       <li><a href="../Proyecto/proyecto.php">Proyecto</a></li>
-      <li><a href="../Servicio/servicio.php">Servicio</a></li>
       <li><a href="../Usuario/usuario.php">Usuario</a></li>
     </ul>
     </div>

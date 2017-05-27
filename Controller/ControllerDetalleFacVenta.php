@@ -12,7 +12,7 @@
 
 				foreach ($array_provedores as $row) {
 				$html .= '<tr>
-							<td id="Factura servicio">'.$row['FacturaServicio'].'</td>
+							<td id="Facturaservicio">'.$row['FacturaServicio'].'</td>
 				            <td id="Servicio">'.$row['Servicio'].' </td>
 				            <td id="Horas">'.$row['Horas'].'</td>
 				            <td><a class="editar" href="#modal2"><i class="material-icons">edit</i></a><a class="borrar"><i class="material-icons">delete</i></a></td>
@@ -64,7 +64,7 @@
 						<option value="" disabled selected>Escoje una opcion</option>';
 				$contador = 1;
 				foreach ($array_provedores as $row){
-					$html .= '<option value="'.$row['FacturaServicio'].'">'.$row['idFacturaServicio'].'</option>';
+					$html .= '<option value="'.$row['idFacturaServicio'].'">'.$row['idFacturaServicio'].'</option>';
 					$contador++;
 				}
 
@@ -150,7 +150,7 @@
 			$DetallefacCompraDAO = new DetalleFacServicioDAO();
 			$FacturaServicio = $_POST['facturaServicio'];
 			$Servicio = $_POST['servicio'];
-			$errores = $DetallefacCompraDAO->borrarDetalleFacServicio($FacturaServicio,$Servicio);
+			$errores = $DetallefacCompraDAO->borrarDetalleFacCompra($Servicio,$FacturaServicio);
 			if($errores == 0){
 				echo 'Error';
 			}
@@ -163,7 +163,8 @@
 			$facturaServicio = $_POST['facturaServicio'];
 			$Servicio = $_POST['servicio'];
 			$horas = $_POST['horas'];
-			$errores = $provedorDAO->editarDetalleFacServicio($idProducto, $facturaCompra, $producto, $cantidad, $valor);
+			$idServicio = $_POST['idServicio'];
+			$errores = $provedorDAO->editarDetallefacCompra($idServicio, $facturaServicio, $Servicio, $horas);
 			if($errores == 0){
 				echo 'Error';
 			}

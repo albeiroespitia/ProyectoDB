@@ -85,14 +85,13 @@
       <li><a href="../DetalleVentaServicio/detalleventaservicio.php">Detalle Venta Servicio</a></li>
       <li><a href="../Factura/factura.php">Factura</a></li>
       <li><a href="../FacturaCompra/facturacompra.php">Factura Compra</a></li>
-      <li><a href="../FacturaServicio/facturaservicio.php">Factura Servicio</a></li>
+      <li class="selected"><a href="../FacturaServicio/facturaservicio.php">Factura Servicio</a></li>
       <li><a href="../FormaPago/formapago.php">Forma Pago</a></li>
       <li><a href="../ImagenProducto/imagenproducto.php">Imagen Producto</a></li>
       <li><a href="../ImagenProyecto/imagenproyecto.php">Imagen Proyecto</a></li>
       <li><a href="../Producto/producto.php">Producto</a></li>
-      <li class="selected"><a href="../Proovedor/proovedor.php">Proovedor</a></li>
+      <li ><a href="../Proovedor/proovedor.php">Proovedor</a></li>
       <li><a href="../Proyecto/proyecto.php">Proyecto</a></li>
-      <li><a href="../Servicio/servicio.php">Servicio</a></li>
       <li><a href="../Usuario/usuario.php">Usuario</a></li>
     </ul>
     </div>

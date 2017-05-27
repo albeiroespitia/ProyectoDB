@@ -10,43 +10,67 @@
 </head>
 <body>
 
-  <div id="modal1" class="modal">
-      <div class="modal-content">
+
+    <div id="modal1" class="modal">
+        <form action="../../../../Controller/ControllerImagenProducto.php" id="add-form" method="POST" enctype="multipart/form-data">
+        <div class="modal-content">
+        <input type="hidden" name="idUser" value="<?=$_SESSION['idUsuario'];?>"></input>
         <div class="row">
-          <form id="add-form" action="" method="POST" class="col s12">
-            <div class="row">
               <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" name="nombreCiudad" class="validate" required>
-                <label for="icon_prefix">Nombre de la ciudad</label>
+                <input id="icon_prefix" type="text" name="descripcionI" class="validate" required>
+                <label for="icon_prefix">Descripcion de la imagen</label>
               </div>
             </div>
-            <div class="modal-footer">
-              <h6 class="error-create"></h6>
-              <button id="addButon" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="addButon">Registrar</button>
+            <div class="row">
+              <div class="input-field col s12 selectProducto">  
+              </div>
             </div>
-          </form>
+             <div class="file-field input-field">
+              <div class="btn">
+                <span>File</span>
+                <input name="uploadFile" type="file">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
+            </div>
         </div>
+        <div class="modal-footer">
+          <button type="submit" name="inputImage" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</button>
+        </div>
+        </form>
       </div>
-    </div>
 
       <div id="modal2" class="modal">
-      <div class="modal-content">
+        <form action="../../../../Controller/ControllerImagenProducto.php" id="edit-form" method="POST" enctype="multipart/form-data">
+        <div class="modal-content">
+        <input type="hidden" name="idUser" value="<?=$_SESSION['idUsuario'];?>"></input>
+        <input type="hidden" name="idProducto" value=""></input>
         <div class="row">
-          <form id="edit-form" action="" method="" class="col s12">
-            <div class="row">
-              <div class="input-field col s12"><i class="material-icons prefix active">account_circle</i>
-                <input id="icon_prefix " type="text" name="nuevoNombreCiudad" class="validate" required>
-                <label for="icon_prefix" class="active"></label>
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="descripcionEditar" class="validate" required>
+                <label for="icon_prefix"></label>
               </div>
             </div>
-            <div class="modal-footer">
-              <h6 class="error-create"></h6>
-              <button id="editButton" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="editButon">Editar</button>
+            <div class="row">
+              <div class="input-field col s12 selectProductoEditar">  
+              </div>
             </div>
-          </form>
+             <div class="file-field input-field">
+              <div class="btn">
+                <span>File</span>
+                <input name="uploadFile" type="file">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
+            </div>
         </div>
+        <div class="modal-footer">
+          <button type="submit" name="inputImageEditar" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</button>
+        </div>
+        </form>
       </div>
-    </div>
 
 <div class="row">
 
@@ -67,19 +91,22 @@
       <li><a href="../Producto/producto.php">Producto</a></li>
       <li><a href="../Proovedor/proovedor.php">Proovedor</a></li>
       <li><a href="../Proyecto/proyecto.php">Proyecto</a></li>
-      <li><a href="../Servicio/servicio.php">Servicio</a></li>
       <li><a href="../Usuario/usuario.php">Usuario</a></li>
     </ul>
     </div>
 
     <div class="col s9">
-      <h3>Ciudad</h3>
+      <h3>Imagen Producto</h3>
      <a class="waves-effect waves-light btn agregarButton" href="#modal1">Agregar</a>
      <table class="tablaDatos">
         <thead>
           <tr>
-              <th>idCiudad</th>
-              <th>Nombre</th>
+              <th>idImagenProducto</th>
+              <th>Descripcion</th>
+              <th>Imagen</th>
+              <th>idProducto</th>
+              <th>nombreProducto</th>
+              
           </tr>
         </thead>
         <tbody class="cuerpoTabla">

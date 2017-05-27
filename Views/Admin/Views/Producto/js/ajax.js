@@ -15,9 +15,6 @@ $.holdReady(false);
 
 $(document).ready(function() {
 
-	$('.agregarButton').click(function(){
-
-	})
 	
 	$('#add-form').submit(function(e){
 		e.preventDefault();

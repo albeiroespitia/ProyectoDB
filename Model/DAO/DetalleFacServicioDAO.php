@@ -56,11 +56,11 @@
 
 	
 
-		public function editarDetallefacCompra($idProducto, $facturaCompra, $producto, $cantidad, $valor){
+		public function editarDetallefacCompra($idServicio, $facturaservicio, $servicio, $horas){
 			try{
-				$sql = "UPDATE detallefaccompra SET Producto = ? , cantidad = ?, valor = ?  WHERE Producto = ? and FacturaCompra = ?";
+				$sql = "UPDATE detalleventaservicio SET Servicio = ?, Horas = ?  WHERE FacturaServicio = ? and Servicio = ?";
 				$consulta = $this->db->prepare($sql);
-				$resultado = $consulta->execute(array($producto, $cantidad, $valor, $idProducto, $facturaCompra));
+				$resultado = $consulta->execute(array($servicio, $horas, $facturaservicio,$idServicio));
 				return 1;
 			}catch (PDOException $e){
 				return 0;
@@ -70,11 +70,11 @@
 
 		}
 
-		public function borrarDetalleFacCompra($idProducto,$detallefactura){
+		public function borrarDetalleFacCompra($idServicio,$facturaservicio){
 			try{
-				$sql = "DELETE FROM detallefaccompra WHERE producto = ? and FacturaCompra = ?";
+				$sql = "DELETE FROM detalleventaservicio WHERE FacturaServicio = ? and Servicio = ?";
 				$consulta = $this->db->prepare($sql);
-				$resultado = $consulta->execute(array($idProducto,$detallefactura));
+				$resultado = $consulta->execute(array($facturaservicio,$idServicio));
 				return 1;
 			}catch (PDOException $e){
 				return 0;
