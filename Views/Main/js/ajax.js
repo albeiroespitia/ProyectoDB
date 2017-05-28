@@ -36,5 +36,6 @@ $(document).ready(function() {
 				$('.productos').html(res);
 			}
 		})
+
 	
 });

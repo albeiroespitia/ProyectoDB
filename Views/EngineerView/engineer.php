@@ -18,12 +18,47 @@
 </head>
 
 <body>
+    <input type="hidden" name="idUser" value="<?=$_SESSION['idUsuario'];?>"></input>
    
    <ul class="floatingNav">
         <li class="ulItem1"><img src="./img/productoIcon.svg"></li>
         <li class="ulItem2"><img src="./img/serviceIcon.svg"></li>
         <li class="ulItem3"><img src="./img/projectIcon.svg"></li>  
    </ul>
+
+   <div id="modal1" class="modal">
+      <div class="modal-content">
+        <div class="row">
+          <form id="addCatalogoForm" action="" method="" class="col s12">
+            <div class="row">
+              <div class="input-field col s12 selectProducto">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <h6 class="error-user"></h6>
+              <button id="login" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="login">Agregar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal2" class="modal">
+      <div class="modal-content">
+        <div class="row">
+          <form id="deleteCatalogoForm" action="" method="" class="col s12">
+            <div class="row">
+              <div class="input-field col s12 selectProductoDelete">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <h6 class="error-user"></h6>
+              <button id="login" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="login">Borrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
      <ul id="slide-out" class="side-nav">
         <li><div class="userView">
@@ -32,9 +67,8 @@
           </div>
           <span class="white-text name">Gestion de productos</span>
         </div></li>
-        <li><a href="#!"><i class="material-icons">add</i>Agregar Producto</a></li>
-        <li><a href="#!"><i class="material-icons">mode_edit</i>Editar Producto</a></li>
-        <li><a href="#!"><i class="material-icons">delete</i>Eliminar Producto</a></li>
+        <li><a href="#modal1" id="addProduct"><i class="material-icons">add</i>Agregar al catalogo</a></li>
+        <li><a href="#modal2" id="deleteProduct"><i class="material-icons">delete</i>Eliminar del catalogo</a></li>
         <li><div class="divider"></div></li>
       </ul>
 
@@ -63,32 +97,6 @@
         <li><a href="#!"><i class="material-icons">delete</i>Eliminar Proyecto</a></li>
         <li><div class="divider"></div></li>
       </ul>
-
-
-    <div id="modal1" class="modal">
-      <div class="modal-content">
-        <div class="row">
-          <form id="login-form" action="../../Controller/Action/act_login.php" method="POST" class="col s12">
-            <div class="row">
-              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" name="username" class="validate" required>
-                <label for="icon_prefix">Usuario</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
-                <input id="icon_prefix" type="password" name="password" class="validate" required>
-                <label for="icon_prefix">Contraseña</label>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <h6 class="error-user"> </h6>
-              <button id="login" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="login">Registrar</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
 
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
@@ -341,6 +349,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <script type="text/javascript" src="js/initialization.js"></script>
     <script type="text/javascript" src="js/scroll.js"></script>
+    <script type="text/javascript" src="js/ajax.js"></script>
 </body>
 
 </html>

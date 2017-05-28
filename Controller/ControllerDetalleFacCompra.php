@@ -55,6 +55,72 @@
 			}
 		}
 
+		if($_POST['tipo'] == 'agregarProductoCatalogo'){
+			$ProvedorDAO = new DetallefacCompraDAO();
+			$idUser = $_POST['idUser'];
+			$array_provedores = $ProvedorDAO->listarProductoIngeniero($idUser);
+			$html = " ";
+			if($array_provedores != 0){
+
+				$html = '<i class="material-icons prefix">local_grocery_store</i>
+					<select  id="tipoP" required>
+						<option value="" disabled selected>Escoje una opcion</option>';
+				$contador = 1;
+				foreach ($array_provedores as $row){
+					$html .= '<option value="'.$row['Producto'].'-'.$row['FacturaCompra'].'" data-icon="../../Galeria/ImagenesProducto/'.$row['imagen'].'" class="left circle">'.$row['nombre'].'</option>';
+					$contador++;
+				}
+
+				$html .= '</select>
+						  <label>Productos en su propiedad</label>';
+
+				echo $html;
+			}else{
+				echo 'No tiene productos';
+			}
+		}
+
+		if($_POST['tipo'] == 'borrarProductoCatalogo'){
+			$ProvedorDAO = new DetallefacCompraDAO();
+			$idUser = $_POST['idUser'];
+			$array_provedores = $ProvedorDAO->listarProductoIngenieroBorrar($idUser);
+			$html = " ";
+			if($array_provedores != 0){
+
+				$html = '<i class="material-icons prefix">local_grocery_store</i>
+					<select  id="tipoPD" required>
+						<option value="" disabled selected>Escoje una opcion</option>';
+				$contador = 1;
+				foreach ($array_provedores as $row){
+					$html .= '<option value="'.$row['Producto'].'-'.$row['FacturaCompra'].'" data-icon="../../Galeria/ImagenesProducto/'.$row['imagen'].'" class="left circle">'.$row['nombre'].'</option>';
+					$contador++;
+				}
+
+				$html .= '</select>
+						  <label>Productos en el catalogo</label>';
+
+				echo $html;
+			}else{
+				echo 'No tiene productos';
+			}
+		}
+
+		if($_POST['tipo'] == 'AgregarActivo'){
+			$ProvedorDAO = new DetallefacCompraDAO();
+			$idProductoSelected = $_POST['idProductoSelected'];
+			$idFacturaCompraSelected = $_POST['idFacturaCompraSelected'];
+			$array_provedores = $ProvedorDAO->agregarAlCatalogo($idProductoSelected,$idFacturaCompraSelected);
+			
+		}
+
+		if($_POST['tipo'] == 'BorrarActivo'){
+			$ProvedorDAO = new DetallefacCompraDAO();
+			$idProductoSelected = $_POST['idProductoSelected'];
+			$idFacturaCompraSelected = $_POST['idFacturaCompraSelected'];
+			$array_provedores = $ProvedorDAO->eliminarDelCatalogo($idProductoSelected,$idFacturaCompraSelected);
+			
+		}
+
 			if($_POST['tipo'] == 'listarProductoEditar'){
 			$ProvedorDAO = new DetalleFacCompraDAO();
 			$array_provedores = $ProvedorDAO->listarProductoEditar();

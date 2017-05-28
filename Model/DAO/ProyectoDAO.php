@@ -28,6 +28,7 @@
 
 		}
 
+
 		public function crearImagen($idProyecto){
 			try{
 				$sql = "INSERT INTO imagenproyecto VALUES(NULL,?,?,?)";

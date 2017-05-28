@@ -28,9 +28,9 @@
 		}
 
 		public function listarProductosCatalogo(){
-			$sql = "SELECT *,producto.descripcion as descripcionP FROM producto INNER JOIN imagenproducto ON producto.idProducto = imagenproducto.idProducto";
+			$sql = "SELECT *,producto.descripcion as descripcionP FROM detallefaccompra INNER JOIN producto ON detallefaccompra.producto = producto.idProducto INNER JOIN imagenproducto ON producto.idProducto = imagenproducto.idProducto WHERE activa = ?";
 			$consulta = $this->db->prepare($sql);
-			$resultado = $consulta->execute();
+			$resultado = $consulta->execute(array(1));
 			$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);
 
 			if($provedores == true){
@@ -112,6 +112,8 @@
 			$consulta->closeCursor();
 
 		}
+
+		
 
 	}
 

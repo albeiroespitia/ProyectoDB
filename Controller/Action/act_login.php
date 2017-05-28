@@ -22,6 +22,7 @@
 
 			if($fila['TipoUsuario']==1){
 				$_SESSION['tipoUsuario'] = 'ingeniero';
+				$_SESSION['idUsuario'] = $fila['cc'];
 				echo 'ingeniero';
 			}else if($fila['TipoUsuario']==2){
 				$_SESSION['tipoUsuario'] = 'administrador';

@@ -118,9 +118,9 @@
 
 		public function crearDetalleFacCompra($producto, $facturacompra, $cantidad,$valor){
 			try{
-				$sql = "INSERT INTO detallefaccompra VALUES(?,?,?,?)";
+				$sql = "INSERT INTO detallefaccompra VALUES(?,?,?,?,?)";
 				$consulta = $this->db->prepare($sql);
-				$resultado = $consulta->execute(array($producto, $facturacompra, $cantidad,$valor));
+				$resultado = $consulta->execute(array($producto, $facturacompra, $cantidad,$valor,0));
 				return 1;
 			}catch (PDOException $e){
 				return 0;
@@ -129,6 +129,65 @@
 			$consulta->closeCursor();
 
 		}
+
+		public function agregarAlCatalogo($idProducto,$idFacturaCompra){
+			try{
+				$sql = "UPDATE DetalleFacCompra SET activa = ? WHERE Producto = ? AND FacturaCompra = ?";
+				$consulta = $this->db->prepare($sql);
+				$resultado = $consulta->execute(array(1,$idProducto,$idFacturaCompra));
+				return 1;
+			}catch (PDOException $e){
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
+		public function eliminarDelCatalogo($idProducto,$idFacturaCompra){
+			try{
+				$sql = "UPDATE DetalleFacCompra SET activa = ? WHERE Producto = ? AND FacturaCompra = ?";
+				$consulta = $this->db->prepare($sql);
+				$resultado = $consulta->execute(array(0,$idProducto,$idFacturaCompra));
+				return 1;
+			}catch (PDOException $e){
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
+		public function listarProductoIngeniero($idUsuario){
+			try{
+				$sql = "SELECT detallefaccompra.Producto,detallefaccompra.FacturaCompra,detallefaccompra.cantidad,detallefaccompra.valor,producto.nombre,imagenproducto.imagen FROM detallefaccompra INNER JOIN producto ON detallefaccompra.producto = producto.idProducto INNER JOIN imagenproducto ON producto.idProducto = imagenproducto.idProducto INNER JOIN FacturaCompra ON detallefaccompra.FacturaCompra = FacturaCompra.idFacturaCompra WHERE Usuario_cc = ? AND activa = ?";
+				$consulta = $this->db->prepare($sql);
+				$resultado = $consulta->execute(array($idUsuario,0));
+				$clientes = $consulta->fetchall(PDO::FETCH_ASSOC);
+				return $clientes;
+			}catch (PDOException $e){
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
+		public function listarProductoIngenieroBorrar($idUsuario){
+			try{
+				$sql = "SELECT detallefaccompra.Producto,detallefaccompra.FacturaCompra,detallefaccompra.cantidad,detallefaccompra.valor,producto.nombre,imagenproducto.imagen FROM detallefaccompra INNER JOIN producto ON detallefaccompra.producto = producto.idProducto INNER JOIN imagenproducto ON producto.idProducto = imagenproducto.idProducto INNER JOIN FacturaCompra ON detallefaccompra.FacturaCompra = FacturaCompra.idFacturaCompra WHERE Usuario_cc = ? AND activa = ?";
+				$consulta = $this->db->prepare($sql);
+				$resultado = $consulta->execute(array($idUsuario,1));
+				$clientes = $consulta->fetchall(PDO::FETCH_ASSOC);
+				return $clientes;
+			}catch (PDOException $e){
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
 
 	}
 
