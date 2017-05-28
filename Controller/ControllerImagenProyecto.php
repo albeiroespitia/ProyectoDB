@@ -14,7 +14,7 @@
 				$html .= '<tr>
 				            <td id="idImagenProducto">'.$row['idImagenProyecto'].' </td>
 				            <td id="descripcion">'.$row['descripcionI'].'</td>
-				            <td id="Imagen"><img src="/ProyectoDB/Galeria/ImagenesProducto/'.$row['imagen'].'" alt=""></td>
+				            <td id="Imagen"><img src="/ProyectoDB/Galeria/ImagenesProyecto/'.$row['imagen'].'" alt=""></td>
 				            <td id="idProducto">'.$row['idProyecto'].' </td>
 				            <td id="nombreProducto">'.$row['nombreP'].' </td>
 				            <td><a class="editar" href="#modal2"><i class="material-icons">edit</i></a><a class="borrar"><i class="material-icons">delete</i></a></td>
