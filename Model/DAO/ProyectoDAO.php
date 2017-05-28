@@ -28,6 +28,33 @@
 
 		}
 
+		public function crearImagen($idProyecto){
+			try{
+				$sql = "INSERT INTO imagenproyecto VALUES(NULL,?,?,?)";
+				$consulta = $this->db->prepare($sql);
+				$resultado = $consulta->execute(array('Default','default.jpg',$idProyecto));
+				return 1;
+			}catch (PDOException $e){
+				return 0;
+			}
+
+			$consulta->closeCursor();
+		}
+
+		public function lastRecord(){
+			try{
+				$sql = "SELECT idProyecto FROM proyecto ORDER BY idProyecto DESC LIMIT 1";
+				$consulta = $this->db->prepare($sql);
+				$resultado = $consulta->execute();
+				$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);
+				return $provedores;
+			}catch (PDOException $e){
+				return 0;
+			}
+
+			$consulta->closeCursor();
+		}
+
 		public function listarCcUsuario(){
 			$sql = "SELECT cc,nombre FROM usuario";
 			$consulta = $this->db->prepare($sql);

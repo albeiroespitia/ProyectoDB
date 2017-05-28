@@ -29,18 +29,61 @@
 
 		}
 
+		if($_POST['tipo'] == 'listarPrincipal'){
+			$proyectoDAO = new ProductoDAO();
+			$array_proyecto = $proyectoDAO->listarProductosCatalogo();
+			if($array_proyecto != 0){
+				$html = '<span class="titulo">Productos</span>
+							<div class="row">';
+				$contador = 0;
+				foreach ($array_proyecto as $row) {
+				$html .= '<div class="col m4">
+                        <div class="caja">
+                            <img id="'.$row['idProducto'].'" class="imagenProducto" src="../../Galeria/ImagenesProducto/'.$row['imagen'].'" width="100%" height="75%">
+                            <div class="descripcion">
+                                <p class="tituloProducto">'.$row['nombre'].'</p>
+                                <p class="descripcionProducto">'.$row['descripcionP'].'</p>
+                            </div>
+                        </div>
+                    </div>';
+                    $contador++;
+                    if($contador == 4 || $contador == 8 || $contador == 12 || $contador == 16 ){
+                    	$html .= '</div><div class="row">';
+                    }
+				
+				}
+
+				$html .= '</div>';
+
+				echo $html;
+			}else{
+				echo 'No hay datos';
+			}
+			
+
+		}
+
 		
 
 		if($_POST['tipo'] == 'agregar'){
-			$proyectoDAO = new ProductoDAO ();
+			$proyectoDAO = new ProductoDAO();
 			$nombreProducto = $_POST['nombreProducto'];
 			$descripcionProducto = $_POST['descripcionProducto'];
 			$cantidadProducto = $_POST['cantidadProducto'];
-			$idProvedor = $_POST['idProvedor'];
 			$errores = $proyectoDAO->crearProducto($nombreProducto, $descripcionProducto, $cantidadProducto);
 			if($errores == 0){
 				echo 'Error';
 			}
+
+			$array_idProducto = $proyectoDAO->lastRecord();
+			foreach ($array_idProducto as $row) {
+				$lastIdProducto = $row['idProducto'];
+			}
+
+			$proyectoDAO->crearImagen($lastIdProducto);
+
+
+
 		
 
 		}

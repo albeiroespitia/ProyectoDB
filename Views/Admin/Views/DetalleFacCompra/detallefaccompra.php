@@ -1,3 +1,10 @@
+<?php 
+  session_start();
+  if($_SESSION['tipoUsuario']  != 'administrador'){
+    header("Location:../../../../index.php");
+    die();
+  } 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,6 +106,7 @@
 
     <div class="col s9">
       <h3>Detalle Factura Compra</h3>
+      <a href="../../../../Controller/Action/act_close.php" class="cerrar-sesion">Cerrar Sesion</a>
      <a class="waves-effect waves-light btn agregarButton" href="#modal1">Agregar</a>
      <table class="tablaDatos">
         <thead>

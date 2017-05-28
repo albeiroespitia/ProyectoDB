@@ -49,3 +49,15 @@
 .error-create{
 	color: red;
 }
+
+.cerrar-sesion{
+	float: right;
+	margin: 20px;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+
+.cerrar-sesion:hover{
+	text-decoration: underline;
+}

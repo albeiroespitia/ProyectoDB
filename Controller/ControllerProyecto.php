@@ -95,6 +95,13 @@
 			if($errores == 0){
 				echo 'Error';
 			}
+
+			$array_idProducto = $proyectoDAO->lastRecord();
+			foreach ($array_idProducto as $row) {
+				$lastIdProyecto = $row['idProyecto'];
+			}
+
+			$proyectoDAO->crearImagen($lastIdProyecto);
 		
 
 		}
