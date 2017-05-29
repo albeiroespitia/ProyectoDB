@@ -28,7 +28,7 @@ CREATE TABLE `Ciudad` (
   `idCiudad` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   PRIMARY KEY (`idCiudad`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,6 +37,7 @@ CREATE TABLE `Ciudad` (
 
 LOCK TABLES `Ciudad` WRITE;
 /*!40000 ALTER TABLE `Ciudad` DISABLE KEYS */;
+INSERT INTO `Ciudad` VALUES (7,'123'),(8,'123'),(9,'Santa Marta');
 /*!40000 ALTER TABLE `Ciudad` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,7 +57,7 @@ CREATE TABLE `Cliente` (
   PRIMARY KEY (`idCliente`),
   KEY `fk_Cliente_Ciudad1_idx` (`Ciudad`),
   CONSTRAINT `fk_Cliente_Ciudad1` FOREIGN KEY (`Ciudad`) REFERENCES `Ciudad` (`idCiudad`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,6 +66,7 @@ CREATE TABLE `Cliente` (
 
 LOCK TABLES `Cliente` WRITE;
 /*!40000 ALTER TABLE `Cliente` DISABLE KEYS */;
+INSERT INTO `Cliente` VALUES (1,'ddd','123','123@g.com',9),(2,'22222','2222','123@g.com',9),(3,'22222','2222','123@g.com',9),(4,'qqq','1111','123@g.com',9),(5,'qqq','1111','123@g.com',9),(6,'333','3333','123@g.com',7),(7,'1','1','123@g.com',9),(8,'3','3','123@g.com',7),(9,'123','3','33@GM.COM',9),(10,'33','33','33@GM.COM',9),(11,'33','3','33@GM.COM',9),(12,'3','3','33@GM.COM',8),(13,'2','2','33@GM.COM',8),(14,'3','3','33@GM.COM',7),(15,'22','22','123@g.com',9),(16,'22','2','123@g.com',7),(17,'2','2','123@g.com',8),(18,'3','3','33@GM.COM',7),(19,'2','2','33@GM.COM',7);
 /*!40000 ALTER TABLE `Cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,8 +109,9 @@ DROP TABLE IF EXISTS `DetalleFacCompra`;
 CREATE TABLE `DetalleFacCompra` (
   `Producto` int(11) NOT NULL,
   `FacturaCompra` int(11) NOT NULL,
-  `cantidad` double NOT NULL,
+  `cantidad` double DEFAULT NULL,
   `valor` int(11) NOT NULL,
+  `activa` int(11) NOT NULL,
   PRIMARY KEY (`Producto`,`FacturaCompra`),
   KEY `fk_Producto_has_FacturaCompra_FacturaCompra1_idx` (`FacturaCompra`),
   KEY `fk_Producto_has_FacturaCompra_Producto1_idx` (`Producto`),
@@ -123,8 +126,29 @@ CREATE TABLE `DetalleFacCompra` (
 
 LOCK TABLES `DetalleFacCompra` WRITE;
 /*!40000 ALTER TABLE `DetalleFacCompra` DISABLE KEYS */;
+INSERT INTO `DetalleFacCompra` VALUES (12,2,22,123,0),(13,2,123,123,0),(14,2,22,123,1),(15,2,119,123,1),(16,2,4,4,0);
 /*!40000 ALTER TABLE `DetalleFacCompra` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `database_project`.`DetalleFacCompra_BEFORE_UPDATE` BEFORE UPDATE ON `DetalleFacCompra` FOR EACH ROW
+BEGIN
+	IF NEW.cantidad IS NULL THEN
+		SET NEW.activa = 0;
+	END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `DetalleVentaServicio`
@@ -206,7 +230,7 @@ CREATE TABLE `FacturaCompra` (
   CONSTRAINT `fk_FacturaCompra_FormaPago1` FOREIGN KEY (`FormaPago`) REFERENCES `FormaPago` (`idFormaPago`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_FacturaCompra_Proovedor1` FOREIGN KEY (`Proovedor`) REFERENCES `Proovedor` (`idProovedor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_FacturaCompra_Usuario1` FOREIGN KEY (`Usuario_cc`) REFERENCES `Usuario` (`cc`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,6 +239,7 @@ CREATE TABLE `FacturaCompra` (
 
 LOCK TABLES `FacturaCompra` WRITE;
 /*!40000 ALTER TABLE `FacturaCompra` DISABLE KEYS */;
+INSERT INTO `FacturaCompra` VALUES (2,'0112-12-23',1,2,4);
 /*!40000 ALTER TABLE `FacturaCompra` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,7 +263,7 @@ CREATE TABLE `FacturaServicio` (
   CONSTRAINT `fk_FacturaServicio_FormaPago1` FOREIGN KEY (`FormaPago`) REFERENCES `FormaPago` (`idFormaPago`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_FacturaServicio_Usuario1` FOREIGN KEY (`Usuario_cc`) REFERENCES `Usuario` (`cc`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_VentaServicio_Cliente1` FOREIGN KEY (`Cliente`) REFERENCES `Cliente` (`idCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -261,7 +286,7 @@ CREATE TABLE `FormaPago` (
   `idFormaPago` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(45) NOT NULL,
   PRIMARY KEY (`idFormaPago`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -270,6 +295,7 @@ CREATE TABLE `FormaPago` (
 
 LOCK TABLES `FormaPago` WRITE;
 /*!40000 ALTER TABLE `FormaPago` DISABLE KEYS */;
+INSERT INTO `FormaPago` VALUES (4,'asdasd');
 /*!40000 ALTER TABLE `FormaPago` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -288,7 +314,7 @@ CREATE TABLE `ImagenProducto` (
   PRIMARY KEY (`idImagenProducto`,`idProducto`),
   KEY `fk_ImagenProducto_Producto1_idx` (`idProducto`),
   CONSTRAINT `fk_ImagenProducto_Producto1` FOREIGN KEY (`idProducto`) REFERENCES `Producto` (`idProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -297,6 +323,7 @@ CREATE TABLE `ImagenProducto` (
 
 LOCK TABLES `ImagenProducto` WRITE;
 /*!40000 ALTER TABLE `ImagenProducto` DISABLE KEYS */;
+INSERT INTO `ImagenProducto` VALUES (11,'Default','default.jpg',12),(12,'Default','default.jpg',13),(13,'Default','default.jpg',14),(14,'Default','default.jpg',15),(15,'Default','default.jpg',16);
 /*!40000 ALTER TABLE `ImagenProducto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -315,7 +342,7 @@ CREATE TABLE `ImagenProyecto` (
   PRIMARY KEY (`idImagenProyecto`,`idProyecto`),
   KEY `fk_ImagenProyecto_Proyecto1_idx` (`idProyecto`),
   CONSTRAINT `fk_ImagenProyecto_Proyecto1` FOREIGN KEY (`idProyecto`) REFERENCES `Proyecto` (`idProyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -324,6 +351,7 @@ CREATE TABLE `ImagenProyecto` (
 
 LOCK TABLES `ImagenProyecto` WRITE;
 /*!40000 ALTER TABLE `ImagenProyecto` DISABLE KEYS */;
+INSERT INTO `ImagenProyecto` VALUES (7,'Default','18012786_1277753058947355_1849897266_o.jpg',4);
 /*!40000 ALTER TABLE `ImagenProyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -340,7 +368,7 @@ CREATE TABLE `Producto` (
   `descripcion` text NOT NULL,
   `cantidad` int(11) NOT NULL,
   PRIMARY KEY (`idProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -349,6 +377,7 @@ CREATE TABLE `Producto` (
 
 LOCK TABLES `Producto` WRITE;
 /*!40000 ALTER TABLE `Producto` DISABLE KEYS */;
+INSERT INTO `Producto` VALUES (12,'1','1',1),(13,'2','2',2),(14,'3','3',3),(15,'4','4',4),(16,'44','44',44);
 /*!40000 ALTER TABLE `Producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -371,7 +400,7 @@ CREATE TABLE `Proovedor` (
   KEY `fk_Proovedor_TipoProducto1_idx` (`TipoProducto`),
   CONSTRAINT `fk_Proovedor_Ciudad1` FOREIGN KEY (`Ciudad`) REFERENCES `Ciudad` (`idCiudad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Proovedor_TipoProducto1` FOREIGN KEY (`TipoProducto`) REFERENCES `TipoProducto` (`idTipoProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -380,6 +409,7 @@ CREATE TABLE `Proovedor` (
 
 LOCK TABLES `Proovedor` WRITE;
 /*!40000 ALTER TABLE `Proovedor` DISABLE KEYS */;
+INSERT INTO `Proovedor` VALUES (2,'33','33',33,7,1);
 /*!40000 ALTER TABLE `Proovedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -398,7 +428,7 @@ CREATE TABLE `Proyecto` (
   PRIMARY KEY (`idProyecto`,`Usuario_cc`),
   KEY `fk_Proyecto_Usuario1_idx` (`Usuario_cc`),
   CONSTRAINT `fk_Proyecto_Usuario1` FOREIGN KEY (`Usuario_cc`) REFERENCES `Usuario` (`cc`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -407,6 +437,7 @@ CREATE TABLE `Proyecto` (
 
 LOCK TABLES `Proyecto` WRITE;
 /*!40000 ALTER TABLE `Proyecto` DISABLE KEYS */;
+INSERT INTO `Proyecto` VALUES (4,'asd','asd',1);
 /*!40000 ALTER TABLE `Proyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -519,6 +550,7 @@ CREATE TABLE `Usuario` (
 
 LOCK TABLES `Usuario` WRITE;
 /*!40000 ALTER TABLE `Usuario` DISABLE KEYS */;
+INSERT INTO `Usuario` VALUES (1,'1','1','1','1',1,'1','1',1,7),(12321,'admin','admin','admin','admin',0,'admin','admin',2,7),(123221,'admin','admin','admin','admin',12,'admin','admin',2,7);
 /*!40000 ALTER TABLE `Usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -533,7 +565,7 @@ CREATE TABLE `tipousuario` (
   `idTipoUsuario` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(20) NOT NULL,
   PRIMARY KEY (`idTipoUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -542,7 +574,7 @@ CREATE TABLE `tipousuario` (
 
 LOCK TABLES `tipousuario` WRITE;
 /*!40000 ALTER TABLE `tipousuario` DISABLE KEYS */;
-INSERT INTO `tipousuario` VALUES (1,'ingeniero');
+INSERT INTO `tipousuario` VALUES (1,'ingeniero'),(2,'administrador');
 /*!40000 ALTER TABLE `tipousuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -563,4 +595,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-27 14:03:26
+-- Dump completed on 2017-05-28 23:01:19

@@ -29,6 +29,22 @@
 
 		}
 
+		public function listarDetalleFacCompraCantidad($Producto,$FacturaCompra){
+			$sql = "SELECT * FROM detallefaccompra WHERE Producto = ? and FacturaCompra = ? ";
+			$consulta = $this->db->prepare($sql);
+			$resultado = $consulta->execute(array($Producto,$FacturaCompra));
+			$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);
+
+			if($provedores == true){
+				return $provedores;
+			}else{
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
 		public function listarProducto(){
 			$sql = "SELECT * FROM producto";
 			$consulta = $this->db->prepare($sql);
@@ -93,6 +109,34 @@
 				$sql = "UPDATE detallefaccompra SET Producto = ? , cantidad = ?, valor = ?  WHERE Producto = ? and FacturaCompra = ?";
 				$consulta = $this->db->prepare($sql);
 				$resultado = $consulta->execute(array($producto, $cantidad, $valor, $idProducto, $facturaCompra));
+				return 1;
+			}catch (PDOException $e){
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
+		public function editarDetallefacCompraCatalogo($idProducto, $facturaCompra,$cantidad){
+			try{
+				$sql = "UPDATE detallefaccompra SET cantidad = cantidad-?  WHERE Producto = ? and FacturaCompra = ?";
+				$consulta = $this->db->prepare($sql);
+				$resultado = $consulta->execute(array($cantidad, $idProducto, $facturaCompra));
+				return 1;
+			}catch (PDOException $e){
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
+		public function editarDetallefacCompraCatalogoBeing0($idProducto, $facturaCompra){
+			try{
+				$sql = "UPDATE detallefaccompra SET cantidad = NULL  WHERE Producto = ? and FacturaCompra = ?";
+				$consulta = $this->db->prepare($sql);
+				$resultado = $consulta->execute(array($idProducto, $facturaCompra));
 				return 1;
 			}catch (PDOException $e){
 				return 0;

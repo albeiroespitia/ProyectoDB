@@ -39,7 +39,7 @@
 				foreach ($array_proyecto as $row) {
 				$html .= '<div class="col m4">
                         <div class="caja">
-                            <img id="'.$row['idProducto'].'" class="imagenProducto" src="../../Galeria/ImagenesProducto/'.$row['imagen'].'" width="100%" height="75%">
+                            <img id="'.$row['idProducto'].' - '.$row['FacturaCompra'].'" class="imagenProducto" src="../../Galeria/ImagenesProducto/'.$row['imagen'].'" width="100%" height="75%">
                             <div class="descripcion">
                                 <p class="tituloProducto">'.$row['nombre'].'</p>
                                 <p class="descripcionProducto">'.$row['descripcionP'].'</p>
@@ -50,6 +50,36 @@
                     if($contador == 4 || $contador == 8 || $contador == 12 || $contador == 16 ){
                     	$html .= '</div><div class="row">';
                     }
+				
+				}
+
+				$html .= '</div>';
+
+				echo $html;
+			}else{
+				echo 'No hay datos';
+			}
+			
+
+		}
+
+		if($_POST['tipo'] == 'listaDetalles'){
+			$proyectoDAO = new ProductoDAO();
+			$producto = $_POST['idProductoSelected'];
+			$facturacompra = $_POST['idFacturaCompraSelected'];
+			$array_proyecto = $proyectoDAO->listarProductosCatalogoEspecifico($producto,$facturacompra);
+			if($array_proyecto != 0){
+				$html = '';
+				$contador = 0;
+				foreach ($array_proyecto as $row) {
+				$html .= '<h4>'.$row['nombre'].'</h4>
+					      <img class ="imgdetail" src="../../Galeria/ImagenesProducto/'.$row['imagen'].'" width="300px" height="300px">
+					      <div class="detalles">
+					          <p>Descripcion: '.$row['descripcionP'].'</p>
+					          <p>Precio: $'.$row['valor'].'</p>
+					          <p>Stock: '.$row['cantidadR'].'</p>
+					          <a class="btn-floating btn-large waves-effect waves-light red right buyItem"><i id="'.$row['Producto'].' - '.$row['FacturaCompra'].' - '.$row['cantidadR'].'" class="material-icons">add_shopping_cart</i></a>
+					      </div>';
 				
 				}
 

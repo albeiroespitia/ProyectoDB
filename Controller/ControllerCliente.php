@@ -92,9 +92,10 @@
 			if($errores == 0){
 				echo 'Error';
 			}
-		
 
 		}
+		
+
 
 		if($_POST['tipo'] == 'eliminar'){
 			$clienteDAO = new ClienteDAO();

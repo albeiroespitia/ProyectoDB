@@ -105,6 +105,24 @@
 			}
 		}
 
+		if($_POST['tipo'] == 'comprarProducto'){
+			$ProvedorDAO = new DetallefacCompraDAO();
+			$productoActual = $_POST['productoActual'];
+			$facturaActual = $_POST['facturaActual'];
+			$cantidadComprada = $_POST['cantidadComprada'];
+			$cantidadPrueba = $ProvedorDAO->listarDetalleFacCompraCantidad($productoActual,$facturaActual);
+			foreach ($cantidadPrueba as $row) {
+				$cantidadTemporal = $row['cantidad'];
+			}
+			if($cantidadComprada == $cantidadTemporal){
+				$ProvedorDAO->editarDetallefacCompraCatalogoBeing0($productoActual,$facturaActual);
+			}else{
+				$ProvedorDAO->editarDetallefacCompraCatalogo($productoActual,$facturaActual,$cantidadComprada);
+			}
+			
+			
+		}
+
 		if($_POST['tipo'] == 'AgregarActivo'){
 			$ProvedorDAO = new DetallefacCompraDAO();
 			$idProductoSelected = $_POST['idProductoSelected'];

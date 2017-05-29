@@ -29,6 +29,13 @@
         <li class="ulItem3"><img src="./img/projectIcon.svg"></li>  
    </ul>
 
+   <!-- Modal Structure -->
+  <div id="modal3" class="modal">
+    <div class="modal-content productDetail">
+      
+    </div>
+  </div>
+
 
     <div id="modal1" class="modal">
       <div class="modal-content">
@@ -49,6 +56,51 @@
             <div class="modal-footer">
               <h6 class="error-user"></h6>
               <button id="login" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="login">Registrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal2" class="modal">
+      <div class="modal-content">
+        <h4>Ingrese sus datos</h4>
+        <div class="row">
+          <form id="buy-form" action="" method="POST" class="col s12">
+            <input type="hidden" name="idProductoI" val="">
+            <input type="hidden" name="FacturaCompraI" val="">
+            <input type="hidden" name="cantidadI" val="">
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="nombre_buy" class="validate" required>
+                <label for="icon_prefix">Nombre</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="text" name="telefono_buy" class="validate" required>
+                <label for="icon_prefix">Telefono</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="email" name="email_buy" class="validate" required>
+                <label for="icon_prefix">Email</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectCiudad">
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectCantidad"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="number" min="1" max="" name="stock_buy" class="validate" required>
+                <label for="icon_prefix">Cantidad A Comprar</label>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <h6 class="error-user"></h6>
+              <button id="login" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="login">Comprar</button>
             </div>
           </form>
         </div>

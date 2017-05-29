@@ -28,9 +28,25 @@
 		}
 
 		public function listarProductosCatalogo(){
-			$sql = "SELECT *,producto.descripcion as descripcionP FROM detallefaccompra INNER JOIN producto ON detallefaccompra.producto = producto.idProducto INNER JOIN imagenproducto ON producto.idProducto = imagenproducto.idProducto WHERE activa = ?";
+			$sql = "SELECT *,producto.descripcion as descripcionP, detallefaccompra.cantidad as cantidadR FROM detallefaccompra INNER JOIN producto ON detallefaccompra.producto = producto.idProducto INNER JOIN imagenproducto ON producto.idProducto = imagenproducto.idProducto WHERE activa = ?";
 			$consulta = $this->db->prepare($sql);
 			$resultado = $consulta->execute(array(1));
+			$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);
+
+			if($provedores == true){
+				return $provedores;
+			}else{
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
+		public function listarProductosCatalogoEspecifico($Producto,$FacturaCompra){
+			$sql = "SELECT *,producto.descripcion as descripcionP, detallefaccompra.cantidad as cantidadR FROM detallefaccompra INNER JOIN producto ON detallefaccompra.producto = producto.idProducto INNER JOIN imagenproducto ON producto.idProducto = imagenproducto.idProducto WHERE Producto = ? AND FacturaCompra = ?";
+			$consulta = $this->db->prepare($sql);
+			$resultado = $consulta->execute(array($Producto,$FacturaCompra));
 			$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);
 
 			if($provedores == true){
