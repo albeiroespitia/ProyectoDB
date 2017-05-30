@@ -101,7 +101,7 @@
 
 				echo $html;
 			}else{
-				echo 'No tiene productos';
+				echo 'No tiene productos en el catalogo';
 			}
 		}
 

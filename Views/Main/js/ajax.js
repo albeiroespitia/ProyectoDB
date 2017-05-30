@@ -37,8 +37,26 @@ $(document).ready(function() {
 			}
 		})
 
+		$.ajax({
+			url: '/ProyectoDB/Controller/ControllerServicio.php',
+			data: {tipo:'listarPrincipal'},
+			type: 'POST',
+			success: function(res){
+				$('.servicios').html(res);
+			}
+		})
 
-		$(document).on('click', '.caja img' ,function(e){	
+		$.ajax({
+			url: '/ProyectoDB/Controller/ControllerProyecto.php',
+			data: {tipo:'listarPrincipal'},
+			type: 'POST',
+			success: function(res){
+				$('.proyectos').html(res);
+			}
+		})
+
+
+		$(document).on('click', '.productBox img' ,function(e){	
 			var idDetalleFacCompra = e.target.id.split('-');
 			var idProductoSelected = idDetalleFacCompra[0];
 			var idFacturaCompraSelected = idDetalleFacCompra[1];
@@ -109,6 +127,61 @@ $(document).ready(function() {
 							})
 						}
 					})
+
+				}
+			})
+
+		})
+
+		/////////////////////////////////////////////////////////////////////
+
+		$(document).on('click', '.projectBox img' ,function(e){	
+			var idProyecto = e.target.id;
+			$.ajax({
+				url: '/ProyectoDB/Controller/ControllerProyecto.php',
+				data: {tipo:'listaDetalles',idProyecto:idProyecto},
+				type: 'POST',
+				success: function(res){
+					$('.projectDetail').html(res);
+				}
+			})
+			$('#modal7').modal('open');
+		});
+
+
+		$(document).on('click', '.getProject' ,function(e){
+			var idProyecto = e.target.id;
+			$.ajax({
+				url: '/ProyectoDB/Controller/ControllerCiudad.php',
+				data: {tipo:'listarCiudadComprarPR'},
+				type: 'POST',
+				success: function(res){
+					$('.selectCiudadP').html(res);
+					$('select').material_select();
+				}
+			})
+			$('#modal8').modal('open');
+
+
+		})
+
+		$('#get-form').submit(function(e){
+			e.preventDefault();
+			var nombreCliente = $('input[name="nombre_get"]').val();
+			var telefonoCliente = $('input[name="telefono_get"]').val();
+			var emailCliente = $('input[name="email_get"]').val();
+			var ciudadCliente = $('#tipoCPE').val();
+			$.ajax({
+				url: '/ProyectoDB/Controller/ControllerCliente.php',
+				data: {tipo:'agregar',nombreCliente:nombreCliente,telefonoCliente:telefonoCliente,emailCliente:emailCliente,ciudadCliente:ciudadCliente},
+				type: 'POST',
+				success: function(res){
+					 $('#modal7').modal('close');
+					 $('#modal8').modal('close');
+					 Materialize.toast('Proyecto Adquirido !', 2000);
+					$('input[name="nombre_get"]').val('');
+					$('input[name="telefono_get"]').val('');
+					$('input[name="email_get"]').val('');
 
 				}
 			})

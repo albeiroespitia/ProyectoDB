@@ -91,6 +91,9 @@
 			$errores = $clienteDAO->crearCliente($nombreCliente,$telefonoCliente,$emailCliente,$ciudadCliente);
 			if($errores == 0){
 				echo 'Error';
+			}else{
+				$idCliente = $errores[0]['idCliente'];
+				echo $idCliente;	
 			}
 
 		}

@@ -51,6 +51,54 @@
 			}
 		}
 
+		if($_POST['tipo'] == 'listarCiudadComprarPR'){
+			$ProvedorDAO = new CiudadDAO();
+			$array_provedores = $ProvedorDAO->listarCiudades();
+			$html = " ";
+			if($array_provedores != 0){
+
+				$html = '<i class="material-icons prefix">location_city</i>
+					<select  id="tipoCPE" required>
+						<option value="" disabled selected>Escoje una opcion</option>';
+				$contador = 1;
+				foreach ($array_provedores as $row){
+					$html .= '<option value="'.$row['idCiudad'].'">'.$row['nombre'].'</option>';
+					$contador++;
+				}
+
+				$html .= '</select>
+						  <label>Ciudad</label>';
+
+				echo $html;
+			}else{
+				echo 'No tiene productos';
+			}
+		}
+
+		if($_POST['tipo'] == 'listarCiudadComprarS'){
+			$ProvedorDAO = new CiudadDAO();
+			$array_provedores = $ProvedorDAO->listarCiudades();
+			$html = " ";
+			if($array_provedores != 0){
+
+				$html = '<i class="material-icons prefix">location_city</i>
+					<select  id="tipoCPES" required>
+						<option value="" disabled selected>Escoje una opcion</option>';
+				$contador = 1;
+				foreach ($array_provedores as $row){
+					$html .= '<option value="'.$row['idCiudad'].'">'.$row['nombre'].'</option>';
+					$contador++;
+				}
+
+				$html .= '</select>
+						  <label>Ciudad</label>';
+
+				echo $html;
+			}else{
+				echo 'No tiene productos';
+			}
+		}
+
 		if($_POST['tipo'] == 'agregar'){
 			$ciudadDAO = new CiudadDAO();
 			$nombreCiudad = $_POST['nombreCiudad'];

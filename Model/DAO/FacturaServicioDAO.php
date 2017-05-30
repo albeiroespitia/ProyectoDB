@@ -45,21 +45,6 @@
 
 		}
 
-		public function listarUsuario(){
-			$sql = "SELECT * FROM Usuario";
-			$consulta = $this->db->prepare($sql);
-			$resultado = $consulta->execute();
-			$clientes = $consulta->fetchall(PDO::FETCH_ASSOC);
-
-			if($clientes == true){
-				return $clientes;
-			}else{
-				return 0;
-			}
-
-			$consulta->closeCursor();
-
-		}
 
 		public function listarFormaPago(){
 			$sql = "SELECT * FROM formapago";
@@ -77,10 +62,10 @@
 
 		}
 
-		public function editarFactura($idFacturaServicio, $cliente, $usuarioCC, 
+		public function editarFactura($idFacturaServicio, $cliente, 
 				$formaPago,$fecha){
 			try{
-				$sql = "UPDATE facturaservicio SET Cliente = ?, Usuario_cc = ?, FormaPago = ?, Fecha = ? WHERE idFacturaServicio = ?";
+				$sql = "UPDATE facturaservicio SET Cliente = ?, FormaPago = ?, Fecha = ? WHERE idFacturaServicio = ?";
 				$consulta = $this->db->prepare($sql);
 				$resultado = $consulta->execute(array($cliente,$usuarioCC,$formaPago, $fecha, $idFacturaServicio));
 				return 1;
@@ -106,16 +91,16 @@
 
 		}
 
-		public function crearFactura($cliente, $usuarioCC, $formaPago, $fecha){
-			echo $cliente.' ';
-			echo $usuarioCC.' ';
-			echo $formaPago.' ';
-			echo $fecha.' ';
+		public function crearFactura($cliente, $formaPago, $fecha){
 			try{
-				$sql = "INSERT INTO facturaservicio VALUES(NULL,?,?,?,?)";
+				$sql = "INSERT INTO facturaservicio VALUES(NULL,?,?,?)";
 				$consulta = $this->db->prepare($sql);
-				$resultado = $consulta->execute(array($cliente, $usuarioCC, $formaPago, $fecha));
-				return 1;
+				$resultado = $consulta->execute(array($cliente, $formaPago, $fecha));
+				$sql2 = "SELECT MAX( idFacturaServicio ) as idFacturaServicio FROM facturaservicio";
+				$consulta2 = $this->db->prepare($sql2);
+				$resultado2 = $consulta2->execute();
+				$clientes = $consulta2->fetchall(PDO::FETCH_ASSOC);
+				return $clientes;
 			}catch (PDOException $e){
 				return 0;
 			}

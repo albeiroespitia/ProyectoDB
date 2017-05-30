@@ -26,6 +26,159 @@
         <li class="ulItem3"><img src="./img/projectIcon.svg"></li>  
    </ul>
 
+   <div id="modal9" class="modal">
+    <div class="modal-content serviceDetail">
+      
+    </div>
+  </div>
+
+  <div id="modal10" class="modal">
+      <div class="modal-content">
+        <h4>Ingrese sus datos</h4>
+        <div class="row">
+          <form id="ser-form" action="" method="POST" class="col s12">
+            <input type="hidden" name="idServicioI" val="">
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="nombre_ser" class="validate" required>
+                <label for="icon_prefix">Nombre</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="text" name="telefono_ser" class="validate" required>
+                <label for="icon_prefix">Telefono</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="email" name="email_ser" class="validate" required>
+                <label for="icon_prefix">Email</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectCiudadS">
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 formaPagoS">
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="number" name="hour_ser" class="validate" required>
+                <label for="icon_prefix">Cantidad de horas</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="fecha_ser" class="validate" required>
+                <label for="icon_prefix">Fecha</label>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <h6 class="error-user"></h6>
+              <button id="login" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="login">Adquirir</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+   <div id="modal7" class="modal">
+    <div class="modal-content projectDetail">
+      
+    </div>
+  </div>
+
+  <div id="modal8" class="modal">
+      <div class="modal-content">
+        <h4>Ingrese sus datos</h4>
+        <div class="row">
+          <form id="get-form" action="" method="POST" class="col s12">
+            <input type="hidden" name="idProyectoI" val="">
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="nombre_get" class="validate" required>
+                <label for="icon_prefix">Nombre</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="text" name="telefono_get" class="validate" required>
+                <label for="icon_prefix">Telefono</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="email" name="email_get" class="validate" required>
+                <label for="icon_prefix">Email</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectCiudadP">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <h6 class="error-user"></h6>
+              <button id="login" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="login">Adquirir</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+   <div id="modal5" class="modal">
+    <div class="modal-content productDetail">
+      
+    </div>
+  </div>
+
+  <div id="modal6" class="modal">
+      <div class="modal-content">
+        <h4>Ingrese sus datos</h4>
+        <div class="row">
+          <form id="buy-form" action="" method="POST" class="col s12">
+            <input type="hidden" name="idProductoI" val="">
+            <input type="hidden" name="FacturaCompraI" val="">
+            <input type="hidden" name="cantidadI" val="">
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="nombre_buy" class="validate" required>
+                <label for="icon_prefix">Nombre</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="text" name="telefono_buy" class="validate" required>
+                <label for="icon_prefix">Telefono</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="email" name="email_buy" class="validate" required>
+                <label for="icon_prefix">Email</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectCiudad">
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectCantidad"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="number" min="1" max="" name="stock_buy" class="validate" required>
+                <label for="icon_prefix">Cantidad A Comprar</label>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <h6 class="error-user"></h6>
+              <button id="login" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="login">Comprar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
    <div id="modal1" class="modal">
       <div class="modal-content">
         <div class="row">
@@ -60,6 +213,40 @@
       </div>
     </div>
 
+    <div id="modal3" class="modal">
+      <div class="modal-content">
+        <div class="row">
+          <form id="addCatalogoProjectForm" action="" method="" class="col s12">
+            <div class="row">
+              <div class="input-field col s12 selectProyecto">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <h6 class="error-user"></h6>
+              <button id="login" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="login">Agregar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal4" class="modal">
+      <div class="modal-content">
+        <div class="row">
+          <form id="deleteCatalogoProjectForm" action="" method="" class="col s12">
+            <div class="row">
+              <div class="input-field col s12 selectProyectoDelete">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <h6 class="error-user"></h6>
+              <button id="login" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="login">Borrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
      <ul id="slide-out" class="side-nav">
         <li><div class="userView">
           <div class="background">
@@ -79,9 +266,8 @@
           </div>
           <span class="white-text name">Gestion de servicios</span>
         </div></li>
-        <li><a href="#!"><i class="material-icons">add</i>Agregar Servicio</a></li>
-        <li><a href="#!"><i class="material-icons">mode_edit</i>Editar Servicio</a></li>
-        <li><a href="#!"><i class="material-icons">delete</i>Eliminar Servicio</a></li>
+        <li><a ><i class="material-icons">add</i>Agregar al catalogo</a></li>
+        <li><a ><i class="material-icons">mode_edit</i>Eliminar del catalogo</a></li>
         <li><div class="divider"></div></li>
       </ul>
 
@@ -92,9 +278,8 @@
           </div>
           <span class="white-text name">Gestion de proyectos</span>
         </div></li>
-        <li><a href="#!"><i class="material-icons">add</i>Agregar Proyecto</a></li>
-        <li><a href="#!"><i class="material-icons">mode_edit</i>Editar Proyecto</a></li>
-        <li><a href="#!"><i class="material-icons">delete</i>Eliminar Proyecto</a></li>
+        <li><a href="#modal3" id="addProject"><i class="material-icons">add</i>Agregar al catalogo</a></li>
+        <li><a href="#modal4" id="deleteProject"><i class="material-icons">mode_edit</i>Borrar del catalogo</a></li>
         <li><div class="divider"></div></li>
       </ul>
 
@@ -128,219 +313,16 @@
     <div class="invisible"></div>
     <section class="productSection">
         <div class="productos">
-            <span class="titulo">Productos</span>
-            <div class="row">
-                <div class="catalogo">
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="catalogo">
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <ul class="pagination center-align">
-                    <li class="active"><a href="#!">1</a></li>
-                    <li class="waves-effect"><a href="#!">2</a></li>
-                    <li class="waves-effect"><a href="#!">3</a></li>
-                    <li class="waves-effect"><a href="#!">4</a></li>
-                    <li class="waves-effect"><a href="#!">5</a></li>
-                </ul>
-            </div>
         </div>
     </section>
     <div class="separador"></div>
      <section class="projectsSection">
         <div class="proyectos">
-            <span class="titulo">Proyectos</span>
-            <div class="row">
-                <div class="catalogo">
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="catalogo">
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <ul class="pagination center-align">
-                    <li class="active"><a href="#!">1</a></li>
-                    <li class="waves-effect"><a href="#!">2</a></li>
-                    <li class="waves-effect"><a href="#!">3</a></li>
-                    <li class="waves-effect"><a href="#!">4</a></li>
-                    <li class="waves-effect"><a href="#!">5</a></li>
-                </ul>
-            </div>
         </div>
     </section>    
     <div class="separador"></div>
     <section class="serviceSection">
         <div class="servicios">
-            <span class="titulo">Servicios</span>
-            <div class="row">
-                <div class="catalogo">
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="catalogo">
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

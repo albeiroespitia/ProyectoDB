@@ -75,7 +75,11 @@
 				$sql = "INSERT INTO cliente VALUES(NULL,?,?,?,?)";
 				$consulta = $this->db->prepare($sql);
 				$resultado = $consulta->execute(array($nombre,$telefono,$email,$ciudad));
-				return 1;
+				$sql2 = "SELECT MAX( idCliente ) AS idCliente FROM cliente";
+				$consulta2 = $this->db->prepare($sql2);
+				$resultado2 = $consulta2->execute();
+				$clientes = $consulta2->fetchall(PDO::FETCH_ASSOC);
+				return $clientes;
 			}catch (PDOException $e){
 				return 0;
 			}

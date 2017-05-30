@@ -38,7 +38,7 @@
 				$contador = 0;
 				foreach ($array_proyecto as $row) {
 				$html .= '<div class="col m4">
-                        <div class="caja">
+                        <div class="caja productBox">
                             <img id="'.$row['idProducto'].' - '.$row['FacturaCompra'].'" class="imagenProducto" src="../../Galeria/ImagenesProducto/'.$row['imagen'].'" width="100%" height="75%">
                             <div class="descripcion">
                                 <p class="tituloProducto">'.$row['nombre'].'</p>

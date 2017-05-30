@@ -186,16 +186,18 @@
 			
 
 		}
+
 		if($_POST['tipo'] == 'agregar'){
 			$FacturaServicioDAO = new FacturaServicioDAO();
 			$cliente = $_POST['cliente'];
-			$usuarioCC = $_POST['usuarioCC'];
 			$formaPago = $_POST['formaPago'];
 			$fecha = $_POST['fecha'];
-			$errores = $FacturaServicioDAO->crearFactura($cliente, $usuarioCC, 
+			$errores = $FacturaServicioDAO->crearFactura($cliente, 
 				$formaPago,$fecha);
 			if($errores == 0){
 				echo 'Error';
+			}else{
+				echo $errores[0]['idFacturaServicio'];
 			}
 		
 

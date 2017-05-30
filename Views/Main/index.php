@@ -29,12 +29,57 @@
         <li class="ulItem3"><img src="./img/projectIcon.svg"></li>  
    </ul>
 
+
+   <div id="modal7" class="modal">
+    <div class="modal-content projectDetail">
+      
+    </div>
+  </div>
+
+  <div id="modal8" class="modal">
+      <div class="modal-content">
+        <h4>Ingrese sus datos</h4>
+        <div class="row">
+          <form id="get-form" action="" method="POST" class="col s12">
+            <input type="hidden" name="idProyectoI" val="">
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="nombre_get" class="validate" required>
+                <label for="icon_prefix">Nombre</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="text" name="telefono_get" class="validate" required>
+                <label for="icon_prefix">Telefono</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="email" name="email_get" class="validate" required>
+                <label for="icon_prefix">Email</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectCiudadP">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <h6 class="error-user"></h6>
+              <button id="login" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="login">Adquirir</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
    <!-- Modal Structure -->
   <div id="modal3" class="modal">
     <div class="modal-content productDetail">
       
     </div>
   </div>
+
 
 
     <div id="modal1" class="modal">
@@ -61,6 +106,8 @@
         </div>
       </div>
     </div>
+
+
 
     <div id="modal2" class="modal">
       <div class="modal-content">
@@ -139,69 +186,6 @@
     <div class="separador"></div>
     <section class="serviceSection">
         <div class="servicios">
-            <span class="titulo">Servicios</span>
-            <div class="row">
-                <div class="catalogo">
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="catalogo">
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col m4">
-                        <div class="caja">
-                            <img class="imagenProducto" src="./img/prueba.jpg" width="100%" height="75%">
-                            <div class="descripcion">
-                                <p class="tituloProducto">Casa</p>
-                                <p class="descripcionProducto">Best house Best house Best house Best house</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

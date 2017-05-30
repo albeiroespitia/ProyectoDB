@@ -28,6 +28,98 @@
 
 		}
 
+		public function listarProyectosCatalogoEspecifico($idProyecto){
+			$sql = "SELECT *,proyecto.descripcion AS descripcionP FROM proyecto INNER JOIN imagenproyecto ON proyecto.idProyecto = imagenproyecto.idProyecto WHERE proyecto.idProyecto = ?";
+			$consulta = $this->db->prepare($sql);
+			$resultado = $consulta->execute(array($idProyecto));
+			$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);
+
+			if($provedores == true){
+				return $provedores;
+			}else{
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
+		public function listarProyectoAgregarCatalogo($idUsuario){
+			$sql = "SELECT *,proyecto.descripcion AS descripcionP FROM proyecto INNER JOIN imagenproyecto ON proyecto.idProyecto = imagenproyecto.idProyecto WHERE Usuario_cc = ? AND activa = ?";
+			$consulta = $this->db->prepare($sql);
+			$resultado = $consulta->execute(array($idUsuario,0));
+			$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);
+
+			if($provedores == true){
+				return $provedores;
+			}else{
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
+		public function listarProyectoBorrarCatalogo($idUsuario){
+			$sql = "SELECT *,proyecto.descripcion AS descripcionP FROM proyecto INNER JOIN imagenproyecto ON proyecto.idProyecto = imagenproyecto.idProyecto WHERE Usuario_cc = ? AND activa = ?";
+			$consulta = $this->db->prepare($sql);
+			$resultado = $consulta->execute(array($idUsuario,1));
+			$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);
+
+			if($provedores == true){
+				return $provedores;
+			}else{
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
+		public function listarProyectosCatalogo(){
+			$sql = "SELECT *,proyecto.descripcion AS descripcionP FROM proyecto INNER JOIN imagenproyecto ON proyecto.idProyecto = imagenproyecto.idProyecto AND activa = ?";
+			$consulta = $this->db->prepare($sql);
+			$resultado = $consulta->execute(array(1));
+			$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);
+
+			if($provedores == true){
+				return $provedores;
+			}else{
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
+		public function agregarAlCatalogo($idProyecto){
+			try{
+				$sql = "UPDATE Proyecto SET activa = ? WHERE idProyecto = ?";
+				$consulta = $this->db->prepare($sql);
+				$resultado = $consulta->execute(array(1,$idProyecto));
+				return 1;
+			}catch (PDOException $e){
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
+		public function BorrarDelCatalogo($idProyecto){
+			try{
+				$sql = "UPDATE Proyecto SET activa = ? WHERE idProyecto = ?";
+				$consulta = $this->db->prepare($sql);
+				$resultado = $consulta->execute(array(0,$idProyecto));
+				return 1;
+			}catch (PDOException $e){
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
 
 		public function crearImagen($idProyecto){
 			try{

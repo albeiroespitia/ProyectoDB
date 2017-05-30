@@ -17,6 +17,21 @@ li a:hover{
 	text-decoration: underline;
 }
 
+.imgdetail{
+	float: left;
+	margin-bottom: 10px;
+}
+
+.detalles{
+	float: left;
+	margin-left: 10px;
+}
+
+.detalles p{
+	margin-bottom: 10px;
+	font-size: 15px;
+}
+
 .invisible{
 	width: 100%;
 	height: 100vh;
@@ -131,13 +146,11 @@ li a:hover{
 
 .servicios{
 	width: 100%;
-	height: 520px;
 	padding:50px;
 }
 
 .proyectos{
 	width: 100%;
-	height: 520px;
 	padding:50px;
 }
 
@@ -211,7 +224,6 @@ li a:hover{
 	position: relative;
 	background: #dadada;
 	width: 100%;
-	height: 1100px;
 	z-index: 1;
 }
 
@@ -219,7 +231,6 @@ li a:hover{
 	position: relative;
 	background: #dadada;
 	width: 100%;
-	height: 1100px;
 	z-index: 1;
 }
 
