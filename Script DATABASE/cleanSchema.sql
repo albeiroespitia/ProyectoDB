@@ -57,7 +57,7 @@ CREATE TABLE `Cliente` (
   PRIMARY KEY (`idCliente`),
   KEY `fk_Cliente_Ciudad1_idx` (`Ciudad`),
   CONSTRAINT `fk_Cliente_Ciudad1` FOREIGN KEY (`Ciudad`) REFERENCES `Ciudad` (`idCiudad`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +66,7 @@ CREATE TABLE `Cliente` (
 
 LOCK TABLES `Cliente` WRITE;
 /*!40000 ALTER TABLE `Cliente` DISABLE KEYS */;
-INSERT INTO `Cliente` VALUES (1,'ddd','123','123@g.com',9),(2,'22222','2222','123@g.com',9),(3,'22222','2222','123@g.com',9),(4,'qqq','1111','123@g.com',9),(5,'qqq','1111','123@g.com',9),(6,'333','3333','123@g.com',7),(7,'1','1','123@g.com',9),(8,'3','3','123@g.com',7),(9,'123','3','33@GM.COM',9),(10,'33','33','33@GM.COM',9),(11,'33','3','33@GM.COM',9),(12,'3','3','33@GM.COM',8),(13,'2','2','33@GM.COM',8),(14,'3','3','33@GM.COM',7),(15,'22','22','123@g.com',9),(16,'22','2','123@g.com',7),(17,'2','2','123@g.com',8),(18,'3','3','33@GM.COM',7),(19,'2','2','33@GM.COM',7),(20,'1','1','123@g.com',7),(21,'2','2','123@g.com',8),(22,'2','2','2@g.com',7),(23,'as','1','1@g.com',7),(24,'as','1','1@g.com',7),(25,'asdasd','333','a@g.com',9),(26,'333','333','33@g.com',8),(27,'asd','1','1@g.com',8),(28,'2','2','2@g.com',9),(29,'2','2','2@G.COM',7),(30,'2','2','2@g.com',9),(31,'213','123','1@g.com',7),(32,'3','3','3@g.com',9),(33,'asd','1','1@g.com',7),(34,'1','1','1@g.com',7),(35,'1','1','1@g.com',7),(36,'123','321','32@g.com',7),(37,'1','1','1@g.com',9),(38,'1','1','1@g.com',8),(39,'1','1','1@g.com',9),(40,'123','312','3@g.com',8),(41,'123','312','3@g.com',7),(42,'123','312','3@g.com',7),(43,'23','3','3@g.com',9),(44,'23','3','3@g.com',8),(45,'123','321','3@g.com',9),(46,'12','2','2@g.com',9),(47,'13','32','a@g.com',8),(48,'asd','1','1@g.com',7),(49,'1','1','1@g.com',7),(50,'123','213','a@g.com',7),(51,'asd','12','a@g.com',7),(52,'asd','12','a@g.com',7),(53,'asd','1','a@g.com',7),(54,'asd','1','a@g.com',7),(55,'asd','1','a@g.com',7),(56,'asd','1','a@g.com',7),(57,'asd','1','a@g.com',7),(58,'asd','1','a@g.com',7),(59,'asd','1','a@g.com',7),(60,'asd','1','a@g.com',7),(61,'asd','1','a@g.com',7),(62,'asd','1','a@g.com',7),(63,'asd','1','a@g.com',7),(64,'asd','1','a@g.com',7),(65,'asd','1','a@g.com',7);
+INSERT INTO `Cliente` VALUES (1,'ddd','123','123@g.com',9),(2,'22222','2222','123@g.com',9),(3,'22222','2222','123@g.com',9),(4,'qqq','1111','123@g.com',9),(5,'qqq','1111','123@g.com',9),(6,'333','3333','123@g.com',7),(7,'1','1','123@g.com',9),(8,'3','3','123@g.com',7),(9,'123','3','33@GM.COM',9),(10,'33','33','33@GM.COM',9),(11,'33','3','33@GM.COM',9),(12,'3','3','33@GM.COM',8),(13,'2','2','33@GM.COM',8),(14,'3','3','33@GM.COM',7),(15,'22','22','123@g.com',9),(16,'22','2','123@g.com',7),(17,'2','2','123@g.com',8),(18,'3','3','33@GM.COM',7),(19,'2','2','33@GM.COM',7),(20,'1','1','123@g.com',7),(21,'2','2','123@g.com',8),(22,'2','2','2@g.com',7),(23,'as','1','1@g.com',7),(24,'as','1','1@g.com',7),(25,'asdasd','333','a@g.com',9),(26,'333','333','33@g.com',8),(27,'asd','1','1@g.com',8),(28,'2','2','2@g.com',9),(29,'2','2','2@G.COM',7),(30,'2','2','2@g.com',9),(31,'213','123','1@g.com',7),(32,'3','3','3@g.com',9),(33,'asd','1','1@g.com',7),(34,'1','1','1@g.com',7),(35,'1','1','1@g.com',7),(36,'123','321','32@g.com',7),(37,'1','1','1@g.com',9),(38,'1','1','1@g.com',8),(39,'1','1','1@g.com',9),(40,'123','312','3@g.com',8),(41,'123','312','3@g.com',7),(42,'123','312','3@g.com',7),(43,'23','3','3@g.com',9),(44,'23','3','3@g.com',8),(45,'123','321','3@g.com',9),(46,'12','2','2@g.com',9),(47,'13','32','a@g.com',8),(48,'asd','1','1@g.com',7),(49,'1','1','1@g.com',7),(50,'123','213','a@g.com',7),(51,'asd','12','a@g.com',7),(52,'asd','12','a@g.com',7),(53,'asd','1','a@g.com',7),(54,'asd','1','a@g.com',7),(55,'asd','1','a@g.com',7),(56,'asd','1','a@g.com',7),(57,'asd','1','a@g.com',7),(58,'asd','1','a@g.com',7),(59,'asd','1','a@g.com',7),(60,'asd','1','a@g.com',7),(61,'asd','1','a@g.com',7),(62,'asd','1','a@g.com',7),(63,'asd','1','a@g.com',7),(64,'asd','1','a@g.com',7),(65,'asd','1','a@g.com',7),(66,'12','123','123@g.com',9),(67,'2','2','123@g.com',7),(68,'2','2','2@g.com',7),(69,'2','2','2@gmai.com',7),(70,'gabo','123','gabrielomarespitia@gmail.com',7),(71,'gabriel','123','gabrielomarespitia@gmail.com',7),(72,'23','3','33@GM.COM',7),(73,'23','3','33@GM.COM',7),(74,'2','2','123@g.com',9),(75,'Albeiro','3017041720','albeiroespitiasierra@gmail.com',7),(76,'Albeiro2','3017041620','albeiroespitiaserra@gmai.com',7),(77,'Albeiro','1231231313','albeiroespitia@gmail.com',7),(78,'Albeiro','1231231313','albeiroespitia@gmail.com',7),(79,'Albeiro','23123','asasd@g.com',8),(80,'Albeiro','23123','asasd@g.com',7),(81,'1','1','123@g.com',9),(82,'12','1','123@g.com',7),(83,'albeiro','213','asb@gmail.com',7),(84,'albeiro','213','asb@gmail.com',7),(85,'1','1','123@g.com',9),(86,'1','1','123@g.com',9),(87,'1','1','123@g.com',9),(88,'1','1','123@g.com',9),(89,'1','1','123@g.com',8),(90,'1','1','123@g.com',9),(91,'albeiro','213','albe@gmail.com',7),(92,'gabirle','1321','ga@g.com',7),(93,'123123','32131','123@g.com',7),(94,'1','1','1@g.com',9),(95,'12','213','1@g.com',7),(96,'12','3','1@g.com',9),(97,'123','3','123@g.com',7),(98,'123','3','albeiroespitiasierra@gmail.com',7),(99,'123','3','3@g.com',8);
 /*!40000 ALTER TABLE `Cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,6 +96,7 @@ CREATE TABLE `DetalleFac` (
 
 LOCK TABLES `DetalleFac` WRITE;
 /*!40000 ALTER TABLE `DetalleFac` DISABLE KEYS */;
+INSERT INTO `DetalleFac` VALUES (4,15,2,246),(5,15,1,123),(6,15,21,2583),(7,15,2,246),(8,15,23,2829),(9,15,1,123),(10,15,2,246),(11,15,2,246),(12,15,1,123),(13,15,1,123),(14,15,1,123),(15,15,1,123),(16,15,1,123),(17,15,1,123),(18,15,1,123),(19,15,1,123),(20,15,1,123),(21,15,1,123),(22,15,2,246),(23,15,2,246);
 /*!40000 ALTER TABLE `DetalleFac` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,7 +127,7 @@ CREATE TABLE `DetalleFacCompra` (
 
 LOCK TABLES `DetalleFacCompra` WRITE;
 /*!40000 ALTER TABLE `DetalleFacCompra` DISABLE KEYS */;
-INSERT INTO `DetalleFacCompra` VALUES (12,2,22,123,0),(13,2,NULL,123,0),(14,2,22,123,0),(15,2,117,123,1),(16,2,4,4,0);
+INSERT INTO `DetalleFacCompra` VALUES (12,2,22,123,0),(13,2,NULL,123,0),(14,2,22,123,0),(15,2,39,123,1),(16,2,4,4,0);
 /*!40000 ALTER TABLE `DetalleFacCompra` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -175,7 +176,7 @@ CREATE TABLE `DetalleVentaServicio` (
 
 LOCK TABLES `DetalleVentaServicio` WRITE;
 /*!40000 ALTER TABLE `DetalleVentaServicio` DISABLE KEYS */;
-INSERT INTO `DetalleVentaServicio` VALUES (3,1,'00:00:01'),(4,1,'00:00:01'),(5,1,'00:00:01'),(6,1,'00:00:01'),(7,1,'00:00:01'),(8,1,'00:00:01'),(9,1,'00:00:01'),(10,1,'00:00:01'),(11,1,'00:00:01'),(12,1,'00:00:01'),(13,1,'00:00:01'),(14,1,'00:00:01'),(15,1,'00:00:01');
+INSERT INTO `DetalleVentaServicio` VALUES (3,1,'00:00:01'),(4,1,'00:00:01'),(5,1,'00:00:01'),(6,1,'00:00:01'),(7,1,'00:00:01'),(8,1,'00:00:01'),(9,1,'00:00:01'),(10,1,'00:00:01'),(11,1,'00:00:01'),(12,1,'00:00:01'),(13,1,'00:00:01'),(14,1,'00:00:01'),(15,1,'00:00:01'),(17,1,'00:00:21'),(18,1,'00:00:12'),(19,1,'00:00:01'),(20,1,'00:00:12'),(21,1,'00:00:01'),(22,1,'00:00:02');
 /*!40000 ALTER TABLE `DetalleVentaServicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +200,7 @@ CREATE TABLE `Factura` (
   CONSTRAINT `fk_Factura_Cliente1` FOREIGN KEY (`Cliente`) REFERENCES `Cliente` (`idCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Factura_FormaPago1` FOREIGN KEY (`FormaPago`) REFERENCES `FormaPago` (`idFormaPago`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Factura_Usuario1` FOREIGN KEY (`Usuario_cc`) REFERENCES `Usuario` (`cc`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,6 +209,7 @@ CREATE TABLE `Factura` (
 
 LOCK TABLES `Factura` WRITE;
 /*!40000 ALTER TABLE `Factura` DISABLE KEYS */;
+INSERT INTO `Factura` VALUES (3,68,1,4,'2017-05-11'),(4,69,1,4,'2017-05-04'),(5,74,1,4,'2017-05-19'),(6,75,1,4,'2017-05-17'),(7,76,1,4,'2017-05-01'),(8,77,1,4,'2017-05-10'),(9,78,1,4,'2017-05-10'),(10,79,1,4,'2017-05-08'),(11,80,1,4,'2017-05-08'),(12,81,1,4,'2017-05-05'),(13,82,1,4,'2017-05-03'),(14,83,1,4,'2017-05-10'),(15,84,1,4,'2017-05-10'),(16,85,1,4,'2017-05-13'),(17,86,1,4,'2017-05-10'),(18,87,1,4,'2017-05-04'),(19,88,1,4,'2017-05-09'),(20,89,1,4,'2017-05-04'),(21,90,1,4,'2017-05-03'),(22,91,1,4,'2017-05-18'),(23,97,1,4,'2017-05-05');
 /*!40000 ALTER TABLE `Factura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -261,7 +263,7 @@ CREATE TABLE `FacturaServicio` (
   KEY `fk_FacturaServicio_FormaPago1_idx` (`FormaPago`),
   CONSTRAINT `fk_FacturaServicio_FormaPago1` FOREIGN KEY (`FormaPago`) REFERENCES `FormaPago` (`idFormaPago`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_VentaServicio_Cliente1` FOREIGN KEY (`Cliente`) REFERENCES `Cliente` (`idCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -270,7 +272,7 @@ CREATE TABLE `FacturaServicio` (
 
 LOCK TABLES `FacturaServicio` WRITE;
 /*!40000 ALTER TABLE `FacturaServicio` DISABLE KEYS */;
-INSERT INTO `FacturaServicio` VALUES (1,51,4,'2017-05-15'),(2,52,4,'2017-05-15'),(3,53,4,'2017-05-07'),(4,54,4,'2017-05-07'),(5,55,4,'2017-05-07'),(6,56,4,'2017-05-07'),(7,57,4,'2017-05-07'),(8,58,4,'2017-05-07'),(9,59,4,'2017-05-07'),(10,60,4,'2017-05-07'),(11,61,4,'2017-05-07'),(12,62,4,'2017-05-07'),(13,63,4,'2017-05-07'),(14,64,4,'2017-05-07'),(15,65,4,'2017-05-07');
+INSERT INTO `FacturaServicio` VALUES (1,1,4,'0022-02-22'),(2,52,4,'2017-05-15'),(3,53,4,'2017-05-07'),(4,54,4,'2017-05-07'),(5,55,4,'2017-05-07'),(6,56,4,'2017-05-07'),(7,57,4,'2017-05-07'),(8,58,4,'2017-05-07'),(9,59,4,'2017-05-07'),(10,60,4,'2017-05-07'),(11,61,4,'2017-05-07'),(12,62,4,'2017-05-07'),(13,63,4,'2017-05-07'),(14,64,4,'2017-05-07'),(15,65,4,'2017-05-07'),(17,92,4,'2017-05-06'),(18,93,4,'2017-05-12'),(19,94,4,'2017-05-02'),(20,95,4,'2017-05-12'),(21,96,4,'0002-02-07'),(22,99,4,'2017-05-08');
 /*!40000 ALTER TABLE `FacturaServicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -585,6 +587,58 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'database_project'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `generarFactura` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `generarFactura`(IN xFactura INT(11),IN xProducto INT(11))
+BEGIN
+	SELECT cliente.nombre as nombreC,cliente.email as emailC,usuario.nombre as nombreU,usuario.email as emailU,formapago.descripcion,producto.nombre as nombreP,detallefac.cantidad,detallefac.valor
+					FROM detallefac
+					INNER JOIN producto ON detallefac.producto = producto.idproducto
+                    INNER JOIN factura ON detallefac.Factura = factura.idFactura
+                    INNER JOIN cliente ON factura.Cliente = cliente.idCliente
+                    INNER JOIN formapago ON factura.FormaPago = formapago.idFormapago
+                    INNER JOIN usuario ON factura.Usuario_cc = usuario.cc WHERE detallefac.Factura = xFactura AND Producto = xProducto;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `generarFacturaServicio` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `generarFacturaServicio`(IN xFacturaServicio INT(11),IN xServicio INT(11))
+BEGIN
+
+SELECT cliente.nombre as nombreC,cliente.email as emailC,formapago.descripcion,servicio.descripcion as nombreP,detalleventaservicio.horas
+					FROM detalleventaservicio
+					INNER JOIN servicio ON detalleventaservicio.Servicio = servicio.idServicio
+                    INNER JOIN facturaServicio ON detalleventaservicio.FacturaServicio = facturaServicio.idFacturaServicio
+                    INNER JOIN cliente ON facturaServicio.Cliente = cliente.idCliente
+                    INNER JOIN formapago ON facturaServicio.FormaPago = formapago.idFormapago WHERE FacturaServicio = xFacturaServicio AND Servicio = xServicio;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -595,4 +649,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-29 21:41:23
+-- Dump completed on 2017-05-30  1:22:44
