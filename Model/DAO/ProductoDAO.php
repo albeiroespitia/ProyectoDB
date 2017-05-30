@@ -28,7 +28,7 @@
 		}
 
 		public function listarProductosCatalogo(){
-			$sql = "SELECT *,producto.descripcion as descripcionP, detallefaccompra.cantidad as cantidadR FROM detallefaccompra INNER JOIN producto ON detallefaccompra.producto = producto.idProducto INNER JOIN imagenproducto ON producto.idProducto = imagenproducto.idProducto WHERE activa = ?";
+			$sql = "SELECT *,producto.descripcion as descripcionP, detallefaccompra.cantidad as cantidadR FROM detallefaccompra INNER JOIN producto ON detallefaccompra.producto = producto.idProducto INNER JOIN imagenproducto ON producto.idProducto = imagenproducto.idProducto INNER JOIN facturacompra ON detallefaccompra.facturacompra = facturacompra.idFacturaCompra WHERE activa = ?";
 			$consulta = $this->db->prepare($sql);
 			$resultado = $consulta->execute(array(1));
 			$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);

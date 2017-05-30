@@ -53,6 +53,20 @@
 			}
 		}
 
+		if($_POST['tipo'] == 'generarReporte'){
+			$provedorDAO = new DetalleFacServicioDAO();
+			$Servicio = $_POST['Servicio'];
+			$FacturaServicio = $_POST['FacturaServicio'];
+			$errores = $provedorDAO->generarReporte($Servicio, $FacturaServicio);
+			if($errores == 0){
+				echo 'Error';
+			}else{
+				echo json_encode($errores);
+			}
+		
+
+		}
+
 			if($_POST['tipo'] == 'listarFacturaServicioEditar'){
 			$ProvedorDAO = new DetalleFacServicioDAO();
 			$array_provedores = $ProvedorDAO->listarFacturaServicio();

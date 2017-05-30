@@ -30,6 +30,65 @@
    </ul>
 
 
+   <div id="modal9" class="modal">
+    <div class="modal-content serviceDetail">
+      
+    </div>
+  </div>
+
+  <div id="modal10" class="modal">
+      <div class="modal-content">
+        <h4>Ingrese sus datos</h4>
+        <div class="row">
+          <form id="ser-form" action="" method="POST" class="col s12">
+            <input type="hidden" name="idServicioI" val="">
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="nombre_ser" class="validate" required>
+                <label for="icon_prefix">Nombre</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="text" name="telefono_ser" class="validate" required>
+                <label for="icon_prefix">Telefono</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="email" name="email_ser" class="validate" required>
+                <label for="icon_prefix">Email</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectCiudadS">
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 formaPagoS">
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="number" name="hour_ser" class="validate" required>
+                <label for="icon_prefix">Cantidad de horas</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="fecha_ser" class="validate" required>
+                <label for="icon_prefix">Fecha</label>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <h6 class="error-user"></h6>
+              <button id="login" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="login">Adquirir</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
    <div id="modal7" class="modal">
     <div class="modal-content projectDetail">
       
@@ -64,6 +123,10 @@
               <div class="input-field col s12 selectCiudadP">
               </div>
             </div>
+            <div class="row">
+              <div class="input-field col s12 formaPagoG">
+              </div>
+            </div>
             <div class="modal-footer">
               <h6 class="error-user"></h6>
               <button id="login" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="login">Adquirir</button>
@@ -73,13 +136,96 @@
       </div>
     </div>
 
-   <!-- Modal Structure -->
-  <div id="modal3" class="modal">
+   <div id="modal5" class="modal">
     <div class="modal-content productDetail">
       
     </div>
   </div>
 
+  <div id="modalPDFProduct" method="POST" class="modal">
+    <div class="modal-content">
+      <h4>Desea generar un pdf con su factura?</h4>
+      <p>Si no lo genera ahora no podra hacerlo mas adelante</p>
+    </div>
+    <div class="modal-footer">
+      <form id="pdfProducto" method="POST" action="../../Controller/Action/generate_pdf.php">
+        <input type="hidden" name="pdfContent" val="">
+        <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Generar PDF</button>
+      </form>
+      
+    </div>
+  </div>
+
+  <div id="modalPDFService" method="POST" class="modal">
+    <div class="modal-content">
+      <h4>Desea generar un pdf con su factura?</h4>
+      <p>Si no lo genera ahora no podra hacerlo mas adelante</p>
+    </div>
+    <div class="modal-footer">
+      <form id="pdfService" method="POST" action="../../Controller/Action/generate_pdf.php">
+        <input type="hidden" name="pdfContent" val="">
+        <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Generar PDF</button>
+      </form>
+      
+    </div>
+  </div>
+
+  <div id="modal6" class="modal">
+      <div class="modal-content">
+        <h4>Ingrese sus datos</h4>
+        <div class="row">
+          <form id="buy-form" action="" method="POST" class="col s12">
+            <input type="hidden" name="idProductoI" val="">
+            <input type="hidden" name="FacturaCompraI" val="">
+            <input type="hidden" name="cantidadI" val="">
+            <input type="hidden" name="userSelected" val="">
+            <input type="hidden" name="valorProduct" val="">
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" name="nombre_buy" class="validate" required>
+                <label for="icon_prefix">Nombre</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="text" name="telefono_buy" class="validate" required>
+                <label for="icon_prefix">Telefono</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="email" name="email_buy" class="validate" required>
+                <label for="icon_prefix">Email</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectCiudad">
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 formaPagoB">
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectCantidad"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="number" min="1" max="" name="stock_buy" class="validate" required>
+                <label for="icon_prefix">Cantidad A Comprar</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="fecha_buy" class="validate" required>
+                <label for="icon_prefix">Fecha</label>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <h6 class="error-user"></h6>
+              <button id="login" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="login">Comprar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
 
     <div id="modal1" class="modal">

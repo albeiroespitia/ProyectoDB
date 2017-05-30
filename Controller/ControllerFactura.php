@@ -196,6 +196,8 @@
 				$formaPago,$fecha);
 			if($errores == 0){
 				echo 'Error';
+			}else{
+				echo $errores[0]['idFactura'];
 			}
 		
 

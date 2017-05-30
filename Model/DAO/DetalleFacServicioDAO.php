@@ -26,6 +26,22 @@
 
 		}
 
+		public function generarReporte($Servicio,$FacturaServicio){
+			$sql = "call generarFacturaServicio(?,?)";
+			$consulta = $this->db->prepare($sql);
+			$resultado = $consulta->execute(array($FacturaServicio,$Servicio));
+			$provedores = $consulta->fetchall(PDO::FETCH_ASSOC);
+
+			if($provedores == true){
+				return $provedores;
+			}else{
+				return 0;
+			}
+
+			$consulta->closeCursor();
+
+		}
+
 		public function listarFacturaServicio(){
 			$sql = "SELECT * FROM FacturaServicio";
 			$consulta = $this->db->prepare($sql);

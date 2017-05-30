@@ -119,6 +119,10 @@
               <div class="input-field col s12 selectCiudadP">
               </div>
             </div>
+            <div class="row">
+              <div class="input-field col s12 formaPagoG">
+              </div>
+            </div>
             <div class="modal-footer">
               <h6 class="error-user"></h6>
               <button id="login" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="login">Adquirir</button>
@@ -134,6 +138,34 @@
     </div>
   </div>
 
+  <div id="modalPDFProduct" method="POST" class="modal">
+    <div class="modal-content">
+      <h4>Desea generar un pdf con su factura?</h4>
+      <p>Si no lo genera ahora no podra hacerlo mas adelante</p>
+    </div>
+    <div class="modal-footer">
+      <form id="pdfProducto" method="POST" action="../../Controller/Action/generate_pdf.php">
+        <input type="hidden" name="pdfContent" val="">
+        <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Generar PDF</button>
+      </form>
+      
+    </div>
+  </div>
+
+  <div id="modalPDFService" method="POST" class="modal">
+    <div class="modal-content">
+      <h4>Desea generar un pdf con su factura?</h4>
+      <p>Si no lo genera ahora no podra hacerlo mas adelante</p>
+    </div>
+    <div class="modal-footer">
+      <form id="pdfService" method="POST" action="../../Controller/Action/generate_pdf.php">
+        <input type="hidden" name="pdfContent" val="">
+        <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Generar PDF</button>
+      </form>
+      
+    </div>
+  </div>
+
   <div id="modal6" class="modal">
       <div class="modal-content">
         <h4>Ingrese sus datos</h4>
@@ -142,6 +174,8 @@
             <input type="hidden" name="idProductoI" val="">
             <input type="hidden" name="FacturaCompraI" val="">
             <input type="hidden" name="cantidadI" val="">
+            <input type="hidden" name="userSelected" val="">
+            <input type="hidden" name="valorProduct" val="">
             <div class="row">
               <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
                 <input id="icon_prefix" type="text" name="nombre_buy" class="validate" required>
@@ -165,9 +199,19 @@
               </div>
             </div>
             <div class="row">
+              <div class="input-field col s12 formaPagoB">
+              </div>
+            </div>
+            <div class="row">
               <div class="input-field col s12 selectCantidad"><i class="material-icons prefix">vpn_key</i>
                 <input id="icon_prefix" type="number" min="1" max="" name="stock_buy" class="validate" required>
                 <label for="icon_prefix">Cantidad A Comprar</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix">vpn_key</i>
+                <input id="icon_prefix" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="fecha_buy" class="validate" required>
+                <label for="icon_prefix">Fecha</label>
               </div>
             </div>
             <div class="modal-footer">
@@ -259,18 +303,6 @@
         <li><div class="divider"></div></li>
       </ul>
 
-      <ul id="slide-out2" class="side-nav">
-        <li><div class="userView">
-          <div class="background">
-            <img src="img/service.jpg" width="100%" height="100%">
-          </div>
-          <span class="white-text name">Gestion de servicios</span>
-        </div></li>
-        <li><a ><i class="material-icons">add</i>Agregar al catalogo</a></li>
-        <li><a ><i class="material-icons">mode_edit</i>Eliminar del catalogo</a></li>
-        <li><div class="divider"></div></li>
-      </ul>
-
       <ul id="slide-out3" class="side-nav">
         <li><div class="userView">
           <div class="background">
@@ -286,7 +318,6 @@
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
       <li><a href="#slide-out" data-activates="slide-out" class="button-collapse">Productos</a></li>
-      <li><a href="#slide-out2" data-activates="slide-out2" class="button-collapse">Servicios</a></li>
       <li><a href="#slide-out3" data-activates="slide-out3" class="button-collapse">Proyectos</a></li>
     </ul>
     

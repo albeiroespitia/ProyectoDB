@@ -67,7 +67,7 @@
 			try{
 				$sql = "UPDATE facturaservicio SET Cliente = ?, FormaPago = ?, Fecha = ? WHERE idFacturaServicio = ?";
 				$consulta = $this->db->prepare($sql);
-				$resultado = $consulta->execute(array($cliente,$usuarioCC,$formaPago, $fecha, $idFacturaServicio));
+				$resultado = $consulta->execute(array($cliente,$formaPago, $fecha, $idFacturaServicio));
 				return 1;
 			}catch (PDOException $e){
 				return 0;

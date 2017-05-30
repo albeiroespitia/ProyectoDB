@@ -25,10 +25,6 @@
               <div class="input-field col s12 selectCliente">  
               </div>
             </div>
-               <div class="row">
-              <div class="input-field col s12 selectUsuario">  
-              </div>
-            </div>
              <div class="row">
               <div class="input-field col s12 selectFormaPago">  
               </div>
@@ -55,10 +51,6 @@
           <form id="edit-form" action="" method="" class="col s12">
                <div class="row">
               <div class="input-field col s12 selectClienteEditar">  
-              </div>
-            </div>
-               <div class="row">
-              <div class="input-field col s12 selectUsuarioEditar">  
               </div>
             </div>
              <div class="row">
@@ -112,7 +104,6 @@
           <tr>
               <th>idFacturaServicio</th>
               <th>Cliente</th>
-              <th>CCUsuario</th>
               <th>FormaPago</th>
               <th>Fecha</th>
           </tr>

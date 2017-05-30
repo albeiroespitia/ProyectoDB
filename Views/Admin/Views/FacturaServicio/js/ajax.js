@@ -32,21 +32,6 @@ $(document).ready(function() {
 
 		$.ajax({
 			url: '/ProyectoDB/Controller/ControllerFacturaServicio.php',
-			data : {tipo : 'listarUsuario'},
-			type : 'POST',
-			success: function(res){
-				console.log(res);
-				if(res == 'No hay datos'){
-					$('.selectUsuario').html('Esta tabla usa datos de otra tabla porfavor llene la otra tabla');
-				}else{
-					$('.selectUsuario').html(res);
-				}
-		   		$('select').material_select();
-			}
-		})
-
-		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerFacturaServicio.php',
 			data : {tipo : 'listarFormaPago'},
 			type : 'POST',
 			success: function(res){
@@ -150,15 +135,6 @@ $(document).ready(function() {
 				}
 			})
 
-			$.ajax({
-				url: '/ProyectoDB/Controller/ControllerFacturaServicio.php',
-				data : {tipo : 'listarUsuarioEditar'},
-				type : 'POST',
-				success: function(res){
-			   		$('.selectUsuarioEditar').html(res);
-			   		$('select').material_select();
-				}
-			})
 
 			$.ajax({
 				url: '/ProyectoDB/Controller/ControllerFacturaServicio.php',

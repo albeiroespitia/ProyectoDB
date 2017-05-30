@@ -150,6 +150,20 @@
 
 		}
 
+		if($_POST['tipo'] == 'generarReporte'){
+			$provedorDAO = new DetalleFacDAO();
+			$Producto = $_POST['Producto'];
+			$Factura = $_POST['Factura'];
+			$errores = $provedorDAO->generarReporte($Producto, $Factura);
+			if($errores == 0){
+				echo 'Error';
+			}else{
+				echo json_encode($errores);
+			}
+		
+
+		}
+
 		if($_POST['tipo'] == 'eliminar'){
 			$DetallefacCompraDAO = new DetallefacDAO();
 			$idProducto = $_POST['idProducto'];

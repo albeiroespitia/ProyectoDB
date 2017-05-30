@@ -14,7 +14,6 @@
 				$html .= '<tr>
 				            <td id="idFacturaServicio">'.$row['idFacturaServicio'].' </td>
 				            <td id="Cliente">'.$row['Cliente'].'</td>
-				            <td id="cc">'.$row['Usuario_cc'].' </td>
 				            <td id="FormaPago">'.$row['FormaPago'].'</td>
 				            <td id="Fecha">'.$row['Fecha'].' </td>
 				            <td><a class="editar" href="#modal2"><i class="material-icons">edit</i></a><a class="borrar"><i class="material-icons">delete</i></a></td>
@@ -218,10 +217,9 @@
 			$FacturaServicioDAO = new FacturaServicioDAO();
 			$idFacturaServicio = $_POST['idFacturaServicio'];
 			$cliente = $_POST['cliente'];
-			$usuarioCC = $_POST['usuarioCC'];
 			$formaPago = $_POST['formaPago'];
 			$fecha = $_POST['fecha'];
-			$errores = $FacturaServicioDAO->editarFactura($idFacturaServicio, $cliente, $usuarioCC, 
+			$errores = $FacturaServicioDAO->editarFactura($idFacturaServicio, $cliente, 
 				$formaPago,$fecha);
 			if($errores == 0){
 				echo 'Error';
