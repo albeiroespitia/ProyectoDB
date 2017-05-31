@@ -196,9 +196,9 @@
 
 		public function crearProyecto($descripcion, $empresa, $usuario){
 			try{
-				$sql = "INSERT INTO proyecto VALUES(NULL,?,?,?)";
+				$sql = "INSERT INTO proyecto VALUES(NULL,?,?,?,?)";
 				$consulta = $this->db->prepare($sql);
-				$resultado = $consulta->execute(array($descripcion, $empresa, $usuario));
+				$resultado = $consulta->execute(array($descripcion, $empresa,0, $usuario));
 				return 1;
 			}catch (PDOException $e){
 				return 0;

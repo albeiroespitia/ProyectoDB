@@ -127,7 +127,7 @@ CREATE TABLE `DetalleFacCompra` (
 
 LOCK TABLES `DetalleFacCompra` WRITE;
 /*!40000 ALTER TABLE `DetalleFacCompra` DISABLE KEYS */;
-INSERT INTO `DetalleFacCompra` VALUES (12,2,22,123,0),(13,2,NULL,123,0),(14,2,22,123,0),(15,2,39,123,1),(16,2,4,4,0);
+INSERT INTO `DetalleFacCompra` VALUES (14,2,22,123,0),(15,2,39,123,1),(16,2,4,4,0);
 /*!40000 ALTER TABLE `DetalleFacCompra` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -313,6 +313,7 @@ CREATE TABLE `ImagenProducto` (
   `imagen` varchar(100) NOT NULL,
   `idProducto` int(11) NOT NULL,
   PRIMARY KEY (`idImagenProducto`,`idProducto`),
+  UNIQUE KEY `idProducto_UNIQUE` (`idProducto`),
   KEY `fk_ImagenProducto_Producto1_idx` (`idProducto`),
   CONSTRAINT `fk_ImagenProducto_Producto1` FOREIGN KEY (`idProducto`) REFERENCES `Producto` (`idProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
@@ -341,9 +342,10 @@ CREATE TABLE `ImagenProyecto` (
   `imagen` varchar(100) NOT NULL,
   `idProyecto` int(11) NOT NULL,
   PRIMARY KEY (`idImagenProyecto`,`idProyecto`),
+  UNIQUE KEY `idProyecto_UNIQUE` (`idProyecto`),
   KEY `fk_ImagenProyecto_Proyecto1_idx` (`idProyecto`),
   CONSTRAINT `fk_ImagenProyecto_Proyecto1` FOREIGN KEY (`idProyecto`) REFERENCES `Proyecto` (`idProyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -352,7 +354,7 @@ CREATE TABLE `ImagenProyecto` (
 
 LOCK TABLES `ImagenProyecto` WRITE;
 /*!40000 ALTER TABLE `ImagenProyecto` DISABLE KEYS */;
-INSERT INTO `ImagenProyecto` VALUES (7,'Default','18012786_1277753058947355_1849897266_o.jpg',4);
+INSERT INTO `ImagenProyecto` VALUES (16,'123','3.jpg',7);
 /*!40000 ALTER TABLE `ImagenProyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -430,7 +432,7 @@ CREATE TABLE `Proyecto` (
   PRIMARY KEY (`idProyecto`,`Usuario_cc`),
   KEY `fk_Proyecto_Usuario1_idx` (`Usuario_cc`),
   CONSTRAINT `fk_Proyecto_Usuario1` FOREIGN KEY (`Usuario_cc`) REFERENCES `Usuario` (`cc`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -439,7 +441,7 @@ CREATE TABLE `Proyecto` (
 
 LOCK TABLES `Proyecto` WRITE;
 /*!40000 ALTER TABLE `Proyecto` DISABLE KEYS */;
-INSERT INTO `Proyecto` VALUES (4,'asd','asd',1,1);
+INSERT INTO `Proyecto` VALUES (7,'12','12',0,1);
 /*!40000 ALTER TABLE `Proyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -649,4 +651,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-30  1:22:44
+-- Dump completed on 2017-05-30 22:33:57
