@@ -470,7 +470,7 @@ CREATE TABLE `servicio` (
 
 LOCK TABLES `servicio` WRITE;
 /*!40000 ALTER TABLE `servicio` DISABLE KEYS */;
-INSERT INTO `servicio` VALUES (1,100000,'Mantenimiento de tecnologias','Realizamos la administración, soporte, afinación, contingencia de sus Bases de datos y Servidores de aplicaciones, teniendo en cuenta aspectos tales como, seguridad, políticas de respaldo de la información, entre otros, garantizando los niveles de servicios pactados con los clientes.',1),(2,20000,'Llamanos a nuestra Linea','Todas sus preguntas seran resueltas con nuestros expetos',2),(4,2000000,'Soporte Tecnico Avanzado','Realizamos administración, soporte y consultoría sobre plataformas SOA, velando por su disponibilidad y la respuesta oportuna a errores que permitan que la plataforma opere de acuerdo con los estándares de calidad y niveles de servicio pactados. También prestamos soporte a los procesos de Migración e Integración de Bases de datos y Servidores de aplicación.',3);
+INSERT INTO `servicio` VALUES (1,100000,'Mantenimiento','Realizamos el soporte y afinacion',1),(2,20000,'Consultas','Todas sus preguntas seran resueltas',2),(4,2000000,'Soporte Tecnico','Realizamos consultorias',3);
 /*!40000 ALTER TABLE `servicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -651,4 +651,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-31 19:34:47
+-- Dump completed on 2017-05-31 19:51:26
