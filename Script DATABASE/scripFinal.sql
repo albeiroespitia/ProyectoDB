@@ -380,7 +380,7 @@ CREATE TABLE `producto` (
 
 LOCK TABLES `producto` WRITE;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-INSERT INTO `producto` VALUES (1,'Arduino Uno','Esta board tiene un microcontrolador ATMEGA328, este tiene 14 pines de entradas/salidas digitales (de los cuales 6 pines pueden ser usados para señales de salida PWM), 6 entradas analógicas, maneja una frecuencia de reloj de 16MHz.',10),(2,'Computador Portatil Hp','Windows 10 Procesador Intel® Celeron® N3060 Pantalla 39,6 cm (15,6 pulg.) Memoria 4 GB DDR3L-1600 SDRAM (1 x 4 GB) Disco duro SATA de 1 TB 5400 rpm Gráficos HD Intel® 400',7),(3,' Procesador Intel® Core™ i5-76','6 MB SmartCache Caché 4 Núcleos 4 Subprocesos',10),(4,'Portatil Apple Macbook Air','Color plateado. Memoria RAM de 8GB LPDDR3. Unidad de disco duro de 128GB. Pantalla widescreen LCD con retroiluminación LED de 13,3\". Resolución de pantalla de 1440x900. Velocidad del procesador de 1,6GHz con Turboboost 2,7GHz Sistema operativo OS X El Capitan  Tarjeta gráfica Intel HD Graphics 6000 1500Mb de Graficos',5),(5,'Memoria Usb Kingston 8gb ','El DataTraveler 101 Generation 2 de Kingston, ¡está aquí! Este conveniente compañero de almacenamiento le permite llevar con usted toda su información, ya sea a casa, la oficina, la escuela y a cualquier lugar donde necesite ir de viaje.',20);
+INSERT INTO `producto` VALUES (1,'Arduino Uno','Esta board tiene un microcontrolador ATMEGA328.',10),(2,'Computador Portatil Hp','Windows 10 Procesador Intel®',7),(3,' Procesador Intel® ','6 MB SmartCache Caché 4 Núcleos ',10),(4,'Portatil Apple Macbook ','Color plateado. Memoria RAM de 8GB  ',5),(5,'Memoria Usb Kingston 8gb ','El DataTraveler 101 Generation 2 de Kingston, ',20);
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -651,4 +651,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-31 12:55:58
+-- Dump completed on 2017-05-31 19:34:47
